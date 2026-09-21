@@ -1,146 +1,117 @@
-// --- 3D Scene Initialization for Vyacheslav's Portfolio ---
-const canvas = document.getElementById('hero-canvas');
-const scene = new THREE.Scene();
+// --- Spotlight Hover Effect (Linear / Raycast Bento Style) ---
+const cards = document.querySelectorAll('.spotlight-card');
 
-// Camera
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 22;
+function handleCardMouseMove(e) {
+  const rect = this.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
 
-// Renderer
-const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-// Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-scene.add(ambientLight);
-
-const pointLight1 = new THREE.PointLight(0x6366f1, 3, 40);
-pointLight1.position.set(10, 10, 10);
-scene.add(pointLight1);
-
-const pointLight2 = new THREE.PointLight(0x00f2fe, 3, 40);
-pointLight2.position.set(-10, -10, 8);
-scene.add(pointLight2);
-
-// Central Futuristic Crystal
-const crystalGroup = new THREE.Group();
-scene.add(crystalGroup);
-
-// Inner Core - Shiny Icosahedron
-const coreGeo = new THREE.IcosahedronGeometry(4.5, 0);
-const coreMat = new THREE.MeshPhysicalMaterial({
-  color: 0x111827,
-  emissive: 0x312e81,
-  roughness: 0.1,
-  metalness: 0.9,
-  clearcoat: 1.0,
-  wireframe: false
-});
-const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-crystalGroup.add(coreMesh);
-
-// Outer Wireframe Cage
-const cageGeo = new THREE.IcosahedronGeometry(5.8, 1);
-const cageMat = new THREE.MeshBasicMaterial({
-  color: 0x00f2fe,
-  wireframe: true,
-  transparent: true,
-  opacity: 0.35
-});
-const cageMesh = new THREE.Mesh(cageGeo, cageMat);
-crystalGroup.add(cageMesh);
-
-// Orbiting Rings
-const ringGeo1 = new THREE.TorusGeometry(8.5, 0.05, 16, 100);
-const ringMat1 = new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.4 });
-const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
-ring1.rotation.x = Math.PI / 3;
-crystalGroup.add(ring1);
-
-const ringGeo2 = new THREE.TorusGeometry(9.8, 0.04, 16, 100);
-const ringMat2 = new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.3 });
-const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
-ring2.rotation.y = Math.PI / 4;
-crystalGroup.add(ring2);
-
-// Ambient Floating Cyber Particles
-const particleCount = 700;
-const particleGeo = new THREE.BufferGeometry();
-const particlePos = new Float32Array(particleCount * 3);
-const particleColors = new Float32Array(particleCount * 3);
-
-const c1 = new THREE.Color('#6366f1');
-const c2 = new THREE.Color('#00f2fe');
-
-for (let i = 0; i < particleCount; i++) {
-  particlePos[i * 3] = (Math.random() - 0.5) * 50;
-  particlePos[i * 3 + 1] = (Math.random() - 0.5) * 40;
-  particlePos[i * 3 + 2] = (Math.random() - 0.5) * 35;
-
-  const col = Math.random() > 0.5 ? c1 : c2;
-  particleColors[i * 3] = col.r;
-  particleColors[i * 3 + 1] = col.g;
-  particleColors[i * 3 + 2] = col.b;
+  this.style.setProperty('--mouse-x', `${x}px`);
+  this.style.setProperty('--mouse-y', `${y}px`);
 }
 
-particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
-particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
-
-const particleMat = new THREE.PointsMaterial({
-  size: 0.12,
-  vertexColors: true,
-  transparent: true,
-  opacity: 0.65,
-  blending: THREE.AdditiveBlending
+cards.forEach(card => {
+  card.addEventListener('mousemove', handleCardMouseMove);
 });
 
-const particles = new THREE.Points(particleGeo, particleMat);
-scene.add(particles);
+// --- High-Performance Ambient Dot Matrix Canvas ---
+const canvas = document.getElementById('ambient-canvas');
+const ctx = canvas.getContext('2d');
 
-// Mouse Movement & Inertia
-let mouseX = 0;
-let mouseY = 0;
-let targetRotX = 0;
-let targetRotY = 0;
+let width, height;
+let dots = [];
+const spacing = 38; // Distance between dots
+let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
 
+function resizeCanvas() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+
+  initDots();
+}
+
+function initDots() {
+  dots = [];
+  const cols = Math.ceil(width / spacing);
+  const rows = Math.ceil(height / spacing);
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      dots.push({
+        baseX: c * spacing + (spacing / 2),
+        baseY: r * spacing + (spacing / 2),
+        x: c * spacing + (spacing / 2),
+        y: r * spacing + (spacing / 2),
+        alpha: 0.15,
+        targetAlpha: 0.15
+      });
+    }
+  }
+}
+
+window.addEventListener('resize', resizeCanvas);
 window.addEventListener('mousemove', (e) => {
-  mouseX = (e.clientX - window.innerWidth / 2) * 0.0008;
-  mouseY = (e.clientY - window.innerHeight / 2) * 0.0008;
+  mouse.targetX = e.clientX;
+  mouse.targetY = e.clientY;
 });
 
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+window.addEventListener('mouseleave', () => {
+  mouse.targetX = -1000;
+  mouse.targetY = -1000;
 });
 
 // Animation Loop
-const clock = new THREE.Clock();
+function render() {
+  requestAnimationFrame(render);
 
-function animate() {
-  requestAnimationFrame(animate);
-  const time = clock.getElapsedTime();
+  // Smooth mouse lerp
+  mouse.x += (mouse.targetX - mouse.x) * 0.1;
+  mouse.y += (mouse.targetY - mouse.y) * 0.1;
 
-  targetRotX += (mouseY - targetRotX) * 0.05;
-  targetRotY += (mouseX - targetRotY) * 0.05;
+  ctx.clearRect(0, 0, width, height);
 
-  // Crystal rotations
-  coreMesh.rotation.y = time * 0.2 + targetRotY;
-  coreMesh.rotation.x = time * 0.1 + targetRotX;
+  // Draw subtle ambient glow near mouse
+  if (mouse.x > 0 && mouse.y > 0) {
+    const glowGradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 350);
+    glowGradient.addColorStop(0, 'rgba(99, 102, 241, 0.07)');
+    glowGradient.addColorStop(1, 'transparent');
+    ctx.fillStyle = glowGradient;
+    ctx.fillRect(0, 0, width, height);
+  }
 
-  cageMesh.rotation.y = -time * 0.15 + targetRotY * 1.5;
-  cageMesh.rotation.z = time * 0.08;
+  // Draw dot matrix
+  const radiusInfluence = 180;
 
-  ring1.rotation.z = time * 0.15;
-  ring2.rotation.x = time * 0.1;
+  for (let i = 0; i < dots.length; i++) {
+    const dot = dots[i];
+    const dx = mouse.x - dot.baseX;
+    const dy = mouse.y - dot.baseY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
 
-  // Float effect
-  crystalGroup.position.y = Math.sin(time * 1.2) * 0.6;
+    if (dist < radiusInfluence) {
+      // Repel slightly and illuminate
+      const factor = 1 - (dist / radiusInfluence);
+      const angle = Math.atan2(dy, dx);
+      dot.x = dot.baseX - Math.cos(angle) * (factor * 8);
+      dot.y = dot.baseY - Math.sin(angle) * (factor * 8);
+      dot.alpha = 0.15 + (factor * 0.7);
+      
+      ctx.fillStyle = factor > 0.4 ? 'rgba(99, 102, 241, ' + dot.alpha + ')' : 'rgba(255, 255, 255, ' + dot.alpha + ')';
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, 1.2 + factor * 0.8, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      dot.x = dot.baseX;
+      dot.y = dot.baseY;
+      dot.alpha = 0.12;
 
-  // Swirl particles
-  particles.rotation.y = time * 0.03 + targetRotY * 0.5;
-
-  renderer.render(scene, camera);
+      ctx.fillStyle = 'rgba(255, 255, 255, ' + dot.alpha + ')';
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, 1, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
 }
-animate();
+
+resizeCanvas();
+render();

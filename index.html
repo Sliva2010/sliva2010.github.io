@@ -3,353 +3,350 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Вячеслав — 3D Web & Telegram Developer | Портфолио проектов</title>
-  <meta name="description" content="Разработка премиальных 3D-сайтов, интерактивных лендингов и Telegram-ботов с высокой конверсией. Примеры коммерческих работ и расчет стоимости.">
+  <title>Вячеслав — Creative Web Developer & Vibe Coder | Портфолио</title>
+  <meta name="description" content="Разработка премиальных 3D-лендингов, веб-приложений и Telegram Mini Apps для бизнеса. Linear-стиль, чистая верстка и высокая конверсия.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body>
-  <!-- 3D Interactive Background Canvas -->
-  <canvas id="hero-canvas"></canvas>
+<body class="dark-theme">
+  <!-- Subtle Ambient Interactive Canvas Background -->
+  <canvas id="ambient-canvas"></canvas>
 
-  <!-- Navigation -->
+  <!-- Top Navbar -->
   <header class="navbar">
-    <div class="brand-logo">
-      <span class="status-indicator"></span>
-      SLAVA<span class="brand-accent">.DEV</span>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="status-dot"></span>
+        <span class="brand-name">slava<span class="brand-dim">.dev</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#work">Проекты</a>
+        <a href="#services">Услуги</a>
+        <a href="#stack">Стек</a>
+        <a href="#workflow">Процесс</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://t.me/SLAVASDF" target="_blank" class="btn-nav">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          Telegram @SLAVASDF
+        </a>
+      </div>
     </div>
-    <nav class="nav-menu">
-      <a href="#projects">Проекты (5)</a>
-      <a href="#services">Услуги</a>
-      <a href="#benefits">Преимущества</a>
-      <a href="#reviews">Отзывы</a>
-      <a href="#contact">Контакты</a>
-    </nav>
-    <a href="https://t.me/SLAVASDF" target="_blank" class="nav-cta-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-      Telegram: @SLAVASDF
-    </a>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="availability-pill">
-        <span class="pulsing-circle"></span> Открыт для новых проектов • Релиз от 3 дней
-      </div>
-      <h1 class="main-title">
-        Создаю <span class="highlight-gradient">3D-сайты и Telegram-ботов</span>, <br>
-        которые продают ваш продукт с первой секунды
-      </h1>
-      <p class="hero-description">
-        Привет! Меня зовут Вячеслав. Я создаю кинематографичные интерактивные веб-проекты с вау-эффектом для бизнеса, ресторанов, автостудий и стартапов. Никаких скучных шаблонов — только чистый код, 3D WebGL и высокая конверсия.
-      </p>
-      
-      <div class="hero-buttons">
-        <a href="#projects" class="btn-glow btn-lg">Смотреть работы (5 сайтов) ↓</a>
-        <a href="https://t.me/SLAVASDF" target="_blank" class="btn-glass btn-lg">Обсудить ваш проект</a>
-      </div>
+  <main class="page-content">
+    <!-- Hero Section: Clean Linear/Raycast Style -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="status-pill">
+          <span class="pulse-indicator"></span>
+          <span>Доступен для новых проектов • Релиз от 3 дней</span>
+        </div>
 
-      <!-- Trust Badges -->
-      <div class="trust-grid">
-        <div class="trust-card glass-panel">
-          <span class="trust-num">100%</span>
-          <span class="trust-lbl">Адаптивность (iOS, Android, PC)</span>
+        <h1 class="hero-headline">
+          Создаю веб-сайты и сервисы, <br>
+          <span class="hero-gradient">которые говорят о качестве</span> без лишних слов
+        </h1>
+
+        <p class="hero-lead">
+          Привет, я Вячеслав. Занимаюсь креативной веб-разработкой: 3D-лендинги с высокой конверсией, Telegram Mini Apps и AI-интеграции для бизнеса. Строгая эстетика, чистый код и фокус на результат.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#work" class="btn-primary">
+            Смотреть проекты
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+          </a>
+          <a href="https://t.me/SLAVASDF" target="_blank" class="btn-secondary">
+            Обсудить задачу в Telegram
+          </a>
         </div>
-        <div class="trust-card glass-panel">
-          <span class="trust-num">x3</span>
-          <span class="trust-lbl">Рост времени на сайте</span>
-        </div>
-        <div class="trust-card glass-panel">
-          <span class="trust-num">от 3 дней</span>
-          <span class="trust-lbl">Срок разработки под ключ</span>
+
+        <!-- Metric badges -->
+        <div class="metrics-row">
+          <div class="metric-card">
+            <span class="metric-val">3–5 дней</span>
+            <span class="metric-label">Срок разработки MVP</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">60 FPS</span>
+            <span class="metric-label">Плавная анимация на смартфонах</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">100%</span>
+            <span class="metric-label">Чистый код без шаблонных конструкторов</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Portfolio Showcase (5 Full Works) -->
-    <section id="projects" class="portfolio-section">
-      <div class="section-title-box">
-        <span class="badge-tag">ПОРТФОЛИО РАБОТ</span>
-        <h2>5 готовых коммерческих проектов</h2>
-        <p>Каждый сайт открывается в новой вкладке с полноценным интерактивом, 3D-графикой и функционалом</p>
+    <!-- Bento Grid Showcase (5 Commercial Projects) -->
+    <section id="work" class="bento-section">
+      <div class="section-meta">
+        <span class="meta-tag">ИЗБРАННЫЕ РАБОТЫ</span>
+        <h2 class="section-heading">Коммерческие проекты в продакшене</h2>
+        <p class="section-subheading">Каждый сайт открывается в новой вкладке с интерактивной 3D-графикой и функционалом</p>
       </div>
 
-      <div class="projects-container">
+      <div class="bento-grid">
         
-        <!-- Project 1: Nexus Digital -->
-        <article class="project-card glass-panel">
-          <div class="card-visual visual-cyber">
-            <div class="visual-badge">3D Digital Agency</div>
-            <div class="cube-preview-box">
-              <span class="cube-icon">✦</span>
-              <span class="preview-note">Интерактивная 3D-сфера и калькулятор</span>
+        <!-- Bento Card 1: Nexus Digital (Large 2-col) -->
+        <div class="bento-card bento-wide spotlight-card">
+          <div class="bento-header">
+            <div class="card-meta">
+              <span class="category-pill">Creative Agency</span>
+              <span class="tech-pill">Three.js</span>
+              <span class="tech-pill">Live Calculator</span>
             </div>
+            <a href="projects/cyber-agency/index.html" target="_blank" class="card-arrow-btn" title="Открыть в новой вкладке">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+            </a>
           </div>
-          <div class="card-body">
-            <div class="tech-tags">
-              <span>Three.js</span>
-              <span>WebGL Particles</span>
-              <span>Live Calculator</span>
-              <span>Dark Minimal</span>
-            </div>
-            <h3 class="card-title">Nexus Digital — Креативная 3D-Студия</h3>
-            <p class="card-desc">
-              Премиальный промо-лендинг для диджитал-агентства с деформирующейся частичной 3D-сферой, интерактивным калькулятором стоимости в реальном времени и воронкой заявок.
-            </p>
-            <div class="card-footer">
-              <a href="projects/cyber-agency/index.html" target="_blank" class="btn-demo">
-                Открыть сайт (Live Demo)
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
 
-        <!-- Project 2: AromaCraft -->
-        <article class="project-card glass-panel">
-          <div class="card-visual visual-coffee">
-            <div class="visual-badge">Gastro & Coffee</div>
-            <div class="cube-preview-box">
-              <span class="cube-icon">☕</span>
-              <span class="preview-note">3D-чашка, парящие зерна и меню</span>
-            </div>
+          <div class="bento-content">
+            <h3>Nexus Digital — Креативная 3D Веб-Студия</h3>
+            <p>Промо-лендинг с интерактивной деформирующейся сферой частиц WebGL, онлайн-калькулятором стоимости в реальном времени и оптимизацией под мобильные устройства.</p>
           </div>
-          <div class="card-body">
-            <div class="tech-tags">
-              <span>Three.js 3D Mesh</span>
-              <span>Steam Simulation</span>
-              <span>Menu Filter</span>
-              <span>Amber Theme</span>
-            </div>
-            <h3 class="card-title">AromaCraft — Селективная Обжарка & Кофейня</h3>
-            <p class="card-desc">
-              Атмосферный лендинг для крафтовой кофейни с трехмерной чашкой, поднимающимся паром, парящими зернами, каталогом спешелти лотов и интерактивным меню.
-            </p>
-            <div class="card-footer">
-              <a href="projects/coffee-roastery/index.html" target="_blank" class="btn-demo">
-                Открыть сайт (Live Demo)
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
 
-        <!-- Project 3: Aether Pay -->
-        <article class="project-card glass-panel">
-          <div class="card-visual visual-crypto">
-            <div class="visual-badge">FinTech & Web3</div>
-            <div class="cube-preview-box">
-              <span class="cube-icon">💳</span>
-              <span class="preview-note">3D-карта, орбиты монет и APY-калькулятор</span>
+          <!-- Browser Mockup Window -->
+          <div class="mockup-window">
+            <div class="mockup-bar">
+              <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="mockup-url">nexus.digital/calc</div>
+            </div>
+            <div class="mockup-screen screen-nexus">
+              <div class="screen-preview-content">
+                <div class="preview-hero-text">Создаем 3D-сайты с конверсией x3</div>
+                <div class="preview-mini-calc">
+                  <span>3D Промо-лендинг</span>
+                  <span class="calc-badge">25 000 ₽</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="card-body">
-            <div class="tech-tags">
-              <span>Holographic 3D Card</span>
-              <span>Orbiting Tokens</span>
-              <span>APY Staking Calc</span>
-              <span>Glassmorphism</span>
-            </div>
-            <h3 class="card-title">Aether Pay — Необанк & Криптокарта</h3>
-            <p class="card-desc">
-              Футуристичный лендинг криптокарты нового поколения. Трехмерная голографическая карта, вращающиеся токены, ползунки доходности и выбор тарифов.
-            </p>
-            <div class="card-footer">
-              <a href="projects/crypto-fintech/index.html" target="_blank" class="btn-demo">
-                Открыть сайт (Live Demo)
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
+        </div>
 
-        <!-- Project 4: Apex Detail -->
-        <article class="project-card glass-panel">
-          <div class="card-visual visual-auto">
-            <div class="visual-badge">Auto Detailing</div>
-            <div class="cube-preview-box">
-              <span class="cube-icon">🏎️</span>
-              <span class="preview-note">3D-спорткар, студийный свет и До/После</span>
+        <!-- Bento Card 2: Aether Pay (Square / Tall) -->
+        <div class="bento-card spotlight-card">
+          <div class="bento-header">
+            <div class="card-meta">
+              <span class="category-pill">FinTech & Web3</span>
+              <span class="tech-pill">3D Card Tilt</span>
             </div>
+            <a href="projects/crypto-fintech/index.html" target="_blank" class="card-arrow-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+            </a>
           </div>
-          <div class="card-body">
-            <div class="tech-tags">
-              <span>Studio 3D Car</span>
-              <span>Before/After Slider</span>
-              <span>Package Config</span>
-              <span>High Contrast</span>
-            </div>
-            <h3 class="card-title">Apex Detail — Студия Защиты Суперкаров</h3>
-            <p class="card-desc">
-              Брутальный сайт детейлинг-студии с трехмерной моделью суперкара в неоновой студии, интерактивным слайдером сравнения состояния лака До/После и записью.
-            </p>
-            <div class="card-footer">
-              <a href="projects/auto-detailing/index.html" target="_blank" class="btn-demo">
-                Открыть сайт (Live Demo)
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
 
-        <!-- Project 5: Synthetix AI -->
-        <article class="project-card glass-panel">
-          <div class="card-visual visual-saas">
-            <div class="visual-badge">AI Platform & SaaS</div>
-            <div class="cube-preview-box">
-              <span class="cube-icon">🤖</span>
-              <span class="preview-note">3D-нейросеть и симулятор агента</span>
+          <div class="bento-content">
+            <h3>Aether Pay — Необанк & Криптокарта</h3>
+            <p>Голографическая 3D-карта с реакцией на наклон мыши, орбиты криптовалютных токенов и интерактивный калькулятор APY стейкинга.</p>
+          </div>
+
+          <div class="mockup-window">
+            <div class="mockup-bar">
+              <div class="window-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="mockup-url">aetherpay.io</div>
+            </div>
+            <div class="mockup-screen screen-aether">
+              <div class="mini-credit-card">
+                <div class="chip"></div>
+                <div class="card-num">•••• 8920</div>
+                <div class="card-brand">AETHER</div>
+              </div>
             </div>
           </div>
-          <div class="card-body">
-            <div class="tech-tags">
-              <span>3D Neural Lattice</span>
-              <span>AI Agent Simulator</span>
-              <span>Annual Switcher</span>
-              <span>Linear Style</span>
+        </div>
+
+        <!-- Bento Card 3: Apex Detail (Square) -->
+        <div class="bento-card spotlight-card">
+          <div class="bento-header">
+            <div class="card-meta">
+              <span class="category-pill">Auto & Detailing</span>
+              <span class="tech-pill">Before / After</span>
             </div>
-            <h3 class="card-title">Synthetix AI — Автономные AI-Агенты</h3>
-            <p class="card-desc">
-              Высокотехнологичный SaaS-лендинг с визуализацией трехмерной нейросети, интерактивным симулятором диалогов AI-агентов, переключателем тарифов и аккордеоном.
-            </p>
-            <div class="card-footer">
-              <a href="projects/ai-saas/index.html" target="_blank" class="btn-demo">
-                Открыть сайт (Live Demo)
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
+            <a href="projects/auto-detailing/index.html" target="_blank" class="card-arrow-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+            </a>
+          </div>
+
+          <div class="bento-content">
+            <h3>Apex Detail — Студия Защиты Суперкаров</h3>
+            <p>3D-модель спорткара в неоновом свете со студийной сеткой и интерактивным слайдером сравнения состояния лака До и После полировки.</p>
+          </div>
+
+          <div class="mockup-window">
+            <div class="mockup-bar">
+              <div class="window-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="mockup-url">apexdetail.pro</div>
+            </div>
+            <div class="mockup-screen screen-apex">
+              <div class="mini-slider-demo">
+                <span class="side-left">ДО: Паутина</span>
+                <span class="divider-line"></span>
+                <span class="side-right">ПОСЛЕ: 9H</span>
+              </div>
             </div>
           </div>
-        </article>
+        </div>
+
+        <!-- Bento Card 4: AromaCraft (Wide 2-col) -->
+        <div class="bento-card bento-wide spotlight-card">
+          <div class="bento-header">
+            <div class="card-meta">
+              <span class="category-pill">Gastro & Specialty</span>
+              <span class="tech-pill">Menu Filter</span>
+              <span class="tech-pill">Ambient 3D</span>
+            </div>
+            <a href="projects/coffee-roastery/index.html" target="_blank" class="card-arrow-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+            </a>
+          </div>
+
+          <div class="bento-content">
+            <h3>AromaCraft — Селективная Обжарка & Кофейня</h3>
+            <p>Сайт премиального кофейного бренда с трехмерной чашкой, парящими зернами свежей обжарки, каталогом лотов SCA 88+ и меню бара с фильтрацией.</p>
+          </div>
+
+          <div class="mockup-window">
+            <div class="mockup-bar">
+              <div class="window-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="mockup-url">aromacraft.coffee</div>
+            </div>
+            <div class="mockup-screen screen-aroma">
+              <div class="coffee-preview-box">
+                <div class="bean-tag">SCA 89.5 • Эфиопия Иргачефф</div>
+                <div class="flavor-notes">Ноты: Жасмин • Персик • Бергамот</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento Card 5: Synthetix AI (Full width or tall) -->
+        <div class="bento-card bento-wide spotlight-card">
+          <div class="bento-header">
+            <div class="card-meta">
+              <span class="category-pill">AI & SaaS</span>
+              <span class="tech-pill">Live Agent Simulator</span>
+              <span class="tech-pill">Linear Aesthetic</span>
+            </div>
+            <a href="projects/ai-saas/index.html" target="_blank" class="card-arrow-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+            </a>
+          </div>
+
+          <div class="bento-content">
+            <h3>Synthetix AI — Автономные AI-Агенты для Бизнеса</h3>
+            <p>Высокотехнологичная SaaS-платформа с 3D-нейронной сетью, симулятором диалогов AI-ассистентов в реальном времени, переключателем тарифов и интеграцией с Telegram.</p>
+          </div>
+
+          <div class="mockup-window">
+            <div class="mockup-bar">
+              <div class="window-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="mockup-url">synthetix.ai/simulator</div>
+            </div>
+            <div class="mockup-screen screen-synthetix">
+              <div class="code-preview-snippet">
+                <code><span class="c-kwd">const</span> agent = <span class="c-kwd">new</span> <span class="c-cls">AIWorker</span>({ channel: <span class="c-str">'@Telegram'</span> });</code>
+                <code><span class="c-kwd">await</span> agent.<span class="c-fn">handleInquiry</span>(); <span class="c-com">// Ответ за 0.8с</span></code>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services & Capabilities Section -->
     <section id="services" class="services-section">
-      <div class="section-title-box">
-        <span class="badge-tag">ЧЕМ Я МОГУ ПОМОЧЬ</span>
-        <h2>Услуги для вашего бизнеса</h2>
-        <p>Полное ведение проекта от идеи и прототипа до хостинга и первых заявок</p>
+      <div class="section-meta">
+        <span class="meta-tag">СПЕЦИАЛИЗАЦИЯ</span>
+        <h2 class="section-heading">Что я создаю для клиентов</h2>
       </div>
 
-      <div class="services-row">
-        <div class="service-box glass-panel">
-          <div class="srv-ico">💎</div>
-          <h4>3D Промо-лендинги</h4>
-          <p>Разработка захватывающих одностраничников с 3D-моделями продуктов, анимациями скролла и мгновенной скоростью открытия на смартфонах.</p>
+      <div class="services-grid">
+        <div class="service-bento spotlight-card">
+          <div class="service-icon-box">01</div>
+          <h3>3D Промо-лендинги</h3>
+          <p>Одностраничные сайты нового поколения. Интерактивные 3D-объекты, реакция на наведение и скролл, плавные анимации и максимальная скорость загрузки.</p>
+          <ul class="clean-list">
+            <li>✓ WebGL / Three.js без утяжеления сайта</li>
+            <li>✓ 100% мобильная адаптивность</li>
+            <li>✓ Интерактивные калькуляторы и формы</li>
+          </ul>
         </div>
 
-        <div class="service-box glass-panel">
-          <div class="srv-ico">📱</div>
-          <h4>Telegram-Боты & Mini Apps</h4>
-          <p>Боты для приема оплат, бронирования услуг, каталогов товаров и рассылок. Создание полноценных WebApp интерфейсов прямо в мессенджере.</p>
+        <div class="service-bento spotlight-card">
+          <div class="service-icon-box">02</div>
+          <h3>Telegram-Боты & Mini Apps</h3>
+          <p>Создание современных веб-приложений прямо внутри Telegram (TMA). Прием оплат, каталоги товаров, запись на услуги и интеграция с CRM.</p>
+          <ul class="clean-list">
+            <li>✓ Нативные интерфейсы Telegram WebApp</li>
+            <li>✓ Подключение эквайринга (СБП, карты, крипта)</li>
+            <li>✓ Уведомления владельцу в реальном времени</li>
+          </ul>
         </div>
 
-        <div class="service-box glass-panel">
-          <div class="srv-ico">⚡</div>
-          <h4>Редизайн & Ускорение</h4>
-          <p>Перевод старых неудобных сайтов на современный стек. Увеличение скорости загрузки, исправление ошибок и внедрение продающих блоков.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="benefits" class="benefits-section">
-      <div class="section-title-box">
-        <span class="badge-tag">ПОЧЕМУ ВЫБИРАЮТ МЕНЯ</span>
-        <h2>Преимущества работы</h2>
-      </div>
-
-      <div class="benefits-grid">
-        <div class="benefit-item glass-panel">
-          <div class="bnf-num">01</div>
-          <h4>Реактивная скорость</h4>
-          <p>Первый интерактивный концепт готов уже через 24–48 часов после старта. Готовый проект — от 3 до 7 дней.</p>
-        </div>
-
-        <div class="benefit-item glass-panel">
-          <div class="bnf-num">02</div>
-          <h4>Без скрытых платежей</h4>
-          <p>Фиксированная стоимость по смете. Бесплатное размещение на надежном хостинге и подключение домена.</p>
-        </div>
-
-        <div class="benefit-item glass-panel">
-          <div class="bnf-num">03</div>
-          <h4>Прямой контакт</h4>
-          <p>Никаких менеджеров-посредников. Вы общаетесь напрямую со мной в Telegram и получаете ответы за 10 минут.</p>
-        </div>
-
-        <div class="benefit-item glass-panel">
-          <div class="bnf-num">04</div>
-          <h4>Фокус на конверсию</h4>
-          <p>Красота ради продаж: понятные кнопки, удобные калькуляторы, прямая интеграция заявок в ваш Telegram/WhatsApp.</p>
+        <div class="service-bento spotlight-card">
+          <div class="service-icon-box">03</div>
+          <h3>Редизайн & Ускорение</h3>
+          <p>Трансформация устаревших сайтов в стильные цифровые продукты уровня Linear и Apple. Оптимизация скорости и повышение конверсии в звонки и заявки.</p>
+          <ul class="clean-list">
+            <li>✓ Чистый современный дизайн без лишнего шума</li>
+            <li>✓ Оценка текущих ошибок конверсии</li>
+            <li>✓ Бесплатный хостинг и перенос на домен</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Client Reviews Section -->
-    <section id="reviews" class="reviews-section">
-      <div class="section-title-box">
-        <span class="badge-tag">ОБРАТНАЯ СВЯЗЬ</span>
-        <h2>Что говорят клиенты</h2>
+    <!-- Workflow Section -->
+    <section id="workflow" class="workflow-section">
+      <div class="section-meta">
+        <span class="meta-tag">ПРОЦЕСС</span>
+        <h2 class="section-heading">Как строится работа</h2>
       </div>
 
-      <div class="reviews-grid">
-        <div class="review-card glass-panel">
-          <div class="rev-stars">★★★★★</div>
-          <p class="rev-text">
-            «Нужен был срочный лендинг для презентации детейлинг-комплекса инвесторам. Слава сделал потрясающую 3D-модель и слайдер До/После за 4 дня. Конверсия из рекламы выросла в два раза!»
-          </p>
-          <div class="rev-author">
-            <strong>Артем К.</strong>
-            <span>Владелец автостудии</span>
-          </div>
+      <div class="workflow-steps">
+        <div class="wf-step spotlight-card">
+          <div class="wf-number">День 1</div>
+          <h4>Бриф & Бесплатный концепт</h4>
+          <p>Обсуждаем цели, целевую аудиторию и структуру. Я собираю первый черновой концепт главного экрана, чтобы вы увидели стиль до оплаты.</p>
         </div>
 
-        <div class="review-card glass-panel">
-          <div class="rev-stars">★★★★★</div>
-          <p class="rev-text">
-            «Заказывали промо-страницу и бота для крафтового бара. Все работает без сбоев, гости в восторге от трехмерного меню на телефонах. Рекомендую как ответственного разработчика.»
-          </p>
-          <div class="rev-author">
-            <strong>Михаил В.</strong>
-            <span>Сооснователь гастропроекта</span>
-          </div>
+        <div class="wf-step spotlight-card">
+          <div class="wf-number">День 2–3</div>
+          <h4>Верстка & Интерактив</h4>
+          <p>Настраиваем трехмерные элементы, плавную анимацию, формы захвата заявок и тестируем отображение на всех диагоналях смартфонов.</p>
         </div>
 
-        <div class="review-card glass-panel">
-          <div class="rev-stars">★★★★★</div>
-          <p class="rev-text">
-            «Отличный подход к делу: все правки вносились моментально, помог настроить домен и протестировал на всех смартфонах. Будем обращаться еще за ботом!»
-          </p>
-          <div class="rev-author">
-            <strong>Елена С.</strong>
-            <span>Маркетинг-директор</span>
-          </div>
+        <div class="wf-step spotlight-card">
+          <div class="wf-number">День 4–5</div>
+          <h4>Интеграции & Релиз</h4>
+          <p>Подключаем отправку заявок в Telegram, настраиваем аналитику, привязываем ваш домен и передаем полностью рабочий проект.</p>
         </div>
       </div>
     </section>
 
-    <!-- Contact & CTA Section -->
-    <section id="contact" class="contact-cta-section glass-panel">
-      <div class="contact-inner">
-        <span class="badge-tag">ДАВАЙТЕ СОЗДАВАТЬ</span>
-        <h2>Есть идея для сайта или бота? <br><span class="highlight-gradient">Давайте запустим её на этой неделе!</span></h2>
-        <p>Напишите мне в Telegram: расскажите о задаче или просто отправьте ссылку на текущий сайт. Я бесплатно сделаю аудит и предложу концепцию реализации.</p>
+    <!-- Contact Banner: Minimalist High-End -->
+    <section class="contact-banner spotlight-card">
+      <div class="banner-inner">
+        <span class="banner-tag">ОБСУДИТЬ ПРОЕКТ</span>
+        <h2>Давайте создадим продукт, <br><span class="hero-gradient">который выделит вас среди конкурентов</span></h2>
+        <p>Напишите мне в Telegram. Отвечу в течение 10–15 минут, предложу варианты реализации и сделаю предварительный расчет стоимости.</p>
         
-        <div class="tg-hero-card">
-          <div class="tg-info">
-            <span class="tg-label">Прямой контакт:</span>
-            <span class="tg-handle">@SLAVASDF</span>
-          </div>
-          <a href="https://t.me/SLAVASDF" target="_blank" class="btn-glow btn-lg">
+        <div class="contact-action-box">
+          <a href="https://t.me/SLAVASDF" target="_blank" class="btn-primary btn-large">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
             Написать в Telegram @SLAVASDF
           </a>
         </div>
@@ -357,25 +354,20 @@
     </section>
   </main>
 
-  <!-- Floating Telegram Action Button -->
-  <a href="https://t.me/SLAVASDF" target="_blank" class="floating-tg-btn" title="Написать Вячеславу в Telegram">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-    <span>Написать в Telegram</span>
-  </a>
-
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-wrap">
-      <div class="f-brand">
-        <span class="f-name">Вячеслав | Web & 3D Developer</span>
-        <p>Разработка современных интерактивных веб-сервисов, 3D-лендингов и ботов.</p>
+  <!-- Clean Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Вячеслав • Web Development</span>
+        <p>Современные 3D-сайты, веб-сервисы и боты с высокой конверсией.</p>
       </div>
-      <div class="f-links">
-        <a href="https://t.me/SLAVASDF" target="_blank" class="f-tg-link">Telegram: @SLAVASDF</a>
+      <div class="footer-right">
+        <a href="https://t.me/SLAVASDF" target="_blank" class="footer-link">Telegram: @SLAVASDF</a>
+        <a href="https://github.com/Sliva2010" target="_blank" class="footer-link">GitHub: Sliva2010</a>
       </div>
     </div>
-    <div class="f-copyright">
-      © 2026 Vyacheslav. Разработано на базе чистого WebGL и Three.js. Все права защищены.
+    <div class="footer-bottom">
+      <span>© 2026 Vyacheslav. Все права защищены.</span>
     </div>
   </footer>
 

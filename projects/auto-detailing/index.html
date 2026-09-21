@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Detail — Студия Премиального Детейлинга & Защиты Кузова</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <!-- 3D Studio Canvas with Hypercar Model & Neon Studio Grid -->
+  <canvas id="auto-canvas"></canvas>
+
+  <header class="header">
+    <div class="logo">
+      <span class="logo-accent">///</span> APEX<span class="logo-sub">DETAIL</span>
+    </div>
+    <nav class="nav">
+      <a href="#services">Услуги</a>
+      <a href="#before-after">До / После</a>
+      <a href="#packages">Пакеты</a>
+      <a href="#workflow">Стандарты</a>
+    </nav>
+    <a href="https://t.me/SLAVASDF" target="_blank" class="btn-amber">Записаться на осмотр</a>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-tag">
+        <span class="dot-red"></span> Центр защиты суперкаров и премиум авто
+      </div>
+      <h1 class="hero-title">
+        Зеркальный блеск. <br>
+        <span class="amber-glow">Абсолютная защита</span> вашего автомобиля
+      </h1>
+      <p class="hero-desc">
+        Бронепленка SunTek & Stek, керамика 9H, восстановительная полировка с микроскопической точностью. Сохраняем заводское состояние ЛКП на 10+ лет.
+      </p>
+      <div class="hero-actions">
+        <a href="#packages" class="btn-amber btn-large">Выбрать комплекс</a>
+        <a href="#before-after" class="btn-outline btn-large">Смотреть До / После</a>
+      </div>
+      <div class="hero-specs">
+        <div class="spec-card">
+          <span class="spec-val">10 лет</span>
+          <span class="spec-txt">Гарантия на полиуретановую пленку</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-val">1 400+</span>
+          <span class="spec-txt">Защищенных автомобилей</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-val">100%</span>
+          <span class="spec-txt">Стерильная «чистая комната»</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="section">
+      <div class="sec-title">
+        <span class="badge">Что мы делаем</span>
+        <h2>Услуги экстра-класса</h2>
+        <p>Работаем с материалами мировых лидеров: Ceramic Pro, Gyeon, Stek, Koch Chemie</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="srv-card">
+          <div class="srv-num">01</div>
+          <h3>Оклейка бронепленкой (PPF)</h3>
+          <p>Толстый самозатягивающийся полиуретан 200+ микрон. Защищает от гравия на трассе, царапин ветками, притертостей и дорожных реагентов.</p>
+          <span class="srv-price">от 75 000 ₽</span>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-num">02</div>
+          <h3>Керамическое покрытие 9H</h3>
+          <p>Гидрофобный эффект «лотоса», насыщенный цвет и зеркальная глубина. Грязь и вода не задерживаются на кузове.</p>
+          <span class="srv-price">от 35 000 ₽</span>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-num">03</div>
+          <h3>Глубокая полировка кузова</h3>
+          <p>Удаление до 98% паутины, царапин и следов птичьего помета без истончения заводского лака. 3-этапная система RUPES.</p>
+          <span class="srv-price">от 24 000 ₽</span>
+        </div>
+
+        <div class="srv-card">
+          <div class="srv-num">04</div>
+          <h3>Химчистка салона & Кожа</h3>
+          <p>Деликатная разборка, очистка паром, озонирование кондиционера и консервация кожи кремами с запахом нового салона.</p>
+          <span class="srv-price">от 18 000 ₽</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Before / After Slider -->
+    <section id="before-after" class="section">
+      <div class="sec-title">
+        <span class="badge">Результат работы</span>
+        <h2>Интерактивное До / После</h2>
+        <p>Потяните ползунок в центре, чтобы сравнить состояние ЛКП до и после полировки</p>
+      </div>
+
+      <div class="comparison-container" id="comparison-slider">
+        <div class="comparison-img before-img">
+          <div class="img-label label-left">ДО (Паутина и затертый лак)</div>
+          <div class="scratch-simulation"></div>
+        </div>
+        <div class="comparison-img after-img" id="after-layer">
+          <div class="img-label label-right">ПОСЛЕ (Зеркальная керамика 9H)</div>
+          <div class="gloss-simulation"></div>
+        </div>
+        <div class="slider-handle" id="slider-handle">
+          <div class="handle-arrows">‹ ›</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages / Booking -->
+    <section id="packages" class="section">
+      <div class="sec-title">
+        <span class="badge">Комплексы</span>
+        <h2>Готовые пакеты защиты</h2>
+      </div>
+
+      <div class="packages-grid">
+        <div class="pkg-card">
+          <h3>Пакет «Городской»</h3>
+          <div class="pkg-price">45 000 ₽</div>
+          <p>Идеально для новых авто для защиты передней части от сколов</p>
+          <ul class="pkg-list">
+            <li>✓ Бронирование фар и зеркал</li>
+            <li>✓ Оклейка переднего бампера и капота</li>
+            <li>✓ 1 слой керамики на весь кузов</li>
+            <li>✓ Антидождь на лобовое стекло</li>
+          </ul>
+          <a href="https://t.me/SLAVASDF?text=Хочу+пакет+Городской" target="_blank" class="btn-outline">Забронировать</a>
+        </div>
+
+        <div class="pkg-card featured-pkg">
+          <div class="pkg-badge">Самый популярный</div>
+          <h3>Пакет «Total Protection»</h3>
+          <div class="pkg-price">140 000 ₽</div>
+          <p>Максимальная защита каждого квадратного сантиметра кузова</p>
+          <ul class="pkg-list">
+            <li>✓ Оклейка кузова бронепленкой целиком</li>
+            <li>✓ 2 слоя керамики поверх пленки</li>
+            <li>✓ Защита глянцевых стоек и оптики</li>
+            <li>✓ Обработка кожаного салона крем-керамикой</li>
+            <li>✓ Бесплатный контрольный осмотр через 2 недели</li>
+          </ul>
+          <a href="https://t.me/SLAVASDF?text=Хочу+пакет+Total+Protection" target="_blank" class="btn-amber">Забронировать комплекс</a>
+        </div>
+
+        <div class="pkg-card">
+          <h3>Пакет «Восстановление»</h3>
+          <div class="pkg-price">55 000 ₽</div>
+          <p>Вторая жизнь для авто с пробегом от 30 000 км</p>
+          <ul class="pkg-list">
+            <li>✓ Мягкая восстановительная полировка кузова</li>
+            <li>✓ Нанесение 3 слоев жидкого стекла 9H</li>
+            <li>✓ Детейлинг колесных дисков</li>
+            <li>✓ Полная химчистка салона с озонированием</li>
+          </ul>
+          <a href="https://t.me/SLAVASDF?text=Хочу+пакет+Восстановление" target="_blank" class="btn-outline">Забронировать</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Standards Section -->
+    <section id="workflow" class="section">
+      <div class="standards-banner">
+        <h2>Индивидуальный бокс для каждого авто</h2>
+        <p>Никакой пыли и сквозняков. Температура 22°C и влажность 50% поддерживаются автоматически промышленной вентиляцией. Персональный видеоотчет каждого этапа в Telegram.</p>
+        <a href="https://t.me/SLAVASDF" target="_blank" class="btn-amber btn-large">Написать в Telegram @SLAVASDF</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">/// APEX DETAIL</div>
+      <p>Премиальный уход за эксклюзивными авто</p>
+      <a href="https://t.me/SLAVASDF" target="_blank" class="footer-link">Запись & Консультации: @SLAVASDF</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

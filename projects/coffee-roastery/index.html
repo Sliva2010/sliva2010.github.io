@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AromaCraft — Селективная Обжарка & Крафтовая Кофейня</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <!-- 3D Canvas Background for Cup & Ambient Floating Beans -->
+  <canvas id="coffee-canvas"></canvas>
+
+  <header class="navbar">
+    <div class="brand">
+      <span class="brand-sub">EST. 2021</span>
+      AROMACRAFT
+    </div>
+    <nav class="nav">
+      <a href="#about">Философия</a>
+      <a href="#beans">Наши лоты</a>
+      <a href="#menu">Меню кофейни</a>
+      <a href="#experience">Мастер-классы</a>
+    </nav>
+    <a href="https://t.me/SLAVASDF" target="_blank" class="btn-gold">Заказать зерно</a>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-tag">Эфиопия • Кения • Колумбия Specialty 88+</div>
+        <h1 class="hero-title">
+          Искусство <br>
+          <span class="gold-text">крафтового вкуса</span> в каждой чашке
+        </h1>
+        <p class="hero-desc">
+          Обжариваем уникальные микролоты на кастомном ростере Giesen. Чистый ягодный профиль, шелковистое тело и неповторимый аромат свежего урожая.
+        </p>
+        <div class="hero-actions">
+          <a href="#beans" class="btn-gold btn-large">Выбрать сорт кофе</a>
+          <a href="#menu" class="btn-outline btn-large">Открыть меню</a>
+        </div>
+      </div>
+      <div class="hero-3d-hint">
+        <span class="mouse-icon"></span>
+        Вращайте 3D-модель курсором
+      </div>
+    </section>
+
+    <!-- Lots / Coffee Beans Showcase -->
+    <section id="beans" class="section">
+      <div class="section-title-wrap">
+        <span class="gold-subtitle">Свежий урожай 2026</span>
+        <h2>Эксклюзивные микролоты</h2>
+        <p>Каждая пачка с указанием высоты произрастания, фермы и дня обжарки</p>
+      </div>
+
+      <div class="beans-grid">
+        <div class="bean-card">
+          <div class="bean-score">SCA 89.5</div>
+          <div class="bean-origin">ЭФИОПИЯ ИРГАЧЕФФ</div>
+          <h3>Flora Yirgacheffe</h3>
+          <p class="flavor-profile"><strong>Ноты:</strong> Жасмин, бергамот, спелый персик, лемонграсс</p>
+          <div class="bean-meta">
+            <span>Высота: 2 100 м</span>
+            <span>Обработка: Мытая</span>
+          </div>
+          <div class="card-bottom">
+            <span class="price">1 450 ₽ <small>/ 250г</small></span>
+            <a href="https://t.me/SLAVASDF?text=Хочу+заказать+кофе+Эфиопия" target="_blank" class="btn-gold-sm">Заказать</a>
+          </div>
+        </div>
+
+        <div class="bean-card featured">
+          <div class="badge-featured">Выбор бариста</div>
+          <div class="bean-score">SCA 91.0</div>
+          <div class="bean-origin">КОЛУМБИЯ ХУИЛА</div>
+          <h3>Geisha Carbonic</h3>
+          <p class="flavor-profile"><strong>Ноты:</strong> Красная смородина, папайя, темный шоколад, ликер</p>
+          <div class="bean-meta">
+            <span>Высота: 1 950 м</span>
+            <span>Обработка: Углекислотная</span>
+          </div>
+          <div class="card-bottom">
+            <span class="price">2 100 ₽ <small>/ 250г</small></span>
+            <a href="https://t.me/SLAVASDF?text=Хочу+заказать+кофе+Колумбия+Geisha" target="_blank" class="btn-gold-sm">Заказать</a>
+          </div>
+        </div>
+
+        <div class="bean-card">
+          <div class="bean-score">SCA 88.0</div>
+          <div class="bean-origin">КЕНИЯ НЬЕРИ</div>
+          <h3>Berry Nyeri AA</h3>
+          <p class="flavor-profile"><strong>Ноты:</strong> Черная смородина, грейпфрут, карамель, клюква</p>
+          <div class="bean-meta">
+            <span>Высота: 1 800 м</span>
+            <span>Обработка: Натуральная</span>
+          </div>
+          <div class="card-bottom">
+            <span class="price">1 600 ₽ <small>/ 250г</small></span>
+            <a href="https://t.me/SLAVASDF?text=Хочу+заказать+кофе+Кения" target="_blank" class="btn-gold-sm">Заказать</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cafe Menu Section -->
+    <section id="menu" class="section menu-section">
+      <div class="section-title-wrap">
+        <span class="gold-subtitle">Барная карта</span>
+        <h2>Меню нашей кофейни</h2>
+      </div>
+
+      <div class="menu-categories">
+        <button class="tab-btn active" data-filter="all">Все напитки</button>
+        <button class="tab-btn" data-filter="espresso">Эспрессо-бар</button>
+        <button class="tab-btn" data-filter="pourover">Альтернатива (V60 / Chemex)</button>
+        <button class="tab-btn" data-filter="special">Авторские напитки</button>
+      </div>
+
+      <div class="menu-list" id="menu-items">
+        <div class="menu-item" data-category="espresso">
+          <div class="item-info">
+            <span class="item-name">Двойной Эспрессо (Doppio)</span>
+            <span class="item-desc">Плотный шот с балансом яркой фруктовой кислотности</span>
+          </div>
+          <div class="item-price">250 ₽</div>
+        </div>
+
+        <div class="menu-item" data-category="espresso">
+          <div class="item-info">
+            <span class="item-name">Флэт Уайт на кокосовом или овсяном</span>
+            <span class="item-desc">Шелковистая микропена и насыщенный двойной ристретто</span>
+          </div>
+          <div class="item-price">360 ₽</div>
+        </div>
+
+        <div class="menu-item" data-category="pourover">
+          <div class="item-info">
+            <span class="item-name">Фильтр-кофе V60 (Batch Brew)</span>
+            <span class="item-desc">Чистый ягодный букет на зерне свежей недели</span>
+          </div>
+          <div class="item-price">320 ₽</div>
+        </div>
+
+        <div class="menu-item" data-category="pourover">
+          <div class="item-info">
+            <span class="item-name">Аэропресс Кения AA</span>
+            <span class="item-desc">Плотное тело с деликатным чайным послевкусием</span>
+          </div>
+          <div class="item-price">380 ₽</div>
+        </div>
+
+        <div class="menu-item" data-category="special">
+          <div class="item-info">
+            <span class="item-name">Раф «Соленая Карамель & Розмарин»</span>
+            <span class="item-desc">Сливочный нежный десертный кофе с домашним сиропом</span>
+          </div>
+          <div class="item-price">420 ₽</div>
+        </div>
+
+        <div class="menu-item" data-category="special">
+          <div class="item-info">
+            <span class="item-name">Cold Brew Nitro с лавандой</span>
+            <span class="item-desc">Холодный кофе 18-часовой экстракции с азотной пеной</span>
+          </div>
+          <div class="item-price">410 ₽</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience / Workshop Section -->
+    <section id="experience" class="section experience-section">
+      <div class="exp-box">
+        <div class="exp-text">
+          <span class="gold-subtitle">Школа вкуса</span>
+          <h2>Каппинги и мастер-классы</h2>
+          <p>Каждую субботу проводим открытые дегустации кофе со всего мира. Научим вас различать ноты цитруса, тропических фруктов и жасмина как профессиональный Q-грейдер.</p>
+          <a href="https://t.me/SLAVASDF?text=Хочу+записаться+на+каппинг" target="_blank" class="btn-gold">Записаться в Telegram</a>
+        </div>
+        <div class="exp-stats">
+          <div class="exp-stat-item">
+            <span class="exp-num">12+</span>
+            <span class="exp-label">Сортов на каждой дегустации</span>
+          </div>
+          <div class="exp-stat-item">
+            <span class="exp-num">1.5 ч</span>
+            <span class="exp-label">Погружения в кофейную культуру</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">AROMACRAFT COFFEE ROASTERS</div>
+      <p>Свежая обжарка • Атмосферное пространство • Обучение</p>
+      <a href="https://t.me/SLAVASDF" target="_blank" class="footer-contact">Связь с основателем: @SLAVASDF</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

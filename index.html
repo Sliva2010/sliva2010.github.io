@@ -2,19 +2,26 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Вячеслав | Портфолио — 3D-сайты, Лендинги и Telegram-боты</title>
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=5.0">
 
-  <!-- Fonts: Unbounded for bold display, Inter for clean body -->
+  <!-- Google Fonts: Unbounded & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Unbounded:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css">
+  <!-- Critical Fallback CSS (prevents FOUC or cache mismatch) -->
+  <style>
+    body { background-color: #08080a; color: #ffffff; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .showcase-carousel-wrapper { display: flex; align-items: center; justify-content: center; gap: 16px; width: 100%; }
+    .carousel-track { display: flex; align-items: center; justify-content: center; gap: 20px; }
+  </style>
+
+  <!-- External Stylesheet with Cache Busting -->
+  <link rel="stylesheet" href="style.css?v=5.0">
 </head>
 <body>
   <!-- Ambient Interactive & Scroll Reacting Background Canvas -->
@@ -60,21 +67,21 @@
 
     <!-- Screen 1: Hero Section (Exact Layout from Reference 1) -->
     <section id="hero" class="screen screen-hero">
-      <div class="screen-frame reveal">
+      <div class="screen-frame anim-block">
         <div class="hero-center">
-          <div class="hero-pretitle reveal-item">Я</div>
-          <h1 class="hero-name reveal-item">ВЯЧЕСЛАВ</h1>
-          <div class="hero-subtitle reveal-item">UI/UX ДИЗАЙНЕР & РАЗРАБОТЧИК</div>
-          <p class="hero-caption reveal-item">
+          <div class="hero-pretitle">Я</div>
+          <h1 class="hero-name">ВЯЧЕСЛАВ</h1>
+          <div class="hero-subtitle">UI/UX ДИЗАЙНЕР & РАЗРАБОТЧИК</div>
+          <p class="hero-caption">
             Создание 3D-лендингов нового поколения, Telegram-ботов и высококонверсионных веб-сервисов под ключ.
           </p>
-          <div class="hero-actions reveal-item">
+          <div class="hero-actions">
             <a href="#portfolio" class="btn-primary">СМОТРЕТЬ РАБОТЫ</a>
             <a href="https://t.me/SLAVASDF" target="_blank" rel="noopener noreferrer" class="btn-outline">НАПИСАТЬ В TELEGRAM</a>
           </div>
         </div>
 
-        <div class="frame-bottom-bar reveal-item">
+        <div class="frame-bottom-bar">
           <div class="status-indicator">
             <span class="status-dot"></span>
             <span class="status-text">Готов к новым коммерческим проектам</span>
@@ -86,31 +93,28 @@
 
     <!-- Screen 2: Portfolio Showcase (Exact 3-Card Carousel from Reference 2) -->
     <section id="portfolio" class="screen screen-portfolio">
-      <div class="screen-frame reveal">
+      <div class="screen-frame anim-block">
         
-        <!-- Interactive 3D Coverflow Slider matching Reference 2 -->
+        <!-- Interactive 3D Showcase matching Reference 2 -->
         <div class="showcase-carousel-wrapper">
           
-          <!-- Prev / Next Navigation Arrows -->
+          <!-- Prev Arrow -->
           <button class="carousel-arrow arrow-prev" id="prevSlideBtn" aria-label="Предыдущий проект">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M15 18l-6-6 6-6"/>
             </svg>
           </button>
 
+          <!-- 3-Card View Track -->
           <div class="carousel-track-container" id="carouselTrackContainer">
             <div class="carousel-track" id="carouselTrack">
               
-              <!-- Slide 1: AI SaaS -->
-              <div class="carousel-slide" data-index="0" data-url="projects/ai-saas/index.html" data-title="Synthetix AI" data-tag="AI & SAAS СЕРВИС" data-desc="Автономные нейросетевые агенты с интерактивной 3D-сетью и симулятором работы.">
+              <!-- Slide 1: AI SaaS (Cyber Eye Artwork from Reference) -->
+              <div class="carousel-slide active" data-index="0" data-url="projects/ai-saas/index.html" data-title="Synthetix AI" data-tag="AI & SAAS СЕРВИС" data-desc="Автономные нейросетевые агенты с интерактивной 3D-сетью и симулятором работы.">
                 <div class="slide-card">
                   <div class="slide-art-box">
-                    <div class="slide-gradient bg-art-ai"></div>
-                    <div class="slide-badge">3D THREE.JS</div>
-                    <div class="art-visual-center">
-                      <div class="pulse-ring"></div>
-                      <div class="cyber-eye">✦</div>
-                    </div>
+                    <img src="assets/art-eye.svg" alt="Synthetix AI" class="slide-art-img" loading="eager">
+                    <span class="slide-badge">3D THREE.JS</span>
                   </div>
                   <div class="slide-overlay-info">
                     <span class="slide-cat">AI & SAAS СЕРВИС</span>
@@ -119,16 +123,12 @@
                 </div>
               </div>
 
-              <!-- Slide 2: Auto Detailing -->
-              <div class="carousel-slide" data-index="1" data-url="projects/auto-detailing/index.html" data-title="Apex Detailing" data-tag="ПРЕМИУМ ДЕТЕЙЛИНГ" data-desc="Люксовый лендинг автодетейлинга с интерактивной сменой покрытия кузова в реальном времени.">
+              <!-- Slide 2: Auto Detailing (Supercar Artwork) -->
+              <div class="carousel-slide next" data-index="1" data-url="projects/auto-detailing/index.html" data-title="Apex Detailing" data-tag="ПРЕМИУМ ДЕТЕЙЛИНГ" data-desc="Люксовый лендинг автодетейлинга с интерактивной сменой покрытия кузова в реальном времени.">
                 <div class="slide-card">
                   <div class="slide-art-box">
-                    <div class="slide-gradient bg-art-auto"></div>
-                    <div class="slide-badge">3D КОНФИГУРАТОР</div>
-                    <div class="art-visual-center">
-                      <div class="pulse-ring ring-cyan"></div>
-                      <div class="cyber-eye">❖</div>
-                    </div>
+                    <img src="assets/art-car.svg" alt="Apex Detailing" class="slide-art-img" loading="eager">
+                    <span class="slide-badge">3D КОНФИГУРАТОР</span>
                   </div>
                   <div class="slide-overlay-info">
                     <span class="slide-cat">ПРЕМИУМ ДЕТЕЙЛИНГ</span>
@@ -137,16 +137,12 @@
                 </div>
               </div>
 
-              <!-- Slide 3: Crypto Fintech -->
-              <div class="carousel-slide" data-index="2" data-url="projects/crypto-fintech/index.html" data-title="Nova DeFi & Pay" data-tag="WEB3 & ФИНТЕХ" data-desc="Высокотехнологичный необанк с живым обменом токенов и терминалом транзакций.">
+              <!-- Slide 3: Crypto Fintech (Isometric Crystal) -->
+              <div class="carousel-slide hidden-slide" data-index="2" data-url="projects/crypto-fintech/index.html" data-title="Nova DeFi & Pay" data-tag="WEB3 & ФИНТЕХ" data-desc="Высокотехнологичный необанк с живым обменом токенов и терминалом транзакций.">
                 <div class="slide-card">
                   <div class="slide-art-box">
-                    <div class="slide-gradient bg-art-crypto"></div>
-                    <div class="slide-badge">WEB3 ТЕРМИНАЛ</div>
-                    <div class="art-visual-center">
-                      <div class="pulse-ring ring-green"></div>
-                      <div class="cyber-eye">◈</div>
-                    </div>
+                    <img src="assets/art-crypto.svg" alt="Nova DeFi" class="slide-art-img" loading="lazy">
+                    <span class="slide-badge">WEB3 ТЕРМИНАЛ</span>
                   </div>
                   <div class="slide-overlay-info">
                     <span class="slide-cat">WEB3 & ФИНТЕХ</span>
@@ -155,16 +151,12 @@
                 </div>
               </div>
 
-              <!-- Slide 4: Coffee Roastery -->
-              <div class="carousel-slide" data-index="3" data-url="projects/coffee-roastery/index.html" data-title="Artisan Roastery" data-tag="SPECIALTY E-COMMERCE" data-desc="Атмосферный промо-сайт specialty кофе с колесом вкусов и интерактивной корзиной.">
+              <!-- Slide 4: Coffee Roastery (Chiaroscuro Coffee) -->
+              <div class="carousel-slide hidden-slide" data-index="3" data-url="projects/coffee-roastery/index.html" data-title="Artisan Roastery" data-tag="SPECIALTY E-COMMERCE" data-desc="Атмосферный промо-сайт specialty кофе с колесом вкусов и интерактивной корзиной.">
                 <div class="slide-card">
                   <div class="slide-art-box">
-                    <div class="slide-gradient bg-art-coffee"></div>
-                    <div class="slide-badge">3D E-COMMERCE</div>
-                    <div class="art-visual-center">
-                      <div class="pulse-ring ring-amber"></div>
-                      <div class="cyber-eye">☕</div>
-                    </div>
+                    <img src="assets/art-coffee.svg" alt="Artisan Roastery" class="slide-art-img" loading="lazy">
+                    <span class="slide-badge">3D E-COMMERCE</span>
                   </div>
                   <div class="slide-overlay-info">
                     <span class="slide-cat">SPECIALTY E-COMMERCE</span>
@@ -173,16 +165,12 @@
                 </div>
               </div>
 
-              <!-- Slide 5: Cyber Agency -->
-              <div class="carousel-slide" data-index="4" data-url="projects/cyber-agency/index.html" data-title="Vortex Cyber Studio" data-tag="CREATIVE 3D STUDIO" data-desc="Футуристичный сайт дизайн-агентства с динамическими шейдерами и интерактивом.">
+              <!-- Slide 5: Cyber Agency (Cyber Vortex) -->
+              <div class="carousel-slide prev" data-index="4" data-url="projects/cyber-agency/index.html" data-title="Vortex Cyber Studio" data-tag="CREATIVE 3D STUDIO" data-desc="Футуристичный сайт дизайн-агентства с динамическими шейдерами и интерактивом.">
                 <div class="slide-card">
                   <div class="slide-art-box">
-                    <div class="slide-gradient bg-art-cyber"></div>
-                    <div class="slide-badge">CREATIVE WEBGL</div>
-                    <div class="art-visual-center">
-                      <div class="pulse-ring ring-red"></div>
-                      <div class="cyber-eye">▲</div>
-                    </div>
+                    <img src="assets/art-cyber.svg" alt="Vortex Studio" class="slide-art-img" loading="lazy">
+                    <span class="slide-badge">CREATIVE WEBGL</span>
                   </div>
                   <div class="slide-overlay-info">
                     <span class="slide-cat">CREATIVE 3D STUDIO</span>
@@ -194,15 +182,16 @@
             </div>
           </div>
 
+          <!-- Next Arrow -->
           <button class="carousel-arrow arrow-next" id="nextSlideBtn" aria-label="Следующий проект">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M9 5l7 7-7 7"/>
             </svg>
           </button>
         </div>
 
         <!-- Reference 2 Layout Center Block Under Cards -->
-        <div class="portfolio-center-meta reveal-item">
+        <div class="portfolio-center-meta">
           <h2 class="portfolio-big-title">МОЁ ПОРТФОЛИО</h2>
           
           <div class="active-project-details">
@@ -232,7 +221,7 @@
           </div>
         </div>
 
-        <div class="frame-bottom-bar reveal-item">
+        <div class="frame-bottom-bar">
           <div class="status-indicator">
             <span class="status-dot"></span>
             <span class="status-text">Листайте стрелками или свайпом на телефоне</span>
@@ -244,11 +233,11 @@
 
     <!-- Screen 3: Contact & Order (Exact Layout from Reference 3) -->
     <section id="contact" class="screen screen-contact">
-      <div class="screen-frame reveal">
+      <div class="screen-frame anim-block">
         <div class="contact-split-grid">
           
           <!-- Left Column: Information -->
-          <div class="contact-info-col reveal-item">
+          <div class="contact-info-col">
             <h2 class="contact-main-heading">КОНТАКТЫ</h2>
             <p class="contact-lead-text">
               Создаю коммерческие лендинги, интерактивные 3D-сайты и удобных Telegram-ботов, которые вызывают доверие и приносят продажи. Готов обсудить вашу задачу и запустить проект в кратчайшие сроки.
@@ -275,7 +264,7 @@
               </div>
             </div>
 
-            <!-- Removed emoji, sleek minimalist badge -->
+            <!-- Removed emoji: Clean Line Art Icon -->
             <div class="direct-action-card">
               <div class="direct-icon-svg">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -293,7 +282,7 @@
           </div>
 
           <!-- Right Column: Contact Form Box -->
-          <div class="contact-form-col reveal-item">
+          <div class="contact-form-col">
             <div class="form-card-box">
               <h3 class="form-title">ФОРМА СВЯЗИ</h3>
               <p class="form-subtitle">Заполните поля ниже, и заявка сразу откроется в вашем Telegram</p>
@@ -338,7 +327,7 @@
 
         </div>
 
-        <div class="frame-bottom-bar reveal-item">
+        <div class="frame-bottom-bar">
           <div class="status-indicator">
             <span class="status-dot"></span>
             <span class="status-text">Вячеслав • Web & 3D Development</span>
@@ -349,7 +338,7 @@
     </section>
 
     <!-- Reference Bottom Ending Banner -->
-    <div class="outro-banner reveal">
+    <div class="outro-banner anim-block">
       <div class="outro-content">
         <h2 class="outro-heading">СПАСИБО ЗА ПРОСМОТР</h2>
         <p class="outro-sub">Все права защищены © 2026 Вячеслав • Доступен для сотрудничества</p>
@@ -358,6 +347,7 @@
 
   </main>
 
-  <script src="main.js"></script>
+  <!-- Script with Cache Busting -->
+  <script src="main.js?v=5.0"></script>
 </body>
 </html>

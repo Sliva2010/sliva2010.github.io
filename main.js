@@ -1,10 +1,10 @@
 /**
- * VYACHESLAV PORTFOLIO — INTERACTIVE SCRIPTS
+ * VYACHESLAV PORTFOLIO — INTERACTIVE SCRIPTS (v5.0)
  * 3D Coverflow Carousel, Scroll-reactive Warp Canvas, Scroll Reveal & Telegram Lead Flow.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initScrollReveal();
+  initBlockAnimations();
   initCoverflowCarousel();
   initScrollWarpCanvas();
   initScrollTracking();
@@ -12,28 +12,56 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. SCROLL REVEAL ANIMATIONS
+   1. VISIBLE ENTRANCE & SCROLL REVEAL ANIMATIONS
    ========================================================================== */
-function initScrollReveal() {
-  const reveals = document.querySelectorAll('.reveal');
-  if (!reveals.length) return;
+function initBlockAnimations() {
+  const blocks = document.querySelectorAll('.anim-block');
+  if (!blocks.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
+  // Immediate animated reveal of the first screen (Hero)
+  setTimeout(() => {
+    const heroBlock = document.querySelector('#hero .anim-block');
+    if (heroBlock) heroBlock.classList.add('is-visible');
+  }, 100);
+
+  // IntersectionObserver for remaining screens
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    blocks.forEach((el) => observer.observe(el));
+  }
+
+  // Robust Fallback: check on scroll
+  function checkScrollReveal() {
+    const windowH = window.innerHeight;
+    blocks.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < windowH * 0.92) {
+        el.classList.add('is-visible');
       }
     });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  });
+  }
 
-  reveals.forEach((el) => observer.observe(el));
+  window.addEventListener('scroll', checkScrollReveal, { passive: true });
+  checkScrollReveal();
+
+  // Safety net: ensure everything is visible after 800ms regardless
+  setTimeout(() => {
+    blocks.forEach((el) => el.classList.add('is-visible'));
+  }, 800);
 }
 
 /* ==========================================================================
-   2. INTERACTIVE 3D COVERFLOW CAROUSEL (Exact Reference 2 Layout)
+   2. 3D COVERFLOW CAROUSEL (EXACT MATCH TO REFERENCE 2)
    ========================================================================== */
 function initCoverflowCarousel() {
   const slides = document.querySelectorAll('.carousel-slide');
@@ -59,20 +87,18 @@ function initCoverflowCarousel() {
     const nextIndex = (currentIndex + 1) % total;
 
     slides.forEach((slide, idx) => {
-      slide.classList.remove('active', 'prev', 'next', 'hidden-slide');
-
       if (idx === currentIndex) {
-        slide.classList.add('active');
+        slide.className = 'carousel-slide active';
       } else if (idx === prevIndex) {
-        slide.classList.add('prev');
+        slide.className = 'carousel-slide prev';
       } else if (idx === nextIndex) {
-        slide.classList.add('next');
+        slide.className = 'carousel-slide next';
       } else {
-        slide.classList.add('hidden-slide');
+        slide.className = 'carousel-slide hidden-slide';
       }
     });
 
-    // Update active slide meta
+    // Update active project info
     const activeSlide = slides[currentIndex];
     const title = activeSlide.getAttribute('data-title') || '';
     const tag = activeSlide.getAttribute('data-tag') || '';
@@ -90,7 +116,7 @@ function initCoverflowCarousel() {
     });
   }
 
-  // Arrow Clicks
+  // Navigation Arrows
   if (prevBtn) {
     prevBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -105,7 +131,7 @@ function initCoverflowCarousel() {
     });
   }
 
-  // Dot Clicks
+  // Pagination Dot Clicks
   dots.forEach((dot) => {
     dot.addEventListener('click', () => {
       const idx = parseInt(dot.getAttribute('data-index'), 10);
@@ -113,53 +139,49 @@ function initCoverflowCarousel() {
     });
   });
 
-  // Slide Direct Click
+  // Clicking on Cards
   slides.forEach((slide, idx) => {
     slide.addEventListener('click', () => {
       if (idx === currentIndex) {
-        // Active card opens the live project in a new tab
+        // Active card: Open live project in new tab
         const url = slide.getAttribute('data-url');
         if (url) window.open(url, '_blank');
       } else {
-        // Neighboring card slides into center
+        // Side card: Bring to center
         updateCarousel(idx);
       }
     });
   });
 
-  // Touch Swipe for Mobile
+  // Touch Swipe on Mobile
   if (container) {
-    let touchStartX = 0;
-    let touchEndX = 0;
+    let startX = 0;
+    let endX = 0;
 
     container.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
+      startX = e.changedTouches[0].screenX;
     }, { passive: true });
 
     container.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-      const diff = touchEndX - touchStartX;
-      if (Math.abs(diff) > 40) {
+      endX = e.changedTouches[0].screenX;
+      const diff = endX - startX;
+      if (Math.abs(diff) > 35) {
         if (diff < 0) {
-          updateCarousel(currentIndex + 1); // Swiped left -> next
+          updateCarousel(currentIndex + 1); // Swipe left
         } else {
-          updateCarousel(currentIndex - 1); // Swiped right -> prev
+          updateCarousel(currentIndex - 1); // Swipe right
         }
       }
-    }
+    }, { passive: true });
   }
 
-  // Initial setup
+  // Initialize first slide
   updateCarousel(0);
 }
 
 /* ==========================================================================
    3. SCROLL-WARP AMBIENT BACKGROUND CANVAS
-   Reacts dynamically to scroll velocity, creating floating 3D speed trails.
+   Accelerates and forms speed trails when scrolling.
    ========================================================================== */
 function initScrollWarpCanvas() {
   const canvas = document.getElementById('ambient-canvas');
@@ -192,21 +214,21 @@ function initScrollWarpCanvas() {
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     const delta = currentScrollY - lastScrollY;
-    scrollVelocity = delta * 0.12;
+    scrollVelocity = delta * 0.15;
     lastScrollY = currentScrollY;
   }, { passive: true });
 
-  // Generate particle nodes with depth (z coordinate)
-  const count = Math.min(Math.floor((width * height) / 14000), 85);
+  // Generate particles with 3D depth (z coordinate)
+  const count = Math.min(Math.floor((width * height) / 12000), 90);
   const particles = [];
 
   for (let i = 0; i < count; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      z: Math.random() * 2 + 0.5,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
+      z: Math.random() * 2.2 + 0.6,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
       baseRadius: Math.random() * 1.5 + 0.8,
       alpha: Math.random() * 0.5 + 0.25,
     });
@@ -215,7 +237,7 @@ function initScrollWarpCanvas() {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    // Decay scroll velocity smoothly
+    // Friction decay on scroll velocity
     scrollVelocity *= 0.92;
     if (Math.abs(scrollVelocity) < 0.01) scrollVelocity = 0;
 
@@ -223,29 +245,28 @@ function initScrollWarpCanvas() {
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    // Draw and connect particles
+    // Render particles
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
       p.x += p.vx;
-      // Y-axis responds directly to scroll momentum
       p.y += p.vy - scrollVelocity * p.z;
 
-      // Screen wrap
+      // Wrap boundaries
       if (p.x < 0) p.x = width;
       if (p.x > width) p.x = 0;
       if (p.y < 0) p.y = height;
       if (p.y > height) p.y = 0;
 
-      // When user scrolls quickly, stretch particles into speed streaks
-      const streakLength = scrollVelocity * p.z * 1.5;
+      // Draw speed streak when scrolling
+      const streakLength = scrollVelocity * p.z * 1.8;
 
       ctx.beginPath();
-      if (Math.abs(streakLength) > 1) {
+      if (Math.abs(streakLength) > 1.2) {
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(p.x, p.y + streakLength);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha * 0.8})`;
-        ctx.lineWidth = p.baseRadius * 0.9;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha * 0.85})`;
+        ctx.lineWidth = p.baseRadius;
         ctx.stroke();
       } else {
         ctx.arc(p.x, p.y, p.baseRadius, 0, Math.PI * 2);
@@ -253,7 +274,7 @@ function initScrollWarpCanvas() {
         ctx.fill();
       }
 
-      // Constellation connection lines
+      // Constellation lines between nearby particles
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const dx = p.x - p2.x;
@@ -270,7 +291,7 @@ function initScrollWarpCanvas() {
         }
       }
 
-      // Subtle cyan magnetic glow towards mouse
+      // Mouse magnetic reaction
       const mdx = p.x - mouse.x;
       const mdy = p.y - mouse.y;
       const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -291,7 +312,7 @@ function initScrollWarpCanvas() {
 }
 
 /* ==========================================================================
-   4. SCROLL TRACKING & PROGRESS BAR
+   4. SCROLL PROGRESS BAR
    ========================================================================== */
 function initScrollTracking() {
   const scrollThumb = document.getElementById('scrollThumb');
@@ -309,7 +330,7 @@ function initScrollTracking() {
 }
 
 /* ==========================================================================
-   5. CONTACT FORM -> DIRECT TELEGRAM LEAD GENERATOR
+   5. CONTACT FORM -> DIRECT TELEGRAM LEAD GENERATION
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contactForm');
@@ -339,7 +360,6 @@ function initContactForm() {
       feedback.style.color = '#10b981';
     }
 
-    // Open Telegram dialog in a new tab with pre-filled lead message
     window.open(tgUrl, '_blank');
 
     setTimeout(() => {

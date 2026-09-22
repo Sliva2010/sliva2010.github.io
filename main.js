@@ -1,117 +1,175 @@
-// --- Spotlight Hover Effect (Linear / Raycast Bento Style) ---
-const cards = document.querySelectorAll('.spotlight-card');
+/**
+ * VYACHESLAV PORTFOLIO — INTERACTIVE SCRIPTS
+ * Ambient 3D canvas particles, scroll tracking & direct Telegram lead conversion.
+ */
 
-function handleCardMouseMove(e) {
-  const rect = this.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  this.style.setProperty('--mouse-x', `${x}px`);
-  this.style.setProperty('--mouse-y', `${y}px`);
-}
-
-cards.forEach(card => {
-  card.addEventListener('mousemove', handleCardMouseMove);
+document.addEventListener('DOMContentLoaded', () => {
+  initAmbientCanvas();
+  initScrollTracking();
+  initContactForm();
 });
 
-// --- High-Performance Ambient Dot Matrix Canvas ---
-const canvas = document.getElementById('ambient-canvas');
-const ctx = canvas.getContext('2d');
+/* ==========================================================================
+   1. AMBIENT PARTICLES (LIGHTWEIGHT 3D-FEEL CANVAS)
+   ========================================================================== */
+function initAmbientCanvas() {
+  const canvas = document.getElementById('ambient-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
 
-let width, height;
-let dots = [];
-const spacing = 38; // Distance between dots
-let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
 
-function resizeCanvas() {
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
+  let mouse = {
+    x: width / 2,
+    y: height / 2,
+    targetX: width / 2,
+    targetY: height / 2,
+  };
 
-  initDots();
-}
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
 
-function initDots() {
-  dots = [];
-  const cols = Math.ceil(width / spacing);
-  const rows = Math.ceil(height / spacing);
+  window.addEventListener('mousemove', (e) => {
+    mouse.targetX = e.clientX;
+    mouse.targetY = e.clientY;
+  });
 
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      dots.push({
-        baseX: c * spacing + (spacing / 2),
-        baseY: r * spacing + (spacing / 2),
-        x: c * spacing + (spacing / 2),
-        y: r * spacing + (spacing / 2),
-        alpha: 0.15,
-        targetAlpha: 0.15
-      });
-    }
-  }
-}
+  // Generate particle nodes
+  const count = Math.min(Math.floor((width * height) / 18000), 70);
+  const particles = [];
 
-window.addEventListener('resize', resizeCanvas);
-window.addEventListener('mousemove', (e) => {
-  mouse.targetX = e.clientX;
-  mouse.targetY = e.clientY;
-});
-
-window.addEventListener('mouseleave', () => {
-  mouse.targetX = -1000;
-  mouse.targetY = -1000;
-});
-
-// Animation Loop
-function render() {
-  requestAnimationFrame(render);
-
-  // Smooth mouse lerp
-  mouse.x += (mouse.targetX - mouse.x) * 0.1;
-  mouse.y += (mouse.targetY - mouse.y) * 0.1;
-
-  ctx.clearRect(0, 0, width, height);
-
-  // Draw subtle ambient glow near mouse
-  if (mouse.x > 0 && mouse.y > 0) {
-    const glowGradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 350);
-    glowGradient.addColorStop(0, 'rgba(99, 102, 241, 0.07)');
-    glowGradient.addColorStop(1, 'transparent');
-    ctx.fillStyle = glowGradient;
-    ctx.fillRect(0, 0, width, height);
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      radius: Math.random() * 1.6 + 0.8,
+      alpha: Math.random() * 0.5 + 0.2,
+    });
   }
 
-  // Draw dot matrix
-  const radiusInfluence = 180;
+  function render() {
+    ctx.clearRect(0, 0, width, height);
 
-  for (let i = 0; i < dots.length; i++) {
-    const dot = dots[i];
-    const dx = mouse.x - dot.baseX;
-    const dy = mouse.y - dot.baseY;
-    const dist = Math.sqrt(dx * dx + dy * dy);
+    // Smooth mouse lerp
+    mouse.x += (mouse.targetX - mouse.x) * 0.05;
+    mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    if (dist < radiusInfluence) {
-      // Repel slightly and illuminate
-      const factor = 1 - (dist / radiusInfluence);
-      const angle = Math.atan2(dy, dx);
-      dot.x = dot.baseX - Math.cos(angle) * (factor * 8);
-      dot.y = dot.baseY - Math.sin(angle) * (factor * 8);
-      dot.alpha = 0.15 + (factor * 0.7);
-      
-      ctx.fillStyle = factor > 0.4 ? 'rgba(99, 102, 241, ' + dot.alpha + ')' : 'rgba(255, 255, 255, ' + dot.alpha + ')';
+    // Draw and connect particles
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = width;
+      if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      if (p.y > height) p.y = 0;
+
+      // Draw particle dot
       ctx.beginPath();
-      ctx.arc(dot.x, dot.y, 1.2 + factor * 0.8, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
       ctx.fill();
-    } else {
-      dot.x = dot.baseX;
-      dot.y = dot.baseY;
-      dot.alpha = 0.12;
 
-      ctx.fillStyle = 'rgba(255, 255, 255, ' + dot.alpha + ')';
-      ctx.beginPath();
-      ctx.arc(dot.x, dot.y, 1, 0, Math.PI * 2);
-      ctx.fill();
+      // Connect near particles
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 * (1 - dist / 130)})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+
+      // Subtle interaction with mouse cursor
+      const mdx = p.x - mouse.x;
+      const mdy = p.y - mouse.y;
+      const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (mDist < 160) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = `rgba(6, 182, 212, ${0.15 * (1 - mDist / 160)})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
     }
+
+    requestAnimationFrame(render);
   }
+
+  render();
 }
 
-resizeCanvas();
-render();
+/* ==========================================================================
+   2. SCROLL TRACKING & INDICATOR
+   ========================================================================== */
+function initScrollTracking() {
+  const scrollThumb = document.getElementById('scrollThumb');
+  if (!scrollThumb) return;
+
+  function updateScroll() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollThumb.style.width = `${Math.max(progress, 15)}%`;
+  }
+
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  updateScroll();
+}
+
+/* ==========================================================================
+   3. CONTACT FORM -> DIRECT TELEGRAM LEAD GENERATOR
+   ========================================================================== */
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  const feedback = document.getElementById('formFeedback');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('userName')?.value.trim() || 'Не указано';
+    const contact = document.getElementById('userContact')?.value.trim() || 'Не указано';
+    const projectType = document.getElementById('projectType')?.value || '3D-лендинг';
+    const message = document.getElementById('userMessage')?.value.trim() || 'Без дополнительных комментариев';
+
+    const textPayload = 
+`Здравствуйте, Вячеслав! Хочу заказать проект.
+
+👤 Имя: ${name}
+📱 Контакт для связи: ${contact}
+📌 Тип проекта: ${projectType}
+📝 О задаче: ${message}`;
+
+    const tgUrl = `https://t.me/SLAVASDF?text=${encodeURIComponent(textPayload)}`;
+
+    if (feedback) {
+      feedback.textContent = '✓ Открываем Telegram с готовой заявкой...';
+      feedback.style.color = '#10b981';
+    }
+
+    // Open Telegram dialog in a new tab with pre-filled lead message
+    window.open(tgUrl, '_blank');
+
+    setTimeout(() => {
+      form.reset();
+      if (feedback) {
+        feedback.textContent = 'Спасибо! Если Telegram не открылся, напишите напрямую на @SLAVASDF';
+      }
+    }, 2500);
+  });
+}

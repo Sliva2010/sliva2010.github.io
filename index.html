@@ -6,25 +6,30 @@
   <title>Вячеслав | Портфолио — 3D-сайты, Лендинги и Telegram-боты</title>
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=5.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6.0">
 
   <!-- Google Fonts: Unbounded & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Unbounded:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- Critical Fallback CSS (prevents FOUC or cache mismatch) -->
+  <!-- Critical Fallback CSS -->
   <style>
-    body { background-color: #08080a; color: #ffffff; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    body { background-color: #070709; color: #ffffff; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
     .showcase-carousel-wrapper { display: flex; align-items: center; justify-content: center; gap: 16px; width: 100%; }
     .carousel-track { display: flex; align-items: center; justify-content: center; gap: 20px; }
   </style>
 
-  <!-- External Stylesheet with Cache Busting -->
-  <link rel="stylesheet" href="style.css?v=5.0">
+  <!-- External Stylesheet with Cache Busting v6.0 -->
+  <link rel="stylesheet" href="style.css?v=6.0">
 </head>
 <body>
-  <!-- Ambient Interactive & Scroll Reacting Background Canvas -->
+  <!-- Dark Misty Forest Background with Cursor Flashlight Spotlight -->
+  <div class="bg-forest-base"></div>
+  <div class="bg-forest-spotlight" id="bgSpotlight"></div>
+  <div class="cursor-beam"></div>
+
+  <!-- Ambient Interactive Background Canvas -->
   <canvas id="ambient-canvas"></canvas>
 
   <!-- Global Top Header -->
@@ -65,9 +70,9 @@
   <!-- Main Container -->
   <main class="main-container">
 
-    <!-- Screen 1: Hero Section (Exact Layout from Reference 1) -->
+    <!-- Screen 1: Hero Section (Glass Frame + High-Impact Reveal Animation) -->
     <section id="hero" class="screen screen-hero">
-      <div class="screen-frame anim-block">
+      <div class="screen-frame glass-panel anim-block">
         <div class="hero-center">
           <div class="hero-pretitle">Я</div>
           <h1 class="hero-name">ВЯЧЕСЛАВ</h1>
@@ -91,9 +96,9 @@
       </div>
     </section>
 
-    <!-- Screen 2: Portfolio Showcase (Exact 3-Card Carousel from Reference 2) -->
+    <!-- Screen 2: Portfolio Showcase (Glass Frame + 3-Card Carousel) -->
     <section id="portfolio" class="screen screen-portfolio">
-      <div class="screen-frame anim-block">
+      <div class="screen-frame glass-panel anim-block">
         
         <!-- Interactive 3D Showcase matching Reference 2 -->
         <div class="showcase-carousel-wrapper">
@@ -111,7 +116,7 @@
               
               <!-- Slide 1: AI SaaS (Cyber Eye Artwork from Reference) -->
               <div class="carousel-slide active" data-index="0" data-url="projects/ai-saas/index.html" data-title="Synthetix AI" data-tag="AI & SAAS СЕРВИС" data-desc="Автономные нейросетевые агенты с интерактивной 3D-сетью и симулятором работы.">
-                <div class="slide-card">
+                <div class="slide-card glass-card">
                   <div class="slide-art-box">
                     <img src="assets/art-eye.svg" alt="Synthetix AI" class="slide-art-img" loading="eager">
                     <span class="slide-badge">3D THREE.JS</span>
@@ -125,7 +130,7 @@
 
               <!-- Slide 2: Auto Detailing (Supercar Artwork) -->
               <div class="carousel-slide next" data-index="1" data-url="projects/auto-detailing/index.html" data-title="Apex Detailing" data-tag="ПРЕМИУМ ДЕТЕЙЛИНГ" data-desc="Люксовый лендинг автодетейлинга с интерактивной сменой покрытия кузова в реальном времени.">
-                <div class="slide-card">
+                <div class="slide-card glass-card">
                   <div class="slide-art-box">
                     <img src="assets/art-car.svg" alt="Apex Detailing" class="slide-art-img" loading="eager">
                     <span class="slide-badge">3D КОНФИГУРАТОР</span>
@@ -139,7 +144,7 @@
 
               <!-- Slide 3: Crypto Fintech (Isometric Crystal) -->
               <div class="carousel-slide hidden-slide" data-index="2" data-url="projects/crypto-fintech/index.html" data-title="Nova DeFi & Pay" data-tag="WEB3 & ФИНТЕХ" data-desc="Высокотехнологичный необанк с живым обменом токенов и терминалом транзакций.">
-                <div class="slide-card">
+                <div class="slide-card glass-card">
                   <div class="slide-art-box">
                     <img src="assets/art-crypto.svg" alt="Nova DeFi" class="slide-art-img" loading="lazy">
                     <span class="slide-badge">WEB3 ТЕРМИНАЛ</span>
@@ -153,7 +158,7 @@
 
               <!-- Slide 4: Coffee Roastery (Chiaroscuro Coffee) -->
               <div class="carousel-slide hidden-slide" data-index="3" data-url="projects/coffee-roastery/index.html" data-title="Artisan Roastery" data-tag="SPECIALTY E-COMMERCE" data-desc="Атмосферный промо-сайт specialty кофе с колесом вкусов и интерактивной корзиной.">
-                <div class="slide-card">
+                <div class="slide-card glass-card">
                   <div class="slide-art-box">
                     <img src="assets/art-coffee.svg" alt="Artisan Roastery" class="slide-art-img" loading="lazy">
                     <span class="slide-badge">3D E-COMMERCE</span>
@@ -167,7 +172,7 @@
 
               <!-- Slide 5: Cyber Agency (Cyber Vortex) -->
               <div class="carousel-slide prev" data-index="4" data-url="projects/cyber-agency/index.html" data-title="Vortex Cyber Studio" data-tag="CREATIVE 3D STUDIO" data-desc="Футуристичный сайт дизайн-агентства с динамическими шейдерами и интерактивом.">
-                <div class="slide-card">
+                <div class="slide-card glass-card">
                   <div class="slide-art-box">
                     <img src="assets/art-cyber.svg" alt="Vortex Studio" class="slide-art-img" loading="lazy">
                     <span class="slide-badge">CREATIVE WEBGL</span>
@@ -231,9 +236,9 @@
       </div>
     </section>
 
-    <!-- Screen 3: Contact & Order (Exact Layout from Reference 3) -->
+    <!-- Screen 3: Contact & Order (Glass Frame) -->
     <section id="contact" class="screen screen-contact">
-      <div class="screen-frame anim-block">
+      <div class="screen-frame glass-panel anim-block">
         <div class="contact-split-grid">
           
           <!-- Left Column: Information -->
@@ -265,7 +270,7 @@
             </div>
 
             <!-- Removed emoji: Clean Line Art Icon -->
-            <div class="direct-action-card">
+            <div class="direct-action-card glass-card">
               <div class="direct-icon-svg">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
@@ -283,7 +288,7 @@
 
           <!-- Right Column: Contact Form Box -->
           <div class="contact-form-col">
-            <div class="form-card-box">
+            <div class="form-card-box glass-card">
               <h3 class="form-title">ФОРМА СВЯЗИ</h3>
               <p class="form-subtitle">Заполните поля ниже, и заявка сразу откроется в вашем Telegram</p>
 
@@ -347,7 +352,7 @@
 
   </main>
 
-  <!-- Script with Cache Busting -->
-  <script src="main.js?v=5.0"></script>
+  <!-- Script with Cache Busting v6.0 -->
+  <script src="main.js?v=6.0"></script>
 </body>
 </html>

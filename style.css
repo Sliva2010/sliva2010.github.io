@@ -1,16 +1,16 @@
 /* ==========================================================================
-   VYACHESLAV PORTFOLIO — DARK CINEMATIC VIBE CODING STYLESHEET (v5.0)
-   Exact match to the 3-screen minimalist dark reference
+   VYACHESLAV PORTFOLIO — DARK CINEMATIC VIBE CODING STYLESHEET (v6.0)
+   Misty Forest Spotlight, Frosted Glassmorphism & High-Impact Reveal Animations
    ========================================================================== */
 
 :root {
   --bg-primary: #070709;
-  --bg-surface: #0e0e12;
-  --bg-card: #131318;
-  --bg-card-hover: #1a1a22;
+  --bg-surface: rgba(14, 14, 18, 0.45);
+  --bg-card: rgba(16, 16, 22, 0.55);
+  --bg-card-hover: rgba(24, 24, 32, 0.7);
   
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-focus: rgba(255, 255, 255, 0.25);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-focus: rgba(255, 255, 255, 0.28);
   --border-accent: rgba(255, 255, 255, 0.5);
 
   --text-primary: #ffffff;
@@ -27,7 +27,11 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --frame-radius: 22px;
+  --frame-radius: 24px;
+
+  /* Default cursor coordinates for flashlight spotlight */
+  --mouse-x: 50vw;
+  --mouse-y: 35vh;
 }
 
 /* Reset & Global */
@@ -50,11 +54,53 @@ html {
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background: radial-gradient(circle at 50% 0%, #15151e 0%, #070709 75%);
+  background: #070709;
   position: relative;
 }
 
-/* Ambient Canvas */
+/* ==========================================================================
+   MISTY FOREST BACKGROUND & FLASHLIGHT SPOTLIGHT
+   ========================================================================== */
+.bg-forest-base {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('assets/bg-forest.jpg') center center / cover no-repeat;
+  opacity: 0.16;
+  filter: brightness(0.38) contrast(1.35) grayscale(20%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-forest-spotlight {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('assets/bg-forest.jpg') center center / cover no-repeat;
+  opacity: 0.9;
+  filter: brightness(1.15) contrast(1.3);
+  z-index: 1;
+  pointer-events: none;
+  mask-image: radial-gradient(circle 380px at var(--mouse-x) var(--mouse-y), black 0%, rgba(0, 0, 0, 0.5) 45%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle 380px at var(--mouse-x) var(--mouse-y), black 0%, rgba(0, 0, 0, 0.5) 45%, transparent 75%);
+  transition: opacity 0.3s ease;
+  will-change: mask-image;
+}
+
+.cursor-beam {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle 420px at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.08) 0%, rgba(6, 182, 212, 0.04) 35%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+  will-change: background;
+}
+
+/* Ambient Canvas on top of forest */
 #ambient-canvas {
   position: fixed;
   top: 0;
@@ -62,23 +108,132 @@ body {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.7;
+  z-index: 3;
+  opacity: 0.65;
 }
 
 /* ==========================================================================
-   BLOCK ENTRANCE & SCROLL ANIMATIONS
+   BLOCK ENTRANCE & SCROLL ANIMATIONS (HIGH-IMPACT)
    ========================================================================== */
 .anim-block {
   opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
-  will-change: opacity, transform;
+  transform: translateY(60px) scale(0.96);
+  filter: blur(14px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
 
 .anim-block.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Hero Keyframe Reveal Sequence */
+.hero-pretitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  animation: heroFadeBlur 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8.5vw, 6.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #ffffff;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.25);
+  word-break: break-word;
+  animation: heroTitleReveal 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.8vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  animation: heroFadeBlur 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.hero-caption {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+  animation: heroFadeBlur 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: heroFadeBlur 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+@keyframes heroTitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(65px) scale(0.9);
+    filter: blur(22px);
+    letter-spacing: 0.12em;
+  }
+  50% {
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    letter-spacing: -0.02em;
+  }
+}
+
+@keyframes heroFadeBlur {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+    filter: blur(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ==========================================================================
+   GLASSMORPHISM PANELS & CARDS (FROSTED GLASS EFFECT)
+   ========================================================================== */
+.glass-panel {
+  background: rgba(11, 11, 16, 0.44) !important;
+  backdrop-filter: blur(30px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
+  box-shadow: 0 30px 75px -15px rgba(0, 0, 0, 0.8), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.15),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+.glass-card {
+  background: rgba(14, 14, 20, 0.52) !important;
+  backdrop-filter: blur(22px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
 }
 
 /* ==========================================================================
@@ -94,9 +249,9 @@ body {
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  background: linear-gradient(180deg, rgba(7, 7, 9, 0.9) 0%, rgba(7, 7, 9, 0) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(180deg, rgba(7, 7, 9, 0.85) 0%, rgba(7, 7, 9, 0) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .logo {
@@ -192,17 +347,18 @@ body {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
   transition: all 0.3s var(--ease-out);
   text-decoration: none;
+  backdrop-filter: blur(8px);
 }
 
 .social-icon:hover {
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .side-scroll {
@@ -265,13 +421,8 @@ body {
 }
 
 .screen-frame {
-  background: rgba(14, 14, 18, 0.75);
-  border: 1px solid var(--border-subtle);
   border-radius: var(--frame-radius);
   padding: 56px 64px;
-  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -329,54 +480,6 @@ body {
   padding: 40px 0;
 }
 
-.hero-pretitle {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.35em;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-  text-transform: uppercase;
-}
-
-.hero-name {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 8.5vw, 6.2rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  color: #ffffff;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  text-shadow: 0 0 45px rgba(255, 255, 255, 0.18);
-  word-break: break-word;
-}
-
-.hero-subtitle {
-  font-family: var(--font-display);
-  font-size: clamp(0.75rem, 1.8vw, 1.05rem);
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-.hero-caption {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  max-width: 580px;
-  line-height: 1.6;
-  margin-bottom: 36px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -427,7 +530,7 @@ body {
 }
 
 /* ==========================================================================
-   SCREEN 2: 3-CARD PORTFOLIO CAROUSEL (EXACT MATCH TO REFERENCE 2)
+   SCREEN 2: 3-CARD PORTFOLIO CAROUSEL
    ========================================================================== */
 .showcase-carousel-wrapper {
   display: flex;
@@ -443,7 +546,7 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(24, 24, 30, 0.85);
+  background: rgba(20, 20, 26, 0.85);
   border: 1px solid var(--border-subtle);
   color: #ffffff;
   display: flex;
@@ -452,7 +555,7 @@ body {
   cursor: pointer;
   flex-shrink: 0;
   transition: all 0.3s var(--ease-out);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
 }
 
 .carousel-arrow:hover {
@@ -491,9 +594,7 @@ body {
 .slide-card {
   width: 100%;
   height: 100%;
-  background: #000000;
   border-radius: 16px;
-  border: 1px solid var(--border-subtle);
   overflow: hidden;
   position: relative;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
@@ -501,7 +602,6 @@ body {
   flex-direction: column;
 }
 
-/* 3-Card States: active (center), prev (left), next (right), hidden */
 .carousel-slide.active {
   flex: 0 0 280px;
   width: 280px;
@@ -512,8 +612,8 @@ body {
 }
 
 .carousel-slide.active .slide-card {
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 255, 255, 0.12) !important;
 }
 
 .carousel-slide.prev,
@@ -536,7 +636,6 @@ body {
   display: none !important;
 }
 
-/* Artwork inside cards */
 .slide-art-box {
   width: 100%;
   height: 100%;
@@ -602,7 +701,6 @@ body {
   color: #ffffff;
 }
 
-/* Meta block under cards (Reference: "MY PORTFOLIO") */
 .portfolio-center-meta {
   display: flex;
   flex-direction: column;
@@ -763,11 +861,8 @@ body {
   text-decoration: underline;
 }
 
-/* Minimalist Clean Box without emoji */
 .direct-action-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 20px 24px;
   display: flex;
   align-items: center;
@@ -820,11 +915,9 @@ body {
 
 /* Right Column: Form Box */
 .form-card-box {
-  background: #000000;
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 36px 40px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
 .form-title {
@@ -867,13 +960,13 @@ body {
 .input-field-group select,
 .input-field-group textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 14px 16px;
   color: #ffffff;
   font-family: var(--font-body);
-  font-size: 16px; /* 16px prevents iOS Safari auto-zoom */
+  font-size: 16px;
   outline: none;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
@@ -896,7 +989,7 @@ body {
 .input-field-group select:focus,
 .input-field-group textarea:focus {
   border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .btn-submit {
@@ -1008,7 +1101,7 @@ body {
 
   .screen-frame {
     padding: 28px 16px;
-    border-radius: 16px;
+    border-radius: 18px;
   }
 
   .hero-pretitle {
@@ -1043,7 +1136,6 @@ body {
     padding: 14px 20px;
   }
 
-  /* Carousel strictly centered on mobile */
   .showcase-carousel-wrapper {
     gap: 8px;
     margin: 10px 0 20px 0;
@@ -1058,7 +1150,6 @@ body {
     gap: 0;
   }
 
-  /* Hide side cards on phones to ensure ZERO distortion */
   .carousel-slide.prev,
   .carousel-slide.next {
     display: none !important;

@@ -1,9 +1,10 @@
 /**
- * VYACHESLAV PORTFOLIO — INTERACTIVE SCRIPTS (v5.0)
- * 3D Coverflow Carousel, Scroll-reactive Warp Canvas, Scroll Reveal & Telegram Lead Flow.
+ * VYACHESLAV PORTFOLIO — INTERACTIVE SCRIPTS (v6.0)
+ * Cursor Flashlight Spotlight, Glassmorphism, 3D Coverflow Carousel & Reveal Animations.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initCursorFlashlight();
   initBlockAnimations();
   initCoverflowCarousel();
   initScrollWarpCanvas();
@@ -12,7 +13,55 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. VISIBLE ENTRANCE & SCROLL REVEAL ANIMATIONS
+   1. CURSOR FLASHLIGHT SPOTLIGHT ON MISTY FOREST BACKGROUND
+   Reveals the atmospheric dark forest under the moving beam of light.
+   ========================================================================== */
+function initCursorFlashlight() {
+  const root = document.documentElement;
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight * 0.35;
+  let currentX = targetX;
+  let currentY = targetY;
+  let hasMoved = false;
+
+  window.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+    hasMoved = true;
+  });
+
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      targetX = e.touches[0].clientX;
+      targetY = e.touches[0].clientY;
+      hasMoved = true;
+    }
+  }, { passive: true });
+
+  // Smooth lerp loop with ambient drift fallback
+  let angle = 0;
+  function updateBeam() {
+    if (!hasMoved) {
+      // Gentle ambient floating if user hasn't moved mouse yet
+      angle += 0.015;
+      targetX = window.innerWidth / 2 + Math.sin(angle) * 120;
+      targetY = window.innerHeight * 0.35 + Math.cos(angle * 0.8) * 80;
+    }
+
+    currentX += (targetX - currentX) * 0.12;
+    currentY += (targetY - currentY) * 0.12;
+
+    root.style.setProperty('--mouse-x', `${currentX.toFixed(1)}px`);
+    root.style.setProperty('--mouse-y', `${currentY.toFixed(1)}px`);
+
+    requestAnimationFrame(updateBeam);
+  }
+
+  updateBeam();
+}
+
+/* ==========================================================================
+   2. VISIBLE ENTRANCE & SCROLL REVEAL ANIMATIONS
    ========================================================================== */
 function initBlockAnimations() {
   const blocks = document.querySelectorAll('.anim-block');
@@ -61,7 +110,7 @@ function initBlockAnimations() {
 }
 
 /* ==========================================================================
-   2. 3D COVERFLOW CAROUSEL (EXACT MATCH TO REFERENCE 2)
+   3. 3D COVERFLOW CAROUSEL (EXACT MATCH TO REFERENCE 2)
    ========================================================================== */
 function initCoverflowCarousel() {
   const slides = document.querySelectorAll('.carousel-slide');
@@ -180,8 +229,7 @@ function initCoverflowCarousel() {
 }
 
 /* ==========================================================================
-   3. SCROLL-WARP AMBIENT BACKGROUND CANVAS
-   Accelerates and forms speed trails when scrolling.
+   4. SCROLL-WARP AMBIENT PARTICLES
    ========================================================================== */
 function initScrollWarpCanvas() {
   const canvas = document.getElementById('ambient-canvas');
@@ -218,54 +266,49 @@ function initScrollWarpCanvas() {
     lastScrollY = currentScrollY;
   }, { passive: true });
 
-  // Generate particles with 3D depth (z coordinate)
-  const count = Math.min(Math.floor((width * height) / 12000), 90);
+  // Generate particles
+  const count = Math.min(Math.floor((width * height) / 14000), 75);
   const particles = [];
 
   for (let i = 0; i < count; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      z: Math.random() * 2.2 + 0.6,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      baseRadius: Math.random() * 1.5 + 0.8,
-      alpha: Math.random() * 0.5 + 0.25,
+      z: Math.random() * 2 + 0.5,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      baseRadius: Math.random() * 1.4 + 0.6,
+      alpha: Math.random() * 0.45 + 0.2,
     });
   }
 
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    // Friction decay on scroll velocity
     scrollVelocity *= 0.92;
     if (Math.abs(scrollVelocity) < 0.01) scrollVelocity = 0;
 
-    // Smooth mouse lerp
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-    // Render particles
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
       p.x += p.vx;
       p.y += p.vy - scrollVelocity * p.z;
 
-      // Wrap boundaries
       if (p.x < 0) p.x = width;
       if (p.x > width) p.x = 0;
       if (p.y < 0) p.y = height;
       if (p.y > height) p.y = 0;
 
-      // Draw speed streak when scrolling
-      const streakLength = scrollVelocity * p.z * 1.8;
+      const streakLength = scrollVelocity * p.z * 1.5;
 
       ctx.beginPath();
       if (Math.abs(streakLength) > 1.2) {
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(p.x, p.y + streakLength);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha * 0.85})`;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha * 0.8})`;
         ctx.lineWidth = p.baseRadius;
         ctx.stroke();
       } else {
@@ -274,34 +317,20 @@ function initScrollWarpCanvas() {
         ctx.fill();
       }
 
-      // Constellation lines between nearby particles
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const dx = p.x - p2.x;
         const dy = p.y - p2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 125) {
+        if (dist < 110) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.07 * (1 - dist / 125)})`;
-          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.06 * (1 - dist / 110)})`;
+          ctx.lineWidth = 0.5;
           ctx.stroke();
         }
-      }
-
-      // Mouse magnetic reaction
-      const mdx = p.x - mouse.x;
-      const mdy = p.y - mouse.y;
-      const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-      if (mDist < 160) {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(mouse.x, mouse.y);
-        ctx.strokeStyle = `rgba(6, 182, 212, ${0.14 * (1 - mDist / 160)})`;
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
       }
     }
 
@@ -312,7 +341,7 @@ function initScrollWarpCanvas() {
 }
 
 /* ==========================================================================
-   4. SCROLL PROGRESS BAR
+   5. SCROLL PROGRESS BAR
    ========================================================================== */
 function initScrollTracking() {
   const scrollThumb = document.getElementById('scrollThumb');
@@ -330,7 +359,7 @@ function initScrollTracking() {
 }
 
 /* ==========================================================================
-   5. CONTACT FORM -> DIRECT TELEGRAM LEAD GENERATION
+   6. CONTACT FORM -> DIRECT TELEGRAM LEAD GENERATION
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contactForm');

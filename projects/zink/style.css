@@ -159,6 +159,15 @@ body {
   font-size: 1.05rem;
 }
 
+.brand-app-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: block;
+}
+
 .brand-name {
   font-weight: 700;
   font-size: 1.15rem;
@@ -946,3 +955,227 @@ body {
     align-items: flex-start;
   }
 }
+
+/* ==========================================================================
+   CUSTOM DISTINCT BLOCK ANIMATIONS & KEYFRAMES
+   Every section has its own unique entrance motion
+   ========================================================================== */
+
+/* 1. Hero Block Animations (Immediate Onload Orchestration) */
+.anim-fade-down {
+  opacity: 0;
+  transform: translateY(-24px);
+  animation: animFadeDown 0.8s var(--ease-bevel) 0.1s forwards;
+}
+
+.anim-title-blur {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(14px);
+  animation: animTitleBlur 0.95s var(--ease-bevel) 0.25s forwards;
+}
+
+.anim-text-slide {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: animTextSlide 0.85s var(--ease-bevel) 0.4s forwards;
+}
+
+.anim-btn-pop {
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  animation: animBtnPop 0.85s var(--ease-bevel) 0.55s forwards;
+}
+
+.anim-scale-up {
+  opacity: 0;
+  transform: translateY(24px) scale(0.95);
+  animation: animScaleUp 0.9s var(--ease-bevel) 0.7s forwards;
+}
+
+.anim-phone-float {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: animPhoneEntrance 1s var(--ease-bevel) 0.85s forwards;
+}
+
+.anim-phone-float .phone-mockup {
+  animation: floatPhone 6s ease-in-out infinite alternate;
+}
+
+@keyframes animFadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animTitleBlur {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes animTextSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animBtnPop {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes animScaleUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes animPhoneEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatPhone {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.4deg);
+    box-shadow: 0 50px 110px -20px rgba(31, 32, 37, 0.25), 0 0 60px rgba(125, 220, 255, 0.28);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* 2. Scroll Reveal: Section Headers (Clean Drop-In) */
+.reveal-header {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-bevel), transform 0.8s var(--ease-bevel);
+  will-change: opacity, transform;
+}
+
+.reveal-header.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Scroll Reveal: Bento Grid Cards (Distinct Per-Card Directions) */
+.reveal-bento {
+  opacity: 0;
+  transition: opacity 0.85s var(--ease-bevel), transform 0.85s var(--ease-bevel), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.reveal-bento[data-anim="slide-up"] {
+  transform: translateY(50px);
+}
+
+.reveal-bento[data-anim="slide-right"] {
+  transform: translateX(-50px);
+}
+
+.reveal-bento[data-anim="slide-left"] {
+  transform: translateX(50px);
+}
+
+.reveal-bento[data-anim="zoom-in"] {
+  transform: scale(0.88);
+}
+
+.reveal-bento[data-anim="rotate-tilt"] {
+  transform: perspective(900px) rotateY(-12deg) translateY(30px);
+}
+
+.reveal-bento.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-bento.is-visible:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+  border-color: rgba(31, 32, 37, 0.12);
+}
+
+/* 4. Scroll Reveal: RuStore Gallery Screens (Staggered Wave Cascade) */
+.reveal-screen-card {
+  opacity: 0;
+  transform: translateY(50px) scale(0.96);
+  transition: opacity 0.8s var(--ease-bevel), transform 0.8s var(--ease-bevel), box-shadow 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.reveal-screen-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-screen-card.is-visible:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* 5. Scroll Reveal: Tech Stack Pills (Elastic Pop-In) */
+.reveal-tech-pill {
+  opacity: 0;
+  transform: translateY(30px) scale(0.92);
+  transition: opacity 0.65s var(--ease-bevel), transform 0.65s var(--ease-bevel), border-color 0.2s ease;
+  will-change: opacity, transform;
+}
+
+.reveal-tech-pill.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-tech-pill.is-visible:hover {
+  border-color: rgba(31, 32, 37, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 6. Scroll Reveal: CTA Final Banner (Pulse Scale Entrance) */
+.reveal-cta {
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  transition: opacity 0.9s var(--ease-bevel), transform 0.9s var(--ease-bevel);
+  will-change: opacity, transform;
+}
+
+.reveal-cta.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-down,
+  .anim-title-blur,
+  .anim-text-slide,
+  .anim-btn-pop,
+  .anim-scale-up,
+  .anim-phone-float,
+  .reveal-header,
+  .reveal-bento,
+  .reveal-screen-card,
+  .reveal-tech-pill,
+  .reveal-cta {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

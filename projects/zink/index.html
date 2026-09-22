@@ -7,15 +7,16 @@
   
   <meta name="description" content="Мобильное приложение ZINK: персональный ИИ-репетитор на Flutter и GigaChat. Сканирование задач, интервальные карточки, конспекты в PDF. Доступно в RuStore.">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <!-- Real App Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/app-icon.jpg">
+  <link rel="apple-touch-icon" href="assets/app-icon.jpg">
 
   <!-- Fonts: Inter / -apple-system -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=1.0">
+  <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
   <!-- Ambient Soft Pastel Gradient Lights (Bevel Tone) -->
@@ -27,7 +28,7 @@
   <header class="navbar">
     <div class="nav-container">
       <a href="#" class="brand">
-        <span class="brand-badge">Z</span>
+        <img src="assets/app-icon.jpg" alt="ZINK App Icon" class="brand-app-logo">
         <span class="brand-name">ZINK</span>
       </a>
 
@@ -41,7 +42,7 @@
       <div class="nav-actions">
         <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="btn-primary btn-pill">
           <span>Скачать в RuStore</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M7 17l9.2-9.2M17 17V8H8"/>
           </svg>
         </a>
@@ -55,29 +56,31 @@
     <section class="hero-section">
       <div class="container hero-container">
         
-        <!-- Eyebrow Badge -->
-        <div class="eyebrow-pill">
-          <span class="badge-dot"></span>
+        <!-- Eyebrow Badge (Pure SVG, No Emoji) -->
+        <div class="eyebrow-pill anim-fade-down">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="badge-spark-svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
           <span>Официально в RuStore • Версия 1.0</span>
           <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="badge-arrow">↗</a>
         </div>
 
         <!-- Main Headline -->
-        <h1 class="hero-title">
+        <h1 class="hero-title anim-title-blur">
           Твой персональный <br class="br-desktop">
           <span class="gradient-text">ИИ-репетитор</span> в кармане
         </h1>
 
         <!-- Subtitle -->
-        <p class="hero-subtitle">
+        <p class="hero-subtitle anim-text-slide">
           Учись в своем темпе на базе <strong>GigaChat:Lite</strong>. Умный чат-репетитор 24/7, сканирование тетрадей через OCR, карточки с интервальным повторением и конспекты с экспортом в PDF.
         </p>
 
         <!-- CTA Buttons -->
-        <div class="hero-cta-group">
+        <div class="hero-cta-group anim-btn-pop">
           <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="btn-download-rustore">
             <div class="rustore-icon-box">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
               </svg>
             </div>
@@ -95,8 +98,8 @@
           </a>
         </div>
 
-        <!-- Metrics Strip -->
-        <div class="metrics-strip">
+        <!-- Metrics Strip (Clean Vector Icons) -->
+        <div class="metrics-strip anim-scale-up">
           <div class="metric-item">
             <span class="metric-num">17+</span>
             <span class="metric-label">умных функций</span>
@@ -119,7 +122,7 @@
         </div>
 
         <!-- High-Fidelity Interactive Smartphone Mockup -->
-        <div class="device-showcase-wrapper">
+        <div class="device-showcase-wrapper anim-phone-float">
           <div class="phone-mockup">
             <div class="phone-rim">
               <div class="phone-screen">
@@ -134,22 +137,50 @@
             </div>
           </div>
 
-          <!-- Interactive Screen Selector Pills -->
+          <!-- Interactive Screen Selector Pills (SVG Icons Only) -->
           <div class="screen-selector-bar">
+            
             <button class="selector-btn active" data-img="assets/screen-chat.jpg" data-title="Чат с ИИ-репетитором" data-desc="Задавай любые вопросы по учебе и получай понятные пошаговые объяснения">
-              <span>💬 Чат-репетитор</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <span>Чат-репетитор</span>
             </button>
+
             <button class="selector-btn" data-img="assets/screen-cards.jpg" data-title="Интервальные повторения" data-desc="Карточки на базе алгоритма SuperMemo SM-2 для запоминания навсегда">
-              <span>🧠 Карточки SRS</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M10 4v4M14 4v4M4 12h16"/>
+              </svg>
+              <span>Карточки SRS</span>
             </button>
+
             <button class="selector-btn" data-img="assets/screen-notes.jpg" data-title="Умные конспекты" data-desc="Сохраняй ответы ИИ в конспекты и экспортируй в PDF в один клик">
-              <span>📝 Конспекты</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              <span>Конспекты</span>
             </button>
+
             <button class="selector-btn" data-img="assets/screen-stats.jpg" data-title="Статистика и стрики" data-desc="Отслеживай стрик дней, прогресс XP, уровни и зарабатывай достижения">
-              <span>📊 Прогресс & XP</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Прогресс & XP</span>
             </button>
+
             <button class="selector-btn" data-img="assets/screen-pace.jpg" data-title="Цель на день" data-desc="Выбирай свой темп обучения от легкого до интенсивного">
-              <span>🎯 Свой темп</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              <span>Свой темп</span>
             </button>
           </div>
 
@@ -163,11 +194,11 @@
       </div>
     </section>
 
-    <!-- Bento Grid Features Section (Bevel Tone) -->
+    <!-- Bento Grid Features Section (Unique Card Stagger Animations) -->
     <section id="features" class="section features-section">
       <div class="container">
         
-        <div class="section-header text-center">
+        <div class="section-header text-center reveal-header">
           <span class="section-eyebrow">АРХИТЕКТУРА И ВОЗМОЖНОСТИ</span>
           <h2 class="section-title">Создано для максимальных результатов в учёбе</h2>
           <p class="section-lead">ZINK сочетает передовую языковую модель GigaChat, когнитивные техники памяти и элегантный минималистичный дизайн.</p>
@@ -176,7 +207,7 @@
         <div class="bento-grid">
           
           <!-- Bento 1: GigaChat Streaming -->
-          <div class="bento-card bento-span-2 card-surface">
+          <div class="bento-card bento-span-2 card-surface reveal-bento" data-anim="slide-up">
             <div class="bento-badge">GigaChat:Lite</div>
             <h3 class="bento-title">Мгновенный стриминг ответов</h3>
             <p class="bento-text">
@@ -185,32 +216,55 @@
             <div class="chat-snippet-preview">
               <div class="chat-msg user-msg">Объясни теорему Пифагора простыми словами</div>
               <div class="chat-msg ai-msg">
-                <span class="ai-spark">✦</span> Представь прямоугольный треугольник. Квадрат самой длинной стороны (гипотенузы) в точности равен сумме квадратов двух других...
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="ai-spark-svg">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                </svg>
+                Представь прямоугольный треугольник. Квадрат самой длинной стороны (гипотенузы) в точности равен сумме квадратов двух других...
               </div>
             </div>
           </div>
 
-          <!-- Bento 2: OCR Scanner -->
-          <div class="bento-card card-surface">
-            <div class="bento-icon-tag">📷 ML Kit OCR</div>
+          <!-- Bento 2: OCR Scanner (Vector Camera Icon) -->
+          <div class="bento-card card-surface reveal-bento" data-anim="slide-right">
+            <div class="bento-icon-tag">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span>ML Kit OCR</span>
+            </div>
             <h3 class="bento-title">Сканер тетрадей</h3>
             <p class="bento-text">
               Сфотографируй задачу из учебника или рукописный конспект. Google ML Kit распознает текст за миллисекунды и сразу передаст его репетитору.
             </p>
           </div>
 
-          <!-- Bento 3: SuperMemo SRS Cards -->
-          <div class="bento-card card-surface">
-            <div class="bento-icon-tag">🧠 Алгоритм SM-2</div>
+          <!-- Bento 3: SuperMemo SRS Cards (Vector Brain/Card Icon) -->
+          <div class="bento-card card-surface reveal-bento" data-anim="slide-left">
+            <div class="bento-icon-tag">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+              <span>Алгоритм SM-2</span>
+            </div>
             <h3 class="bento-title">Интервальные повторения</h3>
             <p class="bento-text">
               Система интервального повторения SuperMemo SM-2 напоминает карточки именно в тот момент, когда мозг готов их забыть. Эффективность запоминания выше на 300%.
             </p>
           </div>
 
-          <!-- Bento 4: PDF Notes -->
-          <div class="bento-card card-surface">
-            <div class="bento-icon-tag">📄 PDF Export</div>
+          <!-- Bento 4: PDF Notes (Vector Document Icon) -->
+          <div class="bento-card card-surface reveal-bento" data-anim="zoom-in">
+            <div class="bento-icon-tag">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="12" y1="18" x2="12" y2="12"/>
+                <line x1="9" y1="15" x2="15" y2="15"/>
+              </svg>
+              <span>PDF Export</span>
+            </div>
             <h3 class="bento-title">Конспекты в PDF</h3>
             <p class="bento-text">
               Сохраняй важные тезисы прямо из чата. В один клик приложение формирует аккуратный PDF-документ, готовый к печати или отправке в школу/вуз.
@@ -218,7 +272,7 @@
           </div>
 
           <!-- Bento 5: Voice STT & TTS -->
-          <div class="bento-card bento-span-2 card-surface">
+          <div class="bento-card bento-span-2 card-surface reveal-bento" data-anim="slide-up">
             <div class="bento-badge">Speech-to-Text & TTS</div>
             <h3 class="bento-title">Голосовой диалог на русском</h3>
             <p class="bento-text">
@@ -226,18 +280,34 @@
             </p>
           </div>
 
-          <!-- Bento 6: Gamification -->
-          <div class="bento-card card-surface">
-            <div class="bento-icon-tag">🏆 30+ Уровней</div>
+          <!-- Bento 6: Gamification (Vector Trophy Icon) -->
+          <div class="bento-card card-surface reveal-bento" data-anim="rotate-tilt">
+            <div class="bento-icon-tag">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                <path d="M4 22h16"/>
+                <path d="M10 14.66V17c0 .55-.45 1-1 1H7"/>
+                <path d="M14 14.66V17c0 .55.45 1 1 1h2"/>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+              </svg>
+              <span>30+ Уровней</span>
+            </div>
             <h3 class="bento-title">Геймификация и стрики</h3>
             <p class="bento-text">
               Получай XP за каждый вопрос, расти по уровням ученика, сохраняй непрерывную цепочку занятий (streak) и открывай редкие достижения.
             </p>
           </div>
 
-          <!-- Bento 7: SSL Минцифры РФ -->
-          <div class="bento-card card-surface">
-            <div class="bento-icon-tag">🔒 Безопасность</div>
+          <!-- Bento 7: SSL Минцифры РФ (Vector Shield Icon) -->
+          <div class="bento-card card-surface reveal-bento" data-anim="slide-up">
+            <div class="bento-icon-tag">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+              <span>Безопасность</span>
+            </div>
             <h3 class="bento-title">Сертификаты Минцифры РФ</h3>
             <p class="bento-text">
               Прямой защищенный доступ к серверам GigaChat через встроенный SecurityContext с корневыми сертификатами Russian Trusted Root CA.
@@ -249,11 +319,11 @@
       </div>
     </section>
 
-    <!-- RuStore Screens Full Showcase -->
+    <!-- RuStore Screens Full Showcase (Cascade Horizontal Wave) -->
     <section id="screens" class="section screens-section">
       <div class="container">
         
-        <div class="section-header text-center">
+        <div class="section-header text-center reveal-header">
           <span class="section-eyebrow">ГАЛЕРЕЯ RUSTORE</span>
           <h2 class="section-title">Интерфейс, в котором приятно учиться</h2>
           <p class="section-lead">Строгий B&W минимализм, выверенные отступы и мгновенный отклик интерфейса без перегрузки.</p>
@@ -261,7 +331,7 @@
 
         <div class="screens-scroll-grid">
           
-          <div class="screen-card">
+          <div class="screen-card reveal-screen-card" data-delay="0.1">
             <div class="screen-img-box">
               <img src="assets/screen-chat.jpg" alt="Чат в ZINK" loading="lazy">
             </div>
@@ -271,7 +341,7 @@
             </div>
           </div>
 
-          <div class="screen-card">
+          <div class="screen-card reveal-screen-card" data-delay="0.2">
             <div class="screen-img-box">
               <img src="assets/screen-cards.jpg" alt="Карточки повторения" loading="lazy">
             </div>
@@ -281,7 +351,7 @@
             </div>
           </div>
 
-          <div class="screen-card">
+          <div class="screen-card reveal-screen-card" data-delay="0.3">
             <div class="screen-img-box">
               <img src="assets/screen-notes.jpg" alt="Конспекты" loading="lazy">
             </div>
@@ -291,7 +361,7 @@
             </div>
           </div>
 
-          <div class="screen-card">
+          <div class="screen-card reveal-screen-card" data-delay="0.4">
             <div class="screen-img-box">
               <img src="assets/screen-stats.jpg" alt="Статистика" loading="lazy">
             </div>
@@ -301,7 +371,7 @@
             </div>
           </div>
 
-          <div class="screen-card">
+          <div class="screen-card reveal-screen-card" data-delay="0.5">
             <div class="screen-img-box">
               <img src="assets/screen-pace.jpg" alt="Темп обучения" loading="lazy">
             </div>
@@ -316,46 +386,46 @@
       </div>
     </section>
 
-    <!-- Tech Stack Section -->
+    <!-- Tech Stack Section (Staggered Floating Cards) -->
     <section id="stack" class="section stack-section">
       <div class="container">
         
-        <div class="section-header text-center">
+        <div class="section-header text-center reveal-header">
           <span class="section-eyebrow">ИНЖЕНЕРНЫЙ СТЕК</span>
           <h2 class="section-title">Современная нативная архитектура</h2>
           <p class="section-lead">Приложение разработано с нуля на Flutter для максимальной плавности (60 FPS) и надежности.</p>
         </div>
 
         <div class="tech-pills-grid">
-          <div class="tech-pill-box">
+          <div class="tech-pill-box reveal-tech-pill" data-delay="0.05">
             <span class="tech-name">Flutter 3.32</span>
             <span class="tech-role">Кроссплатформенный фреймворк</span>
           </div>
-          <div class="tech-pill-box">
+          <div class="tech-pill-box reveal-tech-pill" data-delay="0.1">
             <span class="tech-name">Dart 3.5+</span>
             <span class="tech-role">Строгая типизация и производительность</span>
           </div>
-          <div class="tech-pill-box">
+          <div class="tech-pill-box reveal-tech-pill" data-delay="0.15">
             <span class="tech-name">GigaChat:Lite</span>
             <span class="tech-role">Языковая модель от Сбера</span>
           </div>
-          <div class="tech-pill-box">
+          <div class="tech-pill-box reveal-tech-pill" data-delay="0.2">
             <span class="tech-name">Flutter Riverpod</span>
             <span class="tech-role">Реактивный менеджмент состояний</span>
           </div>
-          <div class="tech-pill-box">
+          <div class="tech-pill-box reveal-tech-pill" data-delay="0.25">
             <span class="tech-name">Hive NoSQL</span>
             <span class="tech-role">Оффлайн-хранилище и кеш</span>
           </div>
-          <div class="tech-pill-box">
+          <div class="tech-pill-box reveal-tech-pill" data-delay="0.3">
             <span class="tech-name">Google ML Kit</span>
             <span class="tech-role">Распознавание текста с камеры</span>
           </div>
-          <div class="tech-pill-box">
+          <div class="tech-pill-box reveal-tech-pill" data-delay="0.35">
             <span class="tech-name">SuperMemo SM-2</span>
             <span class="tech-role">Алгоритм интервальных повторений</span>
           </div>
-          <div class="tech-pill-box">
+          <div class="tech-pill-box reveal-tech-pill" data-delay="0.4">
             <span class="tech-name">CA Минцифры РФ</span>
             <span class="tech-role">Безопасный отечественный SSL-контекст</span>
           </div>
@@ -364,10 +434,10 @@
       </div>
     </section>
 
-    <!-- Final CTA Banner (Bevel Marquee Style) -->
+    <!-- Final CTA Banner (Pulse & Glow Entrance) -->
     <section class="section cta-section">
       <div class="container">
-        <div class="cta-banner-card">
+        <div class="cta-banner-card reveal-cta">
           <span class="cta-badge">БЕСПЛАТНО В RUSTORE</span>
           <h2 class="cta-heading">Попробуй учиться по-новому вместе с ZINK</h2>
           <p class="cta-text">
@@ -393,7 +463,7 @@
     <div class="container footer-container">
       <div class="footer-left">
         <div class="brand">
-          <span class="brand-badge">Z</span>
+          <img src="assets/app-icon.jpg" alt="ZINK App Icon" class="brand-app-logo">
           <span class="brand-name">ZINK App</span>
         </div>
         <p class="footer-copy">
@@ -410,6 +480,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=1.0"></script>
+  <script src="app.js?v=3.0"></script>
 </body>
 </html>

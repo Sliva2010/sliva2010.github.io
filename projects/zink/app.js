@@ -1,10 +1,11 @@
 /**
  * ZINK AI TUTOR LANDING PAGE — INTERACTIVE SCRIPTS
- * Phone Mockup Screen Switcher & Auto-Demo
+ * Phone Mockup Screen Switcher, Auto-Demo & Distinct Block Scroll Animations
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initPhoneMockupSwitcher();
+  initScrollAnimations();
 });
 
 function initPhoneMockupSwitcher() {
@@ -75,3 +76,41 @@ function initPhoneMockupSwitcher() {
 
   startAutoCycle();
 }
+
+/**
+ * Scroll Observer for distinct block animations
+ * Triggers unique transitions per section and data-anim attribute
+ */
+function initScrollAnimations() {
+  const revealElements = document.querySelectorAll(
+    '.reveal-header, .reveal-bento, .reveal-screen-card, .reveal-tech-pill, .reveal-cta'
+  );
+  
+  if (!revealElements.length) return;
+
+  // Fallback for environments without IntersectionObserver
+  if (!('IntersectionObserver' in window)) {
+    revealElements.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = el.getAttribute('data-delay');
+        if (delay) {
+          el.style.transitionDelay = `${delay}s`;
+        }
+        el.classList.add('is-visible');
+        obs.unobserve(el);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+}
+

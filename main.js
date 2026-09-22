@@ -153,11 +153,28 @@ function initCoverflowCarousel() {
     const tag = activeSlide.getAttribute('data-tag') || '';
     const desc = activeSlide.getAttribute('data-desc') || '';
     const url = activeSlide.getAttribute('data-url') || '#';
+    const rustoreUrl = activeSlide.getAttribute('data-rustore') || '';
+    const rustoreBtn = document.getElementById('rustoreProjectBtn');
 
-    if (pillEl) pillEl.textContent = `0${currentIndex + 1} / 05 • ${tag}`;
+    if (pillEl) pillEl.textContent = `0${currentIndex + 1} / 02 • ${tag}`;
     if (nameEl) nameEl.textContent = title;
     if (descEl) descEl.textContent = desc;
-    if (viewBtn) viewBtn.setAttribute('href', url);
+    if (viewBtn) {
+      viewBtn.setAttribute('href', url);
+      const span = viewBtn.querySelector('span');
+      if (span) {
+        span.textContent = currentIndex === 0 ? 'СМОТРЕТЬ ЛЕНДИНГ ПРОЕКТА' : 'ОБСУДИТЬ В TELEGRAM';
+      }
+    }
+
+    if (rustoreBtn) {
+      if (rustoreUrl) {
+        rustoreBtn.style.display = 'inline-flex';
+        rustoreBtn.setAttribute('href', rustoreUrl);
+      } else {
+        rustoreBtn.style.display = 'none';
+      }
+    }
 
     // Update pagination dots
     dots.forEach((dot, idx) => {

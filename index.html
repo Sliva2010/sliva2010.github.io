@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Вячеслав | Портфолио — 3D-сайты, Лендинги и Telegram-боты</title>
+  <title>Вячеслав | Портфолио — 3D-сайты, Мобильные приложения и Telegram-боты</title>
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=7.0">
 
   <!-- Google Fonts: Unbounded & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +20,8 @@
     .carousel-track { display: flex; align-items: center; justify-content: center; gap: 20px; }
   </style>
 
-  <!-- External Stylesheet with Cache Busting v6.0 -->
-  <link rel="stylesheet" href="style.css?v=6.0">
+  <!-- External Stylesheet with Cache Busting v7.0 -->
+  <link rel="stylesheet" href="style.css?v=7.0">
 </head>
 <body>
   <!-- Dark Misty Forest Background with Cursor Flashlight Spotlight -->
@@ -78,7 +78,7 @@
           <h1 class="hero-name">ВЯЧЕСЛАВ</h1>
           <div class="hero-subtitle">UI/UX ДИЗАЙНЕР & РАЗРАБОТЧИК</div>
           <p class="hero-caption">
-            Создание 3D-лендингов нового поколения, Telegram-ботов и высококонверсионных веб-сервисов под ключ.
+            Создание мобильных приложений на Flutter, 3D-лендингов нового поколения и Telegram-сервисов под ключ.
           </p>
           <div class="hero-actions">
             <a href="#portfolio" class="btn-primary">СМОТРЕТЬ РАБОТЫ</a>
@@ -96,11 +96,11 @@
       </div>
     </section>
 
-    <!-- Screen 2: Portfolio Showcase (Glass Frame + 3-Card Carousel) -->
+    <!-- Screen 2: Real Projects Portfolio (Flagship ZINK Showcase) -->
     <section id="portfolio" class="screen screen-portfolio">
       <div class="screen-frame glass-panel anim-block">
         
-        <!-- Interactive 3D Showcase matching Reference 2 -->
+        <!-- Showcase Navigation Header -->
         <div class="showcase-carousel-wrapper">
           
           <!-- Prev Arrow -->
@@ -110,76 +110,35 @@
             </svg>
           </button>
 
-          <!-- 3-Card View Track -->
+          <!-- Real Projects Track -->
           <div class="carousel-track-container" id="carouselTrackContainer">
             <div class="carousel-track" id="carouselTrack">
               
-              <!-- Slide 1: AI SaaS (Cyber Eye Artwork from Reference) -->
-              <div class="carousel-slide active" data-index="0" data-url="projects/ai-saas/index.html" data-title="Synthetix AI" data-tag="AI & SAAS СЕРВИС" data-desc="Автономные нейросетевые агенты с интерактивной 3D-сетью и симулятором работы.">
+              <!-- Slide 1: ZINK (Real Mobile App in RuStore) -->
+              <div class="carousel-slide active" data-index="0" data-url="projects/zink/index.html" data-rustore="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" data-title="ZINK — Персональный ИИ-репетитор" data-tag="FLUTTER • GIGACHAT • RUSTORE" data-desc="Полноценное мобильное приложение на Flutter на базе GigaChat:Lite. Чат 24/7, распознавание тетрадей через OCR, карточки SuperMemo SM-2 и экспорт конспектов в PDF. Официально опубликовано в RuStore.">
                 <div class="slide-card glass-card">
                   <div class="slide-art-box">
-                    <img src="assets/art-eye.svg" alt="Synthetix AI" class="slide-art-img" loading="eager">
-                    <span class="slide-badge">3D THREE.JS</span>
+                    <img src="assets/zink/screen-chat.jpg" alt="ZINK App" class="slide-art-img" loading="eager">
+                    <span class="slide-badge badge-rustore">✨ В RUSTORE</span>
                   </div>
                   <div class="slide-overlay-info">
-                    <span class="slide-cat">AI & SAAS СЕРВИС</span>
-                    <h3 class="slide-heading">Synthetix AI</h3>
+                    <span class="slide-cat">FLUTTER & GIGACHAT AI</span>
+                    <h3 class="slide-heading">ZINK Репетитор</h3>
                   </div>
                 </div>
               </div>
 
-              <!-- Slide 2: Auto Detailing (Supercar Artwork) -->
-              <div class="carousel-slide next" data-index="1" data-url="projects/auto-detailing/index.html" data-title="Apex Detailing" data-tag="ПРЕМИУМ ДЕТЕЙЛИНГ" data-desc="Люксовый лендинг автодетейлинга с интерактивной сменой покрытия кузова в реальном времени.">
-                <div class="slide-card glass-card">
-                  <div class="slide-art-box">
-                    <img src="assets/art-car.svg" alt="Apex Detailing" class="slide-art-img" loading="eager">
-                    <span class="slide-badge">3D КОНФИГУРАТОР</span>
+              <!-- Slide 2: Slot for Next Real Project -->
+              <div class="carousel-slide next" data-index="1" data-url="https://t.me/SLAVASDF" data-rustore="" data-title="Ваш следующий проект" data-tag="СКОРО • В РАЗРАБОТКЕ" data-desc="Здесь появится следующий реальный продукт. Напишите мне в Telegram [@SLAVASDF], чтобы запустить ваш проект под ключ!">
+                <div class="slide-card glass-card next-project-card">
+                  <div class="slide-art-box next-art-box">
+                    <div class="next-icon-circle">✦</div>
+                    <span class="next-title-tag">СКОРО: ПРОЕКТ #2</span>
+                    <span class="slide-badge">В РАЗРАБОТКЕ</span>
                   </div>
                   <div class="slide-overlay-info">
-                    <span class="slide-cat">ПРЕМИУМ ДЕТЕЙЛИНГ</span>
-                    <h3 class="slide-heading">Apex Detailing</h3>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 3: Crypto Fintech (Isometric Crystal) -->
-              <div class="carousel-slide hidden-slide" data-index="2" data-url="projects/crypto-fintech/index.html" data-title="Nova DeFi & Pay" data-tag="WEB3 & ФИНТЕХ" data-desc="Высокотехнологичный необанк с живым обменом токенов и терминалом транзакций.">
-                <div class="slide-card glass-card">
-                  <div class="slide-art-box">
-                    <img src="assets/art-crypto.svg" alt="Nova DeFi" class="slide-art-img" loading="lazy">
-                    <span class="slide-badge">WEB3 ТЕРМИНАЛ</span>
-                  </div>
-                  <div class="slide-overlay-info">
-                    <span class="slide-cat">WEB3 & ФИНТЕХ</span>
-                    <h3 class="slide-heading">Nova DeFi & Pay</h3>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 4: Coffee Roastery (Chiaroscuro Coffee) -->
-              <div class="carousel-slide hidden-slide" data-index="3" data-url="projects/coffee-roastery/index.html" data-title="Artisan Roastery" data-tag="SPECIALTY E-COMMERCE" data-desc="Атмосферный промо-сайт specialty кофе с колесом вкусов и интерактивной корзиной.">
-                <div class="slide-card glass-card">
-                  <div class="slide-art-box">
-                    <img src="assets/art-coffee.svg" alt="Artisan Roastery" class="slide-art-img" loading="lazy">
-                    <span class="slide-badge">3D E-COMMERCE</span>
-                  </div>
-                  <div class="slide-overlay-info">
-                    <span class="slide-cat">SPECIALTY E-COMMERCE</span>
-                    <h3 class="slide-heading">Artisan Roastery</h3>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 5: Cyber Agency (Cyber Vortex) -->
-              <div class="carousel-slide prev" data-index="4" data-url="projects/cyber-agency/index.html" data-title="Vortex Cyber Studio" data-tag="CREATIVE 3D STUDIO" data-desc="Футуристичный сайт дизайн-агентства с динамическими шейдерами и интерактивом.">
-                <div class="slide-card glass-card">
-                  <div class="slide-art-box">
-                    <img src="assets/art-cyber.svg" alt="Vortex Studio" class="slide-art-img" loading="lazy">
-                    <span class="slide-badge">CREATIVE WEBGL</span>
-                  </div>
-                  <div class="slide-overlay-info">
-                    <span class="slide-cat">CREATIVE 3D STUDIO</span>
-                    <h3 class="slide-heading">Vortex Studio</h3>
+                    <span class="slide-cat">КОММЕРЧЕСКИЙ ЗАКАЗ</span>
+                    <h3 class="slide-heading">Новый продукт</h3>
                   </div>
                 </div>
               </div>
@@ -195,41 +154,42 @@
           </button>
         </div>
 
-        <!-- Reference 2 Layout Center Block Under Cards -->
+        <!-- Center Meta Block Under Cards -->
         <div class="portfolio-center-meta">
           <h2 class="portfolio-big-title">МОЁ ПОРТФОЛИО</h2>
           
           <div class="active-project-details">
-            <span class="active-project-pill" id="activeProjectPill">01 / 05 • AI & SAAS СЕРВИС</span>
-            <h3 class="active-project-name" id="activeProjectName">Synthetix AI</h3>
+            <span class="active-project-pill" id="activeProjectPill">01 / 02 • FLUTTER • GIGACHAT • RUSTORE</span>
+            <h3 class="active-project-name" id="activeProjectName">ZINK — Персональный ИИ-репетитор</h3>
             <p class="active-project-desc" id="activeProjectDesc">
-              Автономные нейросетевые агенты с интерактивной 3D-сетью и симулятором работы.
+              Полноценное мобильное приложение на Flutter на базе GigaChat:Lite. Чат 24/7, распознавание тетрадей через OCR, карточки SuperMemo SM-2 и экспорт конспектов в PDF. Официально опубликовано в RuStore.
             </p>
           </div>
 
-          <div class="portfolio-action-row">
-            <a href="projects/ai-saas/index.html" target="_blank" rel="noopener noreferrer" class="btn-primary btn-view-project" id="viewProjectBtn">
-              <span>СМОТРЕТЬ ПРОЕКТ</span>
+          <div class="portfolio-action-row" id="portfolioActionRow">
+            <a href="projects/zink/index.html" target="_blank" rel="noopener noreferrer" class="btn-primary btn-view-project" id="viewProjectBtn">
+              <span>СМОТРЕТЬ ЛЕНДИНГ ПРОЕКТА</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M7 17l9.2-9.2M17 17V8H8"/>
               </svg>
             </a>
+
+            <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="btn-outline btn-rustore-project" id="rustoreProjectBtn">
+              <span>СКАЧАТЬ В RUSTORE ↗</span>
+            </a>
           </div>
 
-          <!-- Pagination Dots for Quick Navigation -->
+          <!-- Dots Pagination -->
           <div class="carousel-dots" id="carouselDots">
-            <button class="dot-btn active" data-index="0" aria-label="Проект 1"></button>
+            <button class="dot-btn active" data-index="0" aria-label="ZINK"></button>
             <button class="dot-btn" data-index="1" aria-label="Проект 2"></button>
-            <button class="dot-btn" data-index="2" aria-label="Проект 3"></button>
-            <button class="dot-btn" data-index="3" aria-label="Проект 4"></button>
-            <button class="dot-btn" data-index="4" aria-label="Проект 5"></button>
           </div>
         </div>
 
         <div class="frame-bottom-bar">
           <div class="status-indicator">
             <span class="status-dot"></span>
-            <span class="status-text">Листайте стрелками или свайпом на телефоне</span>
+            <span class="status-text">ZINK официально доступен в RuStore</span>
           </div>
           <div class="screen-counter">02 / 03</div>
         </div>
@@ -245,7 +205,7 @@
           <div class="contact-info-col">
             <h2 class="contact-main-heading">КОНТАКТЫ</h2>
             <p class="contact-lead-text">
-              Создаю коммерческие лендинги, интерактивные 3D-сайты и удобных Telegram-ботов, которые вызывают доверие и приносят продажи. Готов обсудить вашу задачу и запустить проект в кратчайшие сроки.
+              Создаю мобильные приложения на Flutter, эффектные 3D-сайты и полезных Telegram-ботов для бизнеса. Готов обсудить вашу задачу и выдать результат под ключ в кратчайшие сроки.
             </p>
 
             <div class="contact-items-group">
@@ -306,10 +266,10 @@
                 <div class="input-field-group">
                   <label for="projectType">Тип проекта</label>
                   <select id="projectType" name="projectType">
+                    <option value="Мобильное приложение (Flutter)">Мобильное приложение (Flutter)</option>
                     <option value="3D-лендинг под ключ">3D-лендинг / промо-сайт</option>
                     <option value="Telegram-бот или Mini App">Telegram-бот или Mini App</option>
                     <option value="Редизайн существующего сайта">Редизайн существующего сайта</option>
-                    <option value="Интернет-магазин / Каталог">Интернет-магазин / Каталог</option>
                     <option value="Другая нестандартная задача">Другая задача</option>
                   </select>
                 </div>
@@ -335,7 +295,7 @@
         <div class="frame-bottom-bar">
           <div class="status-indicator">
             <span class="status-dot"></span>
-            <span class="status-text">Вячеслав • Web & 3D Development</span>
+            <span class="status-text">Вячеслав • Mobile & 3D Web Development</span>
           </div>
           <div class="screen-counter">03 / 03</div>
         </div>
@@ -352,7 +312,7 @@
 
   </main>
 
-  <!-- Script with Cache Busting v6.0 -->
-  <script src="main.js?v=6.0"></script>
+  <!-- Script with Cache Busting v7.0 -->
+  <script src="main.js?v=7.0"></script>
 </body>
 </html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>ZINK — Персональный ИИ-репетитор на базе GigaChat</title>
+  
+  <meta name="description" content="Мобильное приложение ZINK: персональный ИИ-репетитор на Flutter и GigaChat. Сканирование задач, интервальные карточки, конспекты в PDF. Доступно в RuStore.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+
+  <!-- Fonts: Inter / -apple-system -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=1.0">
+</head>
+<body>
+  <!-- Ambient Soft Pastel Gradient Lights (Bevel Tone) -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-mint"></div>
+  <div class="ambient-glow glow-cyan"></div>
+
+  <!-- Sticky Clean Navigation (Bevel System) -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="brand-badge">Z</span>
+        <span class="brand-name">ZINK</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Возможности</a>
+        <a href="#screens">Интерфейс</a>
+        <a href="#stack">Технологии</a>
+        <a href="https://github.com/Sliva2010/zink-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="btn-primary btn-pill">
+          <span>Скачать в RuStore</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M7 17l9.2-9.2M17 17V8H8"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero Section (Marquee Device Hero — Bevel Aesthetic) -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        
+        <!-- Eyebrow Badge -->
+        <div class="eyebrow-pill">
+          <span class="badge-dot"></span>
+          <span>Официально в RuStore • Версия 1.0</span>
+          <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="badge-arrow">↗</a>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="hero-title">
+          Твой персональный <br class="br-desktop">
+          <span class="gradient-text">ИИ-репетитор</span> в кармане
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          Учись в своем темпе на базе <strong>GigaChat:Lite</strong>. Умный чат-репетитор 24/7, сканирование тетрадей через OCR, карточки с интервальным повторением и конспекты с экспортом в PDF.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="btn-download-rustore">
+            <div class="rustore-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+            </div>
+            <div class="btn-download-text">
+              <span class="btn-subtext">Доступно бесплатно в</span>
+              <strong class="btn-maintext">RuStore Каталоге</strong>
+            </div>
+          </a>
+
+          <a href="https://github.com/Sliva2010/zink-app" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>Исходный код (Flutter)</span>
+          </a>
+        </div>
+
+        <!-- Metrics Strip -->
+        <div class="metrics-strip">
+          <div class="metric-item">
+            <span class="metric-num">17+</span>
+            <span class="metric-label">умных функций</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-num">~25 МБ</span>
+            <span class="metric-label">легкий вес APK</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-num">SM-2</span>
+            <span class="metric-label">научный алгоритм SRS</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-num">100%</span>
+            <span class="metric-label">сертификаты Минцифры</span>
+          </div>
+        </div>
+
+        <!-- High-Fidelity Interactive Smartphone Mockup -->
+        <div class="device-showcase-wrapper">
+          <div class="phone-mockup">
+            <div class="phone-rim">
+              <div class="phone-screen">
+                <div class="phone-notch">
+                  <div class="notch-speaker"></div>
+                  <div class="notch-camera"></div>
+                </div>
+                
+                <!-- Active App Image Display -->
+                <img id="phoneActiveScreen" src="assets/screen-chat.jpg" alt="ZINK App Interface" class="phone-display-img">
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Screen Selector Pills -->
+          <div class="screen-selector-bar">
+            <button class="selector-btn active" data-img="assets/screen-chat.jpg" data-title="Чат с ИИ-репетитором" data-desc="Задавай любые вопросы по учебе и получай понятные пошаговые объяснения">
+              <span>💬 Чат-репетитор</span>
+            </button>
+            <button class="selector-btn" data-img="assets/screen-cards.jpg" data-title="Интервальные повторения" data-desc="Карточки на базе алгоритма SuperMemo SM-2 для запоминания навсегда">
+              <span>🧠 Карточки SRS</span>
+            </button>
+            <button class="selector-btn" data-img="assets/screen-notes.jpg" data-title="Умные конспекты" data-desc="Сохраняй ответы ИИ в конспекты и экспортируй в PDF в один клик">
+              <span>📝 Конспекты</span>
+            </button>
+            <button class="selector-btn" data-img="assets/screen-stats.jpg" data-title="Статистика и стрики" data-desc="Отслеживай стрик дней, прогресс XP, уровни и зарабатывай достижения">
+              <span>📊 Прогресс & XP</span>
+            </button>
+            <button class="selector-btn" data-img="assets/screen-pace.jpg" data-title="Цель на день" data-desc="Выбирай свой темп обучения от легкого до интенсивного">
+              <span>🎯 Свой темп</span>
+            </button>
+          </div>
+
+          <!-- Active Caption -->
+          <div class="mockup-caption-box">
+            <h3 id="captionTitle">Чат с ИИ-репетитором</h3>
+            <p id="captionDesc">Задавай любые вопросы по учебе и получай понятные пошаговые объяснения</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bento Grid Features Section (Bevel Tone) -->
+    <section id="features" class="section features-section">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-eyebrow">АРХИТЕКТУРА И ВОЗМОЖНОСТИ</span>
+          <h2 class="section-title">Создано для максимальных результатов в учёбе</h2>
+          <p class="section-lead">ZINK сочетает передовую языковую модель GigaChat, когнитивные техники памяти и элегантный минималистичный дизайн.</p>
+        </div>
+
+        <div class="bento-grid">
+          
+          <!-- Bento 1: GigaChat Streaming -->
+          <div class="bento-card bento-span-2 card-surface">
+            <div class="bento-badge">GigaChat:Lite</div>
+            <h3 class="bento-title">Мгновенный стриминг ответов</h3>
+            <p class="bento-text">
+              Нейросеть отвечает словно живой преподаватель прямо во время ввода. Разбор теорем, решение уравнений, исторические события и формулы по физике простым человеческим языком.
+            </p>
+            <div class="chat-snippet-preview">
+              <div class="chat-msg user-msg">Объясни теорему Пифагора простыми словами</div>
+              <div class="chat-msg ai-msg">
+                <span class="ai-spark">✦</span> Представь прямоугольный треугольник. Квадрат самой длинной стороны (гипотенузы) в точности равен сумме квадратов двух других...
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento 2: OCR Scanner -->
+          <div class="bento-card card-surface">
+            <div class="bento-icon-tag">📷 ML Kit OCR</div>
+            <h3 class="bento-title">Сканер тетрадей</h3>
+            <p class="bento-text">
+              Сфотографируй задачу из учебника или рукописный конспект. Google ML Kit распознает текст за миллисекунды и сразу передаст его репетитору.
+            </p>
+          </div>
+
+          <!-- Bento 3: SuperMemo SRS Cards -->
+          <div class="bento-card card-surface">
+            <div class="bento-icon-tag">🧠 Алгоритм SM-2</div>
+            <h3 class="bento-title">Интервальные повторения</h3>
+            <p class="bento-text">
+              Система интервального повторения SuperMemo SM-2 напоминает карточки именно в тот момент, когда мозг готов их забыть. Эффективность запоминания выше на 300%.
+            </p>
+          </div>
+
+          <!-- Bento 4: PDF Notes -->
+          <div class="bento-card card-surface">
+            <div class="bento-icon-tag">📄 PDF Export</div>
+            <h3 class="bento-title">Конспекты в PDF</h3>
+            <p class="bento-text">
+              Сохраняй важные тезисы прямо из чата. В один клик приложение формирует аккуратный PDF-документ, готовый к печати или отправке в школу/вуз.
+            </p>
+          </div>
+
+          <!-- Bento 5: Voice STT & TTS -->
+          <div class="bento-card bento-span-2 card-surface">
+            <div class="bento-badge">Speech-to-Text & TTS</div>
+            <h3 class="bento-title">Голосовой диалог на русском</h3>
+            <p class="bento-text">
+              Не нужно печатать длинные формулировки — нажми микрофон и задай вопрос голосом. ZINK озвучит ответ чистым и понятным синтезом речи, как на реальном занятии.
+            </p>
+          </div>
+
+          <!-- Bento 6: Gamification -->
+          <div class="bento-card card-surface">
+            <div class="bento-icon-tag">🏆 30+ Уровней</div>
+            <h3 class="bento-title">Геймификация и стрики</h3>
+            <p class="bento-text">
+              Получай XP за каждый вопрос, расти по уровням ученика, сохраняй непрерывную цепочку занятий (streak) и открывай редкие достижения.
+            </p>
+          </div>
+
+          <!-- Bento 7: SSL Минцифры РФ -->
+          <div class="bento-card card-surface">
+            <div class="bento-icon-tag">🔒 Безопасность</div>
+            <h3 class="bento-title">Сертификаты Минцифры РФ</h3>
+            <p class="bento-text">
+              Прямой защищенный доступ к серверам GigaChat через встроенный SecurityContext с корневыми сертификатами Russian Trusted Root CA.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RuStore Screens Full Showcase -->
+    <section id="screens" class="section screens-section">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-eyebrow">ГАЛЕРЕЯ RUSTORE</span>
+          <h2 class="section-title">Интерфейс, в котором приятно учиться</h2>
+          <p class="section-lead">Строгий B&W минимализм, выверенные отступы и мгновенный отклик интерфейса без перегрузки.</p>
+        </div>
+
+        <div class="screens-scroll-grid">
+          
+          <div class="screen-card">
+            <div class="screen-img-box">
+              <img src="assets/screen-chat.jpg" alt="Чат в ZINK" loading="lazy">
+            </div>
+            <div class="screen-meta">
+              <h4>Учись прямо в чате</h4>
+              <p>Быстрые подсказки, разбор сложных тем и мгновенный стриминг ответов нейросети.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <div class="screen-img-box">
+              <img src="assets/screen-cards.jpg" alt="Карточки повторения" loading="lazy">
+            </div>
+            <div class="screen-meta">
+              <h4>Интервальные карточки</h4>
+              <p>Переворачивай карточки и оценивай сложность по шкале SuperMemo SM-2.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <div class="screen-img-box">
+              <img src="assets/screen-notes.jpg" alt="Конспекты" loading="lazy">
+            </div>
+            <div class="screen-meta">
+              <h4>База знаний под рукой</h4>
+              <p>Конспекты по предметам с полнотекстовым поиском и экспортом в файл.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <div class="screen-img-box">
+              <img src="assets/screen-stats.jpg" alt="Статистика" loading="lazy">
+            </div>
+            <div class="screen-meta">
+              <h4>Статистика активности</h4>
+              <p>График опыта за 14 дней, счетчик стрика и каталог персональных наград.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <div class="screen-img-box">
+              <img src="assets/screen-pace.jpg" alt="Темп обучения" loading="lazy">
+            </div>
+            <div class="screen-meta">
+              <h4>Гибкий темп на каждый день</h4>
+              <p>Настраивай нагрузку под себя: от легкого до суперинтенсивного темпа.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="stack" class="section stack-section">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-eyebrow">ИНЖЕНЕРНЫЙ СТЕК</span>
+          <h2 class="section-title">Современная нативная архитектура</h2>
+          <p class="section-lead">Приложение разработано с нуля на Flutter для максимальной плавности (60 FPS) и надежности.</p>
+        </div>
+
+        <div class="tech-pills-grid">
+          <div class="tech-pill-box">
+            <span class="tech-name">Flutter 3.32</span>
+            <span class="tech-role">Кроссплатформенный фреймворк</span>
+          </div>
+          <div class="tech-pill-box">
+            <span class="tech-name">Dart 3.5+</span>
+            <span class="tech-role">Строгая типизация и производительность</span>
+          </div>
+          <div class="tech-pill-box">
+            <span class="tech-name">GigaChat:Lite</span>
+            <span class="tech-role">Языковая модель от Сбера</span>
+          </div>
+          <div class="tech-pill-box">
+            <span class="tech-name">Flutter Riverpod</span>
+            <span class="tech-role">Реактивный менеджмент состояний</span>
+          </div>
+          <div class="tech-pill-box">
+            <span class="tech-name">Hive NoSQL</span>
+            <span class="tech-role">Оффлайн-хранилище и кеш</span>
+          </div>
+          <div class="tech-pill-box">
+            <span class="tech-name">Google ML Kit</span>
+            <span class="tech-role">Распознавание текста с камеры</span>
+          </div>
+          <div class="tech-pill-box">
+            <span class="tech-name">SuperMemo SM-2</span>
+            <span class="tech-role">Алгоритм интервальных повторений</span>
+          </div>
+          <div class="tech-pill-box">
+            <span class="tech-name">CA Минцифры РФ</span>
+            <span class="tech-role">Безопасный отечественный SSL-контекст</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Final CTA Banner (Bevel Marquee Style) -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-banner-card">
+          <span class="cta-badge">БЕСПЛАТНО В RUSTORE</span>
+          <h2 class="cta-heading">Попробуй учиться по-новому вместе с ZINK</h2>
+          <p class="cta-text">
+            Скачай приложение бесплатно из официального российского каталога RuStore и получи своего личного ИИ-репетитора уже через 1 минуту.
+          </p>
+          
+          <div class="cta-actions">
+            <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="btn-primary btn-large btn-pill">
+              <span>Открыть страницу в RuStore ↗</span>
+            </a>
+            <a href="../../index.html" class="btn-secondary btn-large btn-pill">
+              <span>Вернуться в портфолио автора</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Clean Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <div class="brand">
+          <span class="brand-badge">Z</span>
+          <span class="brand-name">ZINK App</span>
+        </div>
+        <p class="footer-copy">
+          Разработчик: <strong>Вячеслав</strong> • Опубликовано в российском магазине RuStore.
+        </p>
+      </div>
+
+      <div class="footer-right">
+        <a href="https://www.rustore.ru/catalog/app/io.github.sliva2010.zink" target="_blank" rel="noopener noreferrer" class="footer-link">RuStore</a>
+        <a href="https://github.com/Sliva2010/zink-app" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub проекта</a>
+        <a href="https://t.me/SLAVASDF" target="_blank" rel="noopener noreferrer" class="footer-link">Telegram автора</a>
+        <a href="../../index.html" class="footer-link">Портфолио</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=1.0"></script>
+</body>
+</html>

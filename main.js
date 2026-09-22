@@ -1,18 +1,167 @@
 /**
  * VYACHESLAV PORTFOLIO — INTERACTIVE SCRIPTS
- * Ambient 3D canvas particles, scroll tracking & direct Telegram lead conversion.
+ * 3D Coverflow Carousel, Scroll-reactive Warp Canvas, Scroll Reveal & Telegram Lead Flow.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initAmbientCanvas();
+  initScrollReveal();
+  initCoverflowCarousel();
+  initScrollWarpCanvas();
   initScrollTracking();
   initContactForm();
 });
 
 /* ==========================================================================
-   1. AMBIENT PARTICLES (LIGHTWEIGHT 3D-FEEL CANVAS)
+   1. SCROLL REVEAL ANIMATIONS
    ========================================================================== */
-function initAmbientCanvas() {
+function initScrollReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  reveals.forEach((el) => observer.observe(el));
+}
+
+/* ==========================================================================
+   2. INTERACTIVE 3D COVERFLOW CAROUSEL (Exact Reference 2 Layout)
+   ========================================================================== */
+function initCoverflowCarousel() {
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.getElementById('prevSlideBtn');
+  const nextBtn = document.getElementById('nextSlideBtn');
+  const dots = document.querySelectorAll('.dot-btn');
+  const container = document.getElementById('carouselTrackContainer');
+  
+  const pillEl = document.getElementById('activeProjectPill');
+  const nameEl = document.getElementById('activeProjectName');
+  const descEl = document.getElementById('activeProjectDesc');
+  const viewBtn = document.getElementById('viewProjectBtn');
+
+  if (!slides.length) return;
+
+  const total = slides.length;
+  let currentIndex = 0;
+
+  function updateCarousel(newIndex) {
+    currentIndex = (newIndex + total) % total;
+
+    const prevIndex = (currentIndex - 1 + total) % total;
+    const nextIndex = (currentIndex + 1) % total;
+
+    slides.forEach((slide, idx) => {
+      slide.classList.remove('active', 'prev', 'next', 'hidden-slide');
+
+      if (idx === currentIndex) {
+        slide.classList.add('active');
+      } else if (idx === prevIndex) {
+        slide.classList.add('prev');
+      } else if (idx === nextIndex) {
+        slide.classList.add('next');
+      } else {
+        slide.classList.add('hidden-slide');
+      }
+    });
+
+    // Update active slide meta
+    const activeSlide = slides[currentIndex];
+    const title = activeSlide.getAttribute('data-title') || '';
+    const tag = activeSlide.getAttribute('data-tag') || '';
+    const desc = activeSlide.getAttribute('data-desc') || '';
+    const url = activeSlide.getAttribute('data-url') || '#';
+
+    if (pillEl) pillEl.textContent = `0${currentIndex + 1} / 05 • ${tag}`;
+    if (nameEl) nameEl.textContent = title;
+    if (descEl) descEl.textContent = desc;
+    if (viewBtn) viewBtn.setAttribute('href', url);
+
+    // Update pagination dots
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentIndex);
+    });
+  }
+
+  // Arrow Clicks
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      updateCarousel(currentIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      updateCarousel(currentIndex + 1);
+    });
+  }
+
+  // Dot Clicks
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) updateCarousel(idx);
+    });
+  });
+
+  // Slide Direct Click
+  slides.forEach((slide, idx) => {
+    slide.addEventListener('click', () => {
+      if (idx === currentIndex) {
+        // Active card opens the live project in a new tab
+        const url = slide.getAttribute('data-url');
+        if (url) window.open(url, '_blank');
+      } else {
+        // Neighboring card slides into center
+        updateCarousel(idx);
+      }
+    });
+  });
+
+  // Touch Swipe for Mobile
+  if (container) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    container.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 40) {
+        if (diff < 0) {
+          updateCarousel(currentIndex + 1); // Swiped left -> next
+        } else {
+          updateCarousel(currentIndex - 1); // Swiped right -> prev
+        }
+      }
+    }
+  }
+
+  // Initial setup
+  updateCarousel(0);
+}
+
+/* ==========================================================================
+   3. SCROLL-WARP AMBIENT BACKGROUND CANVAS
+   Reacts dynamically to scroll velocity, creating floating 3D speed trails.
+   ========================================================================== */
+function initScrollWarpCanvas() {
   const canvas = document.getElementById('ambient-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -27,6 +176,9 @@ function initAmbientCanvas() {
     targetY: height / 2,
   };
 
+  let scrollVelocity = 0;
+  let lastScrollY = window.scrollY;
+
   window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
@@ -37,23 +189,35 @@ function initAmbientCanvas() {
     mouse.targetY = e.clientY;
   });
 
-  // Generate particle nodes
-  const count = Math.min(Math.floor((width * height) / 18000), 70);
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const delta = currentScrollY - lastScrollY;
+    scrollVelocity = delta * 0.12;
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+
+  // Generate particle nodes with depth (z coordinate)
+  const count = Math.min(Math.floor((width * height) / 14000), 85);
   const particles = [];
 
   for (let i = 0; i < count; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      radius: Math.random() * 1.6 + 0.8,
-      alpha: Math.random() * 0.5 + 0.2,
+      z: Math.random() * 2 + 0.5,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      baseRadius: Math.random() * 1.5 + 0.8,
+      alpha: Math.random() * 0.5 + 0.25,
     });
   }
 
   function render() {
     ctx.clearRect(0, 0, width, height);
+
+    // Decay scroll velocity smoothly
+    scrollVelocity *= 0.92;
+    if (Math.abs(scrollVelocity) < 0.01) scrollVelocity = 0;
 
     // Smooth mouse lerp
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
@@ -62,38 +226,51 @@ function initAmbientCanvas() {
     // Draw and connect particles
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
 
+      p.x += p.vx;
+      // Y-axis responds directly to scroll momentum
+      p.y += p.vy - scrollVelocity * p.z;
+
+      // Screen wrap
       if (p.x < 0) p.x = width;
       if (p.x > width) p.x = 0;
       if (p.y < 0) p.y = height;
       if (p.y > height) p.y = 0;
 
-      // Draw particle dot
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
-      ctx.fill();
+      // When user scrolls quickly, stretch particles into speed streaks
+      const streakLength = scrollVelocity * p.z * 1.5;
 
-      // Connect near particles
+      ctx.beginPath();
+      if (Math.abs(streakLength) > 1) {
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.x, p.y + streakLength);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha * 0.8})`;
+        ctx.lineWidth = p.baseRadius * 0.9;
+        ctx.stroke();
+      } else {
+        ctx.arc(p.x, p.y, p.baseRadius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+        ctx.fill();
+      }
+
+      // Constellation connection lines
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const dx = p.x - p2.x;
         const dy = p.y - p2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 130) {
+        if (dist < 125) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 * (1 - dist / 130)})`;
-          ctx.lineWidth = 0.7;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${0.07 * (1 - dist / 125)})`;
+          ctx.lineWidth = 0.6;
           ctx.stroke();
         }
       }
 
-      // Subtle interaction with mouse cursor
+      // Subtle cyan magnetic glow towards mouse
       const mdx = p.x - mouse.x;
       const mdy = p.y - mouse.y;
       const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -101,7 +278,7 @@ function initAmbientCanvas() {
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(mouse.x, mouse.y);
-        ctx.strokeStyle = `rgba(6, 182, 212, ${0.15 * (1 - mDist / 160)})`;
+        ctx.strokeStyle = `rgba(6, 182, 212, ${0.14 * (1 - mDist / 160)})`;
         ctx.lineWidth = 0.8;
         ctx.stroke();
       }
@@ -114,7 +291,7 @@ function initAmbientCanvas() {
 }
 
 /* ==========================================================================
-   2. SCROLL TRACKING & INDICATOR
+   4. SCROLL TRACKING & PROGRESS BAR
    ========================================================================== */
 function initScrollTracking() {
   const scrollThumb = document.getElementById('scrollThumb');
@@ -132,7 +309,7 @@ function initScrollTracking() {
 }
 
 /* ==========================================================================
-   3. CONTACT FORM -> DIRECT TELEGRAM LEAD GENERATOR
+   5. CONTACT FORM -> DIRECT TELEGRAM LEAD GENERATOR
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contactForm');

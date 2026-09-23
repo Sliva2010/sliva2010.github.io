@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>LUMINA AI Studio — Виртуальные фотосессии и студийные портреты нового поколения</title>
+  
+  <meta name="description" content="LUMINA AI Studio — генерация профессиональных студийных фотосессий уровня Forbes и Vogue по обычным селфи за 15 минут с помощью нейросетей.">
+
+  <!-- Favicon (Clean Vector SVG Aperture) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.0">
+
+  <!-- Fonts: Space Grotesk (Futuristic headings) & Inter (Precision body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=1.0">
+</head>
+<body>
+
+  <!-- Background Ambient Glow Orbs -->
+  <div class="ambient-glow glow-violet" aria-hidden="true"></div>
+  <div class="ambient-glow glow-cyan" aria-hidden="true"></div>
+  <div class="ambient-glow glow-magenta" aria-hidden="true"></div>
+
+  <!-- 1. Top Announcement Bar -->
+  <aside class="announcement-bar anim-slide-down">
+    <div class="bar-container">
+      <div class="bar-tag">
+        <span class="live-dot"></span>
+        <span>LUMINA ENGINE v3.4</span>
+      </div>
+      <p class="bar-text">Новая модель студийного рендеринга: поддержка естественной текстуры кожи и 4K Ultra-HD</p>
+      <a href="#simulator" class="bar-cta">Попробовать демо &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- 2. Header & Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="14" fill="#0d111e"/>
+            <path d="M 32 14 L 46 22 L 40 34 Z" fill="#8b5cf6" />
+            <path d="M 46 22 L 50 38 L 38 38 Z" fill="#ec4899" />
+            <path d="M 50 38 L 40 50 L 32 40 Z" fill="#06b6d4" />
+            <path d="M 40 50 L 24 50 L 26 38 Z" fill="#8b5cf6" />
+            <path d="M 24 50 L 14 38 L 26 32 Z" fill="#ec4899" />
+            <path d="M 14 38 L 18 22 L 30 26 Z" fill="#06b6d4" />
+            <path d="M 32 20 Q 32 32 44 32 Q 32 32 32 44 Q 32 32 20 32 Q 32 32 32 20 Z" fill="#ffffff" />
+          </svg>
+        </div>
+        <span class="brand-name">LUMINA<span class="brand-accent">.AI</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links">
+        <a href="#compare" class="nav-link">До / После</a>
+        <a href="#gallery" class="nav-link">Стили & Работы</a>
+        <a href="#how-it-works" class="nav-link">Как работает</a>
+        <a href="#simulator" class="nav-link">Тест генерации</a>
+        <a href="#pricing" class="nav-link">Тарифы</a>
+        <a href="#reviews" class="nav-link">Отзывы</a>
+      </nav>
+
+      <!-- Right Action CTA -->
+      <div class="nav-actions">
+        <a href="#pricing" class="btn-glow-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span>Создать фотосессию</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 3. Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        
+        <!-- Eyebrow Badge -->
+        <div class="hero-badge reveal-fade">
+          <span class="badge-spark">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/>
+            </svg>
+          </span>
+          <span>ПЕРВАЯ ВИРТУАЛЬНАЯ НЕЙРО-ФОТОСТУДИЯ</span>
+        </div>
+
+        <!-- Monumental Heading -->
+        <h1 class="hero-title reveal-fade" data-delay="0.1">
+          Студийные фотосессии уровня <span class="gradient-text">Forbes и Vogue</span> без фотографа
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle reveal-fade" data-delay="0.2">
+          Загрузите 5 обычных селфи — наш искусственный интеллект точно воссоздаст ваши черты и сгенерирует более 100 студийных портретов с журнальным светом за 15 минут.
+        </p>
+
+        <!-- CTA Buttons Row -->
+        <div class="hero-actions reveal-fade" data-delay="0.3">
+          <a href="#pricing" class="btn-hero-primary">
+            <span>Выбрать фотосессию</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#compare" class="btn-hero-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polygon points="10 8 16 12 10 16 10 8"/>
+            </svg>
+            <span>Смотреть До / После</span>
+          </a>
+        </div>
+
+        <!-- Metric Trust Counters -->
+        <div class="hero-metrics-grid reveal-fade" data-delay="0.4">
+          <div class="metric-card">
+            <div class="metric-val">250K+</div>
+            <div class="metric-label">Портретов создано</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">15 мин</div>
+            <div class="metric-label">Время полной съёмки</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">4.98</div>
+            <div class="metric-label">Средняя оценка звёзд</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">100%</div>
+            <div class="metric-label">Портретное сходство</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. Interactive Before / After Split Slider -->
+    <section class="compare-section" id="compare">
+      <div class="section-container">
+        
+        <div class="section-head reveal-up">
+          <span class="section-category">РЕАЛЬНОЕ СРАВНЕНИЕ ТЕХНОЛОГИИ</span>
+          <h2 class="section-title">Одно домашнее селфи — студийный шедевр</h2>
+          <p class="section-desc">Потяните ползунок в центре, чтобы сравнить исходное фото с телефона и результат генерации LUMINA AI.</p>
+        </div>
+
+        <!-- The Interactive Slider Stage -->
+        <div class="slider-stage-wrapper reveal-scale">
+          
+          <div class="before-after-container" id="beforeAfterSlider">
+            
+            <!-- After Image (Background layer: Forbes studio portrait) -->
+            <div class="image-layer layer-after">
+              <img src="assets/after.jpg" alt="LUMINA AI — Студийный бизнес-портрет" class="compare-img">
+              <div class="layer-badge badge-after">
+                <span class="badge-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </span>
+                <span>ПОСЛЕ: LUMINA Studio Pro (8K, 85mm f/1.4)</span>
+              </div>
+            </div>
+
+            <!-- Before Image (Clipped layer: Casual smartphone selfie) -->
+            <div class="image-layer layer-before" id="layerBefore">
+              <img src="assets/before.jpg" alt="Исходное домашнее селфи" class="compare-img">
+              <div class="layer-badge badge-before">
+                <span class="badge-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>
+                </span>
+                <span>ДО: Селфи со смартфона в комнате</span>
+              </div>
+            </div>
+
+            <!-- The Draggable Divider Handle -->
+            <div class="slider-handle" id="sliderHandle" aria-label="Ползунок сравнения">
+              <div class="handle-line"></div>
+              <div class="handle-thumb">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                  <polyline points="9 18 3 12 9 6"></polyline>
+                </svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                  <polyline points="15 18 21 12 15 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Slider Controls & Auto Demo Button -->
+          <div class="slider-controls-bar">
+            <span class="hint-text">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+              </svg>
+              Тяните ползунок влево и вправо для осмотра деталей
+            </span>
+            <button class="btn-auto-slide" id="btnAutoSlide">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span>Авто-демонстрация</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Interactive Style Showcase & Works Gallery -->
+    <section class="gallery-section" id="gallery">
+      <div class="section-container">
+        
+        <div class="section-head reveal-up">
+          <span class="section-category">ПРИМЕРЫ СТУДИЙНЫХ СЕССИЙ</span>
+          <h2 class="section-title">Каталог стилей: от Forbes до Киберпанка</h2>
+          <p class="section-desc">Каждый портрет генерируется с индивидуальным 3D-моделированием света, фокусного расстояния и ткани одежды.</p>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="gallery-tabs reveal-up" data-delay="0.1">
+          <button class="filter-btn active" data-filter="all">Все съёмки</button>
+          <button class="filter-btn" data-filter="business">Бизнес & Forbes</button>
+          <button class="filter-btn" data-filter="fashion">Editorial Fashion</button>
+          <button class="filter-btn" data-filter="cinematic">Киберпанк & Неон</button>
+          <button class="filter-btn" data-filter="casual">Золотой час & Life</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+          
+          <!-- Card 1: Business -->
+          <article class="photo-card reveal-up" data-category="business" data-delay="0.1">
+            <div class="photo-box">
+              <img src="assets/style-business.jpg" alt="Бизнес-портрет CEO для LinkedIn" class="card-photo" loading="lazy">
+              <div class="photo-overlay-glass">
+                <div class="meta-row">
+                  <span class="meta-tag">85mm f/1.4 Softbox</span>
+                  <span class="meta-tag highlight-tag">Forbes Style</span>
+                </div>
+                <h3 class="card-client-name">Ольга Соколова</h3>
+                <p class="card-client-role">Founder & CEO EdTech платформы</p>
+                <div class="card-tech-prompt">
+                  <code>«Executive portrait, soft studio key light, office background, confident posture, hyper-realistic»</code>
+                </div>
+              </div>
+            </div>
+            <div class="card-caption">
+              <strong class="caption-title">Бизнес-портрет премиум</strong>
+              <span class="caption-time">Генерация: 3.2 мин</span>
+            </div>
+          </article>
+
+          <!-- Card 2: Editorial Fashion -->
+          <article class="photo-card reveal-up" data-category="fashion" data-delay="0.2">
+            <div class="photo-box">
+              <img src="assets/style-fashion.jpg" alt="High Fashion студийная съёмка" class="card-photo" loading="lazy">
+              <div class="photo-overlay-glass">
+                <div class="meta-row">
+                  <span class="meta-tag">Vogue Lighting</span>
+                  <span class="meta-tag highlight-tag">Haute Couture</span>
+                </div>
+                <h3 class="card-client-name">Амалия Дюваль</h3>
+                <p class="card-client-role">Fashion-инфлюенсер, Париж</p>
+                <div class="card-tech-prompt">
+                  <code>«Editorial fashion cover, chic minimalist trenchcoat, warm dramatic rim light, 8k crisp detail»</code>
+                </div>
+              </div>
+            </div>
+            <div class="card-caption">
+              <strong class="caption-title">Editorial & Модный глянец</strong>
+              <span class="caption-time">Генерация: 2.8 мин</span>
+            </div>
+          </article>
+
+          <!-- Card 3: Cyberpunk Neon -->
+          <article class="photo-card reveal-up" data-category="cinematic" data-delay="0.3">
+            <div class="photo-box">
+              <img src="assets/style-cinematic.jpg" alt="Киберпанк неоновый ночной портрет" class="card-photo" loading="lazy">
+              <div class="photo-overlay-glass">
+                <div class="meta-row">
+                  <span class="meta-tag">Neon Mist</span>
+                  <span class="meta-tag highlight-tag">Neo-Noir</span>
+                </div>
+                <h3 class="card-client-name">Кирилл Ветров</h3>
+                <p class="card-client-role">Саунд-продюсер и DJ</p>
+                <div class="card-tech-prompt">
+                  <code>«Cinematic night portrait, vivid cyan & purple neon lighting, leather jacket, rainy street reflection»</code>
+                </div>
+              </div>
+            </div>
+            <div class="card-caption">
+              <strong class="caption-title">Киберпанк & Кино-свет</strong>
+              <span class="caption-time">Генерация: 4.1 мин</span>
+            </div>
+          </article>
+
+          <!-- Card 4: Casual Golden Hour -->
+          <article class="photo-card reveal-up" data-category="casual" data-delay="0.4">
+            <div class="photo-box">
+              <img src="assets/style-casual.jpg" alt="Теплый портрет на террасе кафе" class="card-photo" loading="lazy">
+              <div class="photo-overlay-glass">
+                <div class="meta-row">
+                  <span class="meta-tag">50mm f/1.2 Bokeh</span>
+                  <span class="meta-tag highlight-tag">Golden Hour</span>
+                </div>
+                <h3 class="card-client-name">Мария Лебедева</h3>
+                <p class="card-client-role">Арт-директор брендингового агентства</p>
+                <div class="card-tech-prompt">
+                  <code>«Natural warm sunset glow, smiling warmly, Paris cafe terrace, relaxed aesthetic luxury»</code>
+                </div>
+              </div>
+            </div>
+            <div class="card-caption">
+              <strong class="caption-title">Золотой час & Lifestyle</strong>
+              <span class="caption-time">Генерация: 3.5 мин</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. How It Works (3 Steps) -->
+    <section class="how-section" id="how-it-works">
+      <div class="section-container">
+        
+        <div class="section-head reveal-up">
+          <span class="section-category">ПРОСТОЙ ПРОЦЕСС СЪЁМКИ</span>
+          <h2 class="section-title">Как получить 100+ фото за 15 минут</h2>
+          <p class="section-desc">Без фотостудий, визажистов, неловкого позирования и ожидания ретуши неделями.</p>
+        </div>
+
+        <div class="steps-grid">
+          
+          <div class="step-card reveal-up" data-delay="0.1">
+            <div class="step-header">
+              <span class="step-number">01</span>
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="step-title">Загрузите 5–10 селфи</h3>
+            <p class="step-text">Подойдут обычные повседневные фото со смартфона при любом освещении и в разной одежде.</p>
+          </div>
+
+          <div class="step-card reveal-up" data-delay="0.2">
+            <div class="step-header">
+              <span class="step-number">02</span>
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="step-title">Выберите стили и гардероб</h3>
+            <p class="step-text">От строгих деловых костюмов до высокой моды, подиумных нарядов и вечернего неонового света.</p>
+          </div>
+
+          <div class="step-card reveal-up" data-delay="0.3">
+            <div class="step-header">
+              <span class="step-number">03</span>
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="step-title">Скачайте 4K шедевры</h3>
+            <p class="step-text">Нейросеть сгенерирует сотни кадров в максимальном разрешении с коммерческими правами на печать.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. Interactive Generation Simulator -->
+    <section class="simulator-section" id="simulator">
+      <div class="section-container">
+        
+        <div class="simulator-glass-card reveal-scale">
+          <div class="sim-header">
+            <div class="sim-pill">
+              <span class="pulsing-led"></span>
+              <span>ИНТЕРАКТИВНЫЙ СИМУЛЯТОР СЪЁМКИ</span>
+            </div>
+            <h2 class="sim-title">Соберите свою виртуальную фотосессию</h2>
+            <p class="sim-subtitle">Выберите параметры света, настроения и стиля, чтобы оценить скорость и процесс синтеза нейросети.</p>
+          </div>
+
+          <div class="sim-controls-grid">
+            
+            <!-- Selector 1: Style -->
+            <div class="control-group">
+              <label class="group-label">Стиль фотосессии</label>
+              <div class="pill-options" id="styleSelector">
+                <button class="pill-btn active" data-style="business">Бизнес Forbes</button>
+                <button class="pill-btn" data-style="editorial">Vogue Fashion</button>
+                <button class="pill-btn" data-style="neon">Cyberpunk</button>
+                <button class="pill-btn" data-style="casual">Warm Sunset</button>
+              </div>
+            </div>
+
+            <!-- Selector 2: Lighting Setup -->
+            <div class="control-group">
+              <label class="group-label">Световая схема</label>
+              <div class="pill-options" id="lightSelector">
+                <button class="pill-btn active" data-light="soft">Softbox 120cm</button>
+                <button class="pill-btn" data-light="rim">Контровой Rim-Light</button>
+                <button class="pill-btn" data-light="golden">Золотой закат</button>
+                <button class="pill-btn" data-light="dramatic">Драматичный нуар</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Live Generation Progress Simulation -->
+          <div class="sim-render-box">
+            <div class="render-info-row">
+              <span class="render-status-text" id="renderStatus">Готов к генерации пресета</span>
+              <span class="render-percent" id="renderPercent">0%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <button class="btn-start-render" id="btnStartRender">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span>Смоделировать запуск съёмки</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. Pricing & Packages -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-container">
+        
+        <div class="section-head reveal-up">
+          <span class="section-category">ПРОЗРАЧНЫЕ ТАРИФЫ</span>
+          <h2 class="section-title">В 15 раз выгоднее аренды реальной студии</h2>
+          <p class="section-desc">Обычная студийная съёмка с фотографом, макияжем и арендой стоит от 25 000 ₽. В LUMINA вы получаете в 10 раз больше кадров за минуты.</p>
+        </div>
+
+        <div class="pricing-grid">
+          
+          <!-- Plan 1: Starter -->
+          <div class="pricing-card reveal-up" data-delay="0.1">
+            <div class="plan-head">
+              <h3 class="plan-name">Базовый</h3>
+              <span class="plan-tag">Для аватарок & соцсетей</span>
+            </div>
+            <div class="plan-price">
+              <span class="price-num">1 490</span>
+              <span class="price-curr">₽</span>
+            </div>
+            <p class="plan-desc">Идеальный старт для качественного обновления профилей в мессенджерах и резюме.</p>
+            
+            <ul class="plan-features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>30 портретов</strong> высокого разрешения</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>2 стиля</strong> на выбор</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Разрешение 2K Quad-HD</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Время генерации ~ 25 минут</span>
+              </li>
+            </ul>
+
+            <button class="btn-plan btn-plan-outline" data-plan="Базовый">Выбрать тариф</button>
+          </div>
+
+          <!-- Plan 2: PRO Studio (BESTSELLER) -->
+          <div class="pricing-card card-featured reveal-up" data-delay="0.2">
+            <div class="popular-ribbon">ХИТ ПРОДАЖ • 92% ВЫБИРАЮТ ЕГО</div>
+            <div class="plan-head">
+              <h3 class="plan-name">PRO Студия</h3>
+              <span class="plan-tag">Для экспертов и брендов</span>
+            </div>
+            <div class="plan-price">
+              <span class="price-num">2 990</span>
+              <span class="price-curr">₽</span>
+            </div>
+            <p class="plan-desc">Комплексная фотосессия: бизнес-портреты, лайфстайл и подиумные образы на весь год контента.</p>
+            
+            <ul class="plan-features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>100 студийных портретов</strong></span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>8 стилей</strong> студийного света</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>4K Ultra-HD</strong> (печать баннеров)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Умная авторетушь кожи и взгляда</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Коммерческие авторские права</span>
+              </li>
+            </ul>
+
+            <button class="btn-plan btn-plan-featured" data-plan="PRO Студия">Начать PRO съёмку</button>
+          </div>
+
+          <!-- Plan 3: Ultra Brand -->
+          <div class="pricing-card reveal-up" data-delay="0.3">
+            <div class="plan-head">
+              <h3 class="plan-name">Ультра & Бренд</h3>
+              <span class="plan-tag">Максимальный охват</span>
+            </div>
+            <div class="plan-price">
+              <span class="price-num">5 990</span>
+              <span class="price-curr">₽</span>
+            </div>
+            <p class="plan-desc">Для топовых спикеров, медийных персон, агентств и корпоративных команд.</p>
+            
+            <ul class="plan-features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>250 кадров</strong> во всех локациях</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Все стили каталога + кастомные промты</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Генерация анимированного видео-аватара</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>VIP-выделенный GPU-сервер (10 мин)</span>
+              </li>
+            </ul>
+
+            <button class="btn-plan btn-plan-outline" data-plan="Ультра & Бренд">Выбрать тариф</button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 9. Social Proof & Verified Reviews -->
+    <section class="reviews-section" id="reviews">
+      <div class="section-container">
+        
+        <div class="section-head reveal-up">
+          <span class="section-category">ОТЗЫВЫ КЛИЕНТОВ</span>
+          <h2 class="section-title">Что говорят те, кто уже попробовал</h2>
+          <p class="section-desc">Более 14 000 клиентов по всему миру используют портреты LUMINA для сайтов, резюме и публикаций в СМИ.</p>
+        </div>
+
+        <div class="reviews-grid">
+          
+          <div class="review-card reveal-up" data-delay="0.1">
+            <div class="review-rating">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="review-text">«Мне срочно нужна была фотосессия для статьи в VC и выступления на конференции. Фотограф запросил 35 тысяч и неделю на отдачу. В LUMINA я за 15 минут получил кадры, которые выглядят даже круче реальных!»</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">АВ</div>
+              <div class="reviewer-info">
+                <strong>Артем Волков</strong>
+                <span>Основатель AI-стартапа</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal-up" data-delay="0.2">
+            <div class="review-rating">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="review-text">«Самое главное опасение было — буду ли я похожа на себя. Результат превзошел ожидания на 200%. Кожа выглядит натурально, нет ощущения пластикового лица, а свет выставлен просто как в глянце.»</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">ЕК</div>
+              <div class="reviewer-info">
+                <strong>Екатерина Ковалева</strong>
+                <span>Бренд-стратег</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal-up" data-delay="0.3">
+            <div class="review-rating">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="review-text">«Обновили аватары для всей команды разработчиков из 12 человек. Сэкономили компании свыше 180 000 рублей на фотосессиях в Москве. Вся команда в восторге от стиля киберпанк!»</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">ДМ</div>
+              <div class="reviewer-info">
+                <strong>Дмитрий Миронов</strong>
+                <span>Head of People, FinTech</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10. FAQ Accordion -->
+    <section class="faq-section" id="faq">
+      <div class="section-container">
+        
+        <div class="section-head reveal-up">
+          <span class="section-category">ЧАСТЫЕ ВОПРОСЫ</span>
+          <h2 class="section-title">Всё, что важно знать перед стартом</h2>
+        </div>
+
+        <div class="faq-accordion reveal-up" data-delay="0.1">
+          
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Буду ли я похож на себя на сгенерированных фото?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-content">
+              <p>Да! LUMINA строит детальную 3D-карту геометрии вашего лица (расстояние между зрачками, пропорции скул, форму носа и линии улыбки). Технология сохраняет 100% узнаваемость, улучшая лишь качество освещения, резкость оптики и одежду.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Что происходит с моими исходными селфи после съёмки?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-content">
+              <p>Ваша безопасность и конфиденциальность строго защищены: все загруженные исходные фото автоматически безвозвратно удаляются с наших серверов сразу после завершения генерации.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Могу ли я использовать снимки в коммерческих целях?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-content">
+              <p>Да. В тарифах PRO и Ультра вы получаете полные коммерческие права без ограничений: вы можете размещать портреты на билбордах, обложках книг, в пресс-релизах, рекламных кампаниях и соцсетях.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Box -->
+  <div class="toast-box" id="toastBox">Уведомление</div>
+
+  <!-- 11. Modern Futuristic Brand Footer -->
+  <footer class="footer reveal-up">
+    <div class="footer-container">
+      
+      <div class="footer-top-row">
+        
+        <div class="footer-brand-col">
+          <a href="#" class="brand-logo footer-logo">
+            <div class="brand-icon-box">
+              <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+                <rect width="64" height="64" rx="14" fill="#0d111e"/>
+                <path d="M 32 14 L 46 22 L 40 34 Z" fill="#8b5cf6" />
+                <path d="M 46 22 L 50 38 L 38 38 Z" fill="#ec4899" />
+                <path d="M 50 38 L 40 50 L 32 40 Z" fill="#06b6d4" />
+                <path d="M 40 50 L 24 50 L 26 38 Z" fill="#8b5cf6" />
+                <path d="M 32 20 Q 32 32 44 32 Q 32 32 32 44 Q 32 32 20 32 Q 32 32 32 20 Z" fill="#ffffff" />
+              </svg>
+            </div>
+            <span class="brand-name">LUMINA<span class="brand-accent">.AI</span></span>
+          </a>
+          <p class="footer-desc">Виртуальная фотостудия нового поколения на базе генеративного искусственного интеллекта. Ваша лучшая фотосессия без студий и фотографов.</p>
+        </div>
+
+        <div class="footer-links-col">
+          <strong class="col-head">НАВИГАЦИЯ</strong>
+          <a href="#compare">Сравнение До / После</a>
+          <a href="#gallery">Каталог стилей</a>
+          <a href="#simulator">Симулятор съёмки</a>
+          <a href="#pricing">Тарифы и цены</a>
+        </div>
+
+        <div class="footer-links-col">
+          <strong class="col-head">ТЕХНОЛОГИИ</strong>
+          <a href="#how-it-works">3D-моделирование света</a>
+          <a href="#how-it-works">Авторетушь микротекстуры</a>
+          <a href="#faq">Конфиденциальность данных</a>
+        </div>
+
+        <div class="footer-links-col author-col">
+          <strong class="col-head">РАЗРАБОТКА & ПОРТФОЛИО</strong>
+          <p class="credit-text">Дизайн, верстка и логика: <strong>Вячеслав</strong></p>
+          <a href="../../index.html" class="portfolio-back-btn">
+            <span>Вернуться в портфолио</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://t.me/SLAVASDF" target="_blank" rel="noopener noreferrer" class="telegram-link">Telegram: @SLAVASDF</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 LUMINA AI STUDIO. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span>
+        <span>ПРОЕКТ #4 ПОРТФОЛИО ВЯЧЕСЛАВА</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="app.js?v=1.0"></script>
+</body>
+</html>

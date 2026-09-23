@@ -1,6 +1,6 @@
 /**
- * GAZU FASHION & STREETWEAR ECOMMERCE
- * Interactive cart drawer, wishlist, and micro-interactions
+ * GAZU FASHION & STREETWEAR ECOMMERCE (v2.0)
+ * Interactive cart drawer, wishlist, scroll animations and Russian localized notifications
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCartDrawer();
   initProductQuickAdd();
   initUtilityNotice();
+  initScrollAnimations();
 });
 
 let wishlistTotal = 0;
@@ -27,10 +28,10 @@ function initWishlist() {
 
       if (isActive) {
         wishlistTotal++;
-        showToast('Item added to your wishlist');
+        showToast('Товар добавлен в избранное');
       } else {
         wishlistTotal = Math.max(0, wishlistTotal - 1);
-        showToast('Item removed from wishlist');
+        showToast('Товар удален из избранного');
       }
 
       if (wishlistCount) {
@@ -42,7 +43,7 @@ function initWishlist() {
   const wishlistTrigger = document.getElementById('wishlistTriggerBtn');
   if (wishlistTrigger) {
     wishlistTrigger.addEventListener('click', () => {
-      showToast(`Wishlist contains ${wishlistTotal} items`);
+      showToast(`В избранном: ${wishlistTotal} ${declOfNum(wishlistTotal, ['товар', 'товара', 'товаров'])}`);
     });
   }
 }
@@ -90,13 +91,13 @@ function initCartDrawer() {
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
       if (!cartItems.length) {
-        showToast('Your shopping bag is empty');
+        showToast('Ваша корзина пуста');
         return;
       }
-      showToast('Thank you for choosing GAZU! Demo checkout completed.');
+      showToast('Спасибо за заказ в GAZU! Демо-оформление завершено.');
       cartItems = [];
       renderCart();
-      setTimeout(closeCart, 1200);
+      setTimeout(closeCart, 1400);
     });
   }
 }
@@ -127,14 +128,13 @@ function initProductQuickAdd() {
       }
 
       renderCart();
-      showToast(`Added "${name}" to shopping bag`);
+      showToast(`«${name}» добавлен в корзину`);
     });
   });
 }
 
 function renderCart() {
   const list = document.getElementById('cartItemsList');
-  const emptyState = document.getElementById('cartEmptyState');
   const subtotalEl = document.getElementById('cartSubtotal');
   const cartCountEl = document.getElementById('cartCount');
 
@@ -154,8 +154,8 @@ function renderCart() {
   if (cartItems.length === 0) {
     list.innerHTML = `
       <div class="cart-empty-state" id="cartEmptyState">
-        <p>Your shopping bag is currently empty.</p>
-        <a href="#best-of-gazu" class="btn-shop-now" id="continueShoppingBtn">EXPLORE COLLECTION</a>
+        <p>Ваша корзина пока пуста.</p>
+        <a href="#best-of-gazu" class="btn-shop-now" id="continueShoppingBtn">СМОТРЕТЬ КАТАЛОГ</a>
       </div>
     `;
     const contBtn = document.getElementById('continueShoppingBtn');
@@ -176,7 +176,7 @@ function renderCart() {
         <h4 class="cart-item-name">${item.name}</h4>
         <span class="cart-item-price">${item.qty} × ${item.price.toLocaleString('ru-RU')} ₽</span>
         <br>
-        <span class="cart-item-remove" data-id="${item.id}">Remove</span>
+        <span class="cart-item-remove" data-id="${item.id}">Удалить</span>
       </div>
     </div>
   `).join('');
@@ -188,7 +188,7 @@ function renderCart() {
       const id = btn.getAttribute('data-id');
       cartItems = cartItems.filter(item => item.id !== id);
       renderCart();
-      showToast('Item removed from bag');
+      showToast('Товар удален из корзины');
     });
   });
 }
@@ -202,15 +202,50 @@ function initUtilityNotice() {
 
   if (searchBtn) {
     searchBtn.addEventListener('click', () => {
-      showToast('Search catalog: type keyword...');
+      showToast('Поиск по каталогу: введите название...');
     });
   }
 
   if (loginBtn) {
     loginBtn.addEventListener('click', () => {
-      showToast('Member login: enter your credentials');
+      showToast('Личный кабинет: авторизация клиента');
     });
   }
+}
+
+/**
+ * 5. Distinct Scroll Reveal Animations
+ */
+function initScrollAnimations() {
+  const elements = document.querySelectorAll(
+    '.reveal-category, .reveal-vibes-left, .reveal-vibes-right, .reveal-trust, .reveal-product-header, .reveal-product-card'
+  );
+
+  if (!elements.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = el.getAttribute('data-delay');
+        if (delay) {
+          el.style.transitionDelay = `${delay}s`;
+        }
+        el.classList.add('is-visible');
+        obs.unobserve(el);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  elements.forEach(el => observer.observe(el));
 }
 
 /**
@@ -228,4 +263,16 @@ function showToast(message) {
   toastTimeout = setTimeout(() => {
     toast.classList.remove('is-visible');
   }, 2400);
+}
+
+/**
+ * Declension helper for Russian nouns
+ */
+function declOfNum(number, titles) {
+  const cases = [2, 0, 1, 1, 1, 2];
+  return titles[
+    number % 100 > 4 && number % 100 < 20
+      ? 2
+      : cases[number % 10 < 5 ? number % 10 : 5]
+  ];
 }

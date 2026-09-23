@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>GAZU — Minimalist Streetwear & Fashion eCommerce</title>
+  <title>GAZU — Премиальный стритвир и концептуальный магазин одежды</title>
   
-  <meta name="description" content="GAZU Official Store. Fashion that moves with you. Explore the new season collection of elevated everyday essentials.">
+  <meta name="description" content="Официальный онлайн-магазин GAZU. Мода, которая движется вместе с тобой. Новая коллекция оверсайз футболок, худи и базового премиального гардероба.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2.0">
 
-  <!-- Fonts: Montserrat & Inter for high-fashion editorial precision -->
+  <!-- Fonts: Montserrat & Inter for editorial streetwear precision -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=1.0">
+  <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 <body>
 
   <!-- 1. Top Utility Bar (Black) -->
-  <aside class="utility-bar">
+  <aside class="utility-bar anim-fade-down">
     <div class="utility-container">
       <div class="utility-left">
-        <span>FREE DELIVERY ON ORDERS ABOVE 1999</span>
+        <span>БЕСПЛАТНАЯ ДОСТАВКА ПРИ ЗАКАЗЕ ОТ 1999 ₽</span>
       </div>
       <div class="utility-right">
-        <a href="#help" class="utility-link">DOWNLOAD APP</a>
+        <a href="#help" class="utility-link">СКАЧАТЬ ПРИЛОЖЕНИЕ</a>
         <span class="utility-sep">|</span>
-        <a href="#track" class="utility-link">TRACK ORDER</a>
+        <a href="#track" class="utility-link">ОТСЛЕДИТЬ ЗАКАЗ</a>
         <span class="utility-sep">|</span>
-        <a href="#help" class="utility-link">HELP</a>
+        <a href="#help" class="utility-link">ПОМОЩЬ</a>
       </div>
     </div>
   </aside>
 
   <!-- 2. Main Navigation Bar -->
-  <header class="navbar" id="navbar">
+  <header class="navbar anim-fade-down" id="navbar">
     <div class="nav-container">
       
       <!-- Nav Categories Left -->
       <nav class="nav-left">
-        <a href="#men" class="nav-category-link">MEN</a>
-        <a href="#women" class="nav-category-link">WOMEN</a>
-        <a href="#kids" class="nav-category-link">KIDS</a>
+        <a href="#men" class="nav-category-link">МУЖСКОЕ</a>
+        <a href="#women" class="nav-category-link">ЖЕНСКОЕ</a>
+        <a href="#kids" class="nav-category-link">ДЕТСКОЕ</a>
         <a href="#beauty" class="nav-category-link">BEAUTY</a>
       </nav>
 
       <!-- Center Monumental Logo -->
-      <a href="#" class="brand-logo" aria-label="GAZU Homepage">
+      <a href="#" class="brand-logo" aria-label="GAZU Главная">
         <span>GAZU</span>
       </a>
 
@@ -60,7 +60,7 @@
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <span class="action-label">SEARCH</span>
+          <span class="action-label">ПОИСК</span>
         </button>
 
         <button class="nav-action-btn" id="loginTriggerBtn">
@@ -68,14 +68,14 @@
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
             <circle cx="12" cy="7" r="4"/>
           </svg>
-          <span class="action-label">LOGIN</span>
+          <span class="action-label">ВОЙТИ</span>
         </button>
 
         <button class="nav-action-btn" id="wishlistTriggerBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="wishlist-header-svg">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
-          <span class="action-label">WISHLIST</span>
+          <span class="action-label">ИЗБРАННОЕ</span>
           <span class="action-counter" id="wishlistCount">(0)</span>
         </button>
 
@@ -85,7 +85,7 @@
             <line x1="3" y1="6" x2="21" y2="6"/>
             <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
-          <span class="action-label">CART</span>
+          <span class="action-label">КОРЗИНА</span>
           <span class="action-counter" id="cartCount">(0)</span>
         </button>
 
@@ -99,35 +99,38 @@
     <!-- 3. Hero Section (Layered Monumental Typography & Walking Model) -->
     <section class="hero-stage">
       
-      <!-- Backdrop with Giant Letters + Walking Model -->
-      <div class="hero-canvas-wrap">
-        <img src="assets/hero-clean-backdrop.jpg" alt="GAZU Fashion Model Walking in Trenchcoat" class="hero-backdrop-img">
+      <!-- Crisp Vector Typography Behind the Model -->
+      <div class="hero-giant-letters" aria-hidden="true">GAZU</div>
+
+      <!-- High-Resolution Walking Model Centerpiece -->
+      <div class="hero-model-wrap anim-hero-model">
+        <img src="assets/hero-model.jpg" alt="GAZU Fashion Model Walking in Trenchcoat" class="hero-model-photo">
       </div>
 
       <!-- Real Scalable Microcopy & Interactive Buttons Layered Over Hero -->
       <div class="hero-overlay-ui">
         
         <!-- Top-Left Quote -->
-        <div class="hero-quote-box">
+        <div class="hero-quote-box anim-hero-left">
           <h2 class="hero-quote-text">
-            <span>FASHION</span>
-            <span>THAT MOVES</span>
-            <span>WITH YOU.</span>
+            <span>МОДА,</span>
+            <span>КОТОРАЯ ДВИЖЕТСЯ</span>
+            <span>ВМЕСТЕ С ТОБОЙ.</span>
           </h2>
           <div class="quote-underline"></div>
         </div>
 
         <!-- Bottom-Left CTA Group -->
-        <div class="hero-cta-box">
-          <a href="#best-of-gazu" class="btn-shop-now">SHOP NOW</a>
-          <a href="#new-vibes" class="btn-explore-new">EXPLORE NEW IN</a>
+        <div class="hero-cta-box anim-hero-left">
+          <a href="#best-of-gazu" class="btn-shop-now">В КАТАЛОГ</a>
+          <a href="#new-vibes" class="btn-explore-new">СМОТРЕТЬ НОВИНКИ</a>
         </div>
 
         <!-- Bottom-Right Collection Tag -->
-        <div class="hero-season-box">
+        <div class="hero-season-box anim-hero-right">
           <div class="season-text">
-            <span>NEW</span>
-            <span>COLLECTION</span>
+            <span>НОВАЯ</span>
+            <span>КОЛЛЕКЦИЯ</span>
             <span>2024</span>
           </div>
           <div class="season-underline"></div>
@@ -142,38 +145,38 @@
       <div class="categories-container">
         
         <!-- Category 1: MEN -->
-        <div class="category-card" id="men">
+        <div class="category-card reveal-category" data-delay="0.1" id="men">
           <div class="cat-thumb-box">
-            <img src="assets/cat-men.jpg" alt="Men's Collection" class="cat-thumb-img">
+            <img src="assets/cat-men.jpg" alt="Мужская коллекция" class="cat-thumb-img" loading="lazy">
           </div>
           <div class="cat-info-box">
-            <h3 class="cat-title">MEN</h3>
-            <p class="cat-tagline">Elevated everyday essentials.</p>
-            <a href="#best-of-gazu" class="cat-link">SHOP MEN &rarr;</a>
+            <h3 class="cat-title">МУЖСКОЕ</h3>
+            <p class="cat-tagline">Базовый гардероб премиального уровня.</p>
+            <a href="#best-of-gazu" class="cat-link">СМОТРЕТЬ КОЛЛЕКЦИЮ &rarr;</a>
           </div>
         </div>
 
         <!-- Category 2: WOMEN -->
-        <div class="category-card" id="women">
+        <div class="category-card reveal-category" data-delay="0.2" id="women">
           <div class="cat-thumb-box">
-            <img src="assets/cat-women.jpg" alt="Women's Collection" class="cat-thumb-img">
+            <img src="assets/cat-women.jpg" alt="Женская коллекция" class="cat-thumb-img" loading="lazy">
           </div>
           <div class="cat-info-box">
-            <h3 class="cat-title">WOMEN</h3>
-            <p class="cat-tagline">Effortless style for every you.</p>
-            <a href="#best-of-gazu" class="cat-link">SHOP WOMEN &rarr;</a>
+            <h3 class="cat-title">ЖЕНСКОЕ</h3>
+            <p class="cat-tagline">Непринужденный стиль на каждый день.</p>
+            <a href="#best-of-gazu" class="cat-link">СМОТРЕТЬ КОЛЛЕКЦИЮ &rarr;</a>
           </div>
         </div>
 
         <!-- Category 3: KIDS -->
-        <div class="category-card" id="kids">
+        <div class="category-card reveal-category" data-delay="0.3" id="kids">
           <div class="cat-thumb-box">
-            <img src="assets/cat-kids.jpg" alt="Kids Collection" class="cat-thumb-img">
+            <img src="assets/cat-kids.jpg" alt="Детская коллекция" class="cat-thumb-img" loading="lazy">
           </div>
           <div class="cat-info-box">
-            <h3 class="cat-title">KIDS</h3>
-            <p class="cat-tagline">Comfort meets cool everyday.</p>
-            <a href="#best-of-gazu" class="cat-link">SHOP KIDS &rarr;</a>
+            <h3 class="cat-title">ДЕТСКОЕ</h3>
+            <p class="cat-tagline">Комфорт и современный оверсайз.</p>
+            <a href="#best-of-gazu" class="cat-link">СМОТРЕТЬ КОЛЛЕКЦИЮ &rarr;</a>
           </div>
         </div>
 
@@ -185,18 +188,18 @@
       <div class="vibes-split-grid">
         
         <!-- Left Editorial Copy -->
-        <div class="vibes-content-col">
-          <span class="vibes-eyebrow">NEW SEASON</span>
+        <div class="vibes-content-col reveal-vibes-left">
+          <span class="vibes-eyebrow">НОВЫЙ СЕЗОН</span>
           <h2 class="vibes-main-heading">
             NEW<br>VIBES
           </h2>
-          <p class="vibes-sub-desc">Discover everything new and now.</p>
-          <a href="#best-of-gazu" class="btn-explore-collection">EXPLORE COLLECTION</a>
+          <p class="vibes-sub-desc">Открой для себя всё самое актуальное прямо сейчас.</p>
+          <a href="#best-of-gazu" class="btn-explore-collection">СМОТРЕТЬ КОЛЛЕКЦИЮ</a>
         </div>
 
         <!-- Right Model Portrait -->
-        <div class="vibes-visual-col">
-          <img src="assets/vibes-model.jpg" alt="Curly-haired model in black streetwear jacket" class="vibes-model-img">
+        <div class="vibes-visual-col reveal-vibes-right">
+          <img src="assets/vibes-model.jpg" alt="Стильная модель в черной рубашке-куртке" class="vibes-model-img" loading="lazy">
         </div>
 
       </div>
@@ -206,7 +209,7 @@
     <section class="trust-strip">
       <div class="trust-container">
         
-        <div class="trust-item">
+        <div class="trust-item reveal-trust" data-delay="0.1">
           <div class="trust-icon-box">
             <!-- Fast Delivery Truck SVG -->
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -217,12 +220,12 @@
             </svg>
           </div>
           <div class="trust-text-box">
-            <strong class="trust-title">FAST DELIVERY</strong>
-            <span class="trust-subtitle">Quick & safe delivery</span>
+            <strong class="trust-title">БЫСТРАЯ ДОСТАВКА</strong>
+            <span class="trust-subtitle">Быстро и бережно до двери</span>
           </div>
         </div>
 
-        <div class="trust-item">
+        <div class="trust-item reveal-trust" data-delay="0.2">
           <div class="trust-icon-box">
             <!-- Easy Returns Box SVG -->
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -232,12 +235,12 @@
             </svg>
           </div>
           <div class="trust-text-box">
-            <strong class="trust-title">EASY RETURNS</strong>
-            <span class="trust-subtitle">Within 15 days</span>
+            <strong class="trust-title">ЛЕГКИЙ ВОЗВРАТ</strong>
+            <span class="trust-subtitle">В течение 15 дней без сложностей</span>
           </div>
         </div>
 
-        <div class="trust-item">
+        <div class="trust-item reveal-trust" data-delay="0.3">
           <div class="trust-icon-box">
             <!-- Quality Assured Seal SVG -->
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -246,12 +249,12 @@
             </svg>
           </div>
           <div class="trust-text-box">
-            <strong class="trust-title">QUALITY ASSURED</strong>
-            <span class="trust-subtitle">Best fashion, best quality</span>
+            <strong class="trust-title">ГАРАНТИЯ КАЧЕСТВА</strong>
+            <span class="trust-subtitle">Премиальные ткани и плотный хлопок</span>
           </div>
         </div>
 
-        <div class="trust-item">
+        <div class="trust-item reveal-trust" data-delay="0.4">
           <div class="trust-icon-box">
             <!-- Secure Payment Lock SVG -->
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -260,8 +263,8 @@
             </svg>
           </div>
           <div class="trust-text-box">
-            <strong class="trust-title">SECURE PAYMENT</strong>
-            <span class="trust-subtitle">100% secure checkout</span>
+            <strong class="trust-title">БЕЗОПАСНАЯ ОПЛАТА</strong>
+            <span class="trust-subtitle">100% защита персональных данных</span>
           </div>
         </div>
 
@@ -272,85 +275,85 @@
     <section class="products-section" id="best-of-gazu">
       <div class="products-container">
         
-        <div class="products-header">
-          <h2 class="products-title">BEST OF GAZU</h2>
-          <a href="#all" class="products-view-all">VIEW ALL</a>
+        <div class="products-header reveal-product-header">
+          <h2 class="products-title">ЛУЧШЕЕ В GAZU</h2>
+          <a href="#all" class="products-view-all">СМОТРЕТЬ ВСЁ</a>
         </div>
 
         <div class="products-grid">
           
           <!-- Product 1 -->
-          <div class="product-card" data-id="1" data-name="Raw Edge Heavyweight Tee" data-price="1999" data-img="assets/prod-1.jpg">
+          <div class="product-card reveal-product-card" data-delay="0.1" data-id="1" data-name="Оверсайз футболка Raw Edge Charcoal" data-price="1999" data-img="assets/prod-1.jpg">
             <div class="product-img-box">
-              <img src="assets/prod-1.jpg" alt="Raw Edge Heavyweight Tee" class="product-img">
-              <button class="btn-wishlist" aria-label="Add to wishlist" data-id="1">
+              <img src="assets/prod-1.jpg" alt="Оверсайз футболка Raw Edge Charcoal" class="product-img" loading="lazy">
+              <button class="btn-wishlist" aria-label="Добавить в избранное" data-id="1">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
               </button>
               <div class="quick-add-overlay">
-                <button class="btn-quick-add" data-id="1">ADD TO CART</button>
+                <button class="btn-quick-add" data-id="1">В КОРЗИНУ</button>
               </div>
             </div>
             <div class="product-meta">
-              <h4 class="product-name">Raw Edge Heavyweight Tee</h4>
+              <h4 class="product-name">Оверсайз футболка Raw Edge Charcoal</h4>
               <span class="product-price">1,999 ₽</span>
             </div>
           </div>
 
           <!-- Product 2 -->
-          <div class="product-card" data-id="2" data-name="Archive Graphic Boxy T-Shirt" data-price="2499" data-img="assets/prod-2.jpg">
+          <div class="product-card reveal-product-card" data-delay="0.2" data-id="2" data-name="Винтажная футболка Archive Graphic" data-price="2499" data-img="assets/prod-2.jpg">
             <div class="product-img-box">
-              <img src="assets/prod-2.jpg" alt="Archive Graphic Boxy T-Shirt" class="product-img">
-              <button class="btn-wishlist" aria-label="Add to wishlist" data-id="2">
+              <img src="assets/prod-2.jpg" alt="Винтажная футболка Archive Graphic" class="product-img" loading="lazy">
+              <button class="btn-wishlist" aria-label="Добавить в избранное" data-id="2">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
               </button>
               <div class="quick-add-overlay">
-                <button class="btn-quick-add" data-id="2">ADD TO CART</button>
+                <button class="btn-quick-add" data-id="2">В КОРЗИНУ</button>
               </div>
             </div>
             <div class="product-meta">
-              <h4 class="product-name">Archive Graphic Boxy T-Shirt</h4>
+              <h4 class="product-name">Винтажная футболка Archive Graphic</h4>
               <span class="product-price">2,499 ₽</span>
             </div>
           </div>
 
           <!-- Product 3 -->
-          <div class="product-card" data-id="3" data-name="Minimalist Studio Black Tee" data-price="2199" data-img="assets/prod-3.jpg">
+          <div class="product-card reveal-product-card" data-delay="0.3" data-id="3" data-name="Базовая черная футболка Studio Minimal" data-price="2199" data-img="assets/prod-3.jpg">
             <div class="product-img-box">
-              <img src="assets/prod-3.jpg" alt="Minimalist Studio Black Tee" class="product-img">
-              <button class="btn-wishlist" aria-label="Add to wishlist" data-id="3">
+              <img src="assets/prod-3.jpg" alt="Базовая черная футболка Studio Minimal" class="product-img" loading="lazy">
+              <button class="btn-wishlist" aria-label="Добавить в избранное" data-id="3">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
               </button>
               <div class="quick-add-overlay">
-                <button class="btn-quick-add" data-id="3">ADD TO CART</button>
+                <button class="btn-quick-add" data-id="3">В КОРЗИНУ</button>
               </div>
             </div>
             <div class="product-meta">
-              <h4 class="product-name">Minimalist Studio Black Tee</h4>
+              <h4 class="product-name">Базовая черная футболка Studio Minimal</h4>
               <span class="product-price">2,199 ₽</span>
             </div>
           </div>
 
           <!-- Product 4 -->
-          <div class="product-card" data-id="4" data-name="Essential Oversized White Tee" data-price="1999" data-img="assets/prod-4.jpg">
+          <div class="product-card reveal-product-card" data-delay="0.4" data-id="4" data-name="Оверсайз белая футболка Essential Boxy" data-price="1999" data-img="assets/prod-4.jpg">
             <div class="product-img-box">
-              <img src="assets/prod-4.jpg" alt="Essential Oversized White Tee" class="product-img">
-              <button class="btn-wishlist" aria-label="Add to wishlist" data-id="4">
+              <img src="assets/prod-4.jpg" alt="Оверсайз белая футболка Essential Boxy" class="product-img" loading="lazy">
+              <button class="btn-wishlist" aria-label="Добавить в избранное" data-id="4">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
               </button>
               <div class="quick-add-overlay">
-                <button class="btn-quick-add" data-id="4">ADD TO CART</button>
+                <button class="btn-quick-add" data-id="4">В КОРЗИНУ</button>
               </div>
             </div>
             <div class="product-meta">
-              <h4 class="product-name">Essential Oversized White Tee</h4>
+              <h4 class="product-name">Оверсайз белая футболка Essential Boxy</h4>
               <span class="product-price">1,999 ₽</span>
             </div>
           </div>
@@ -366,8 +369,8 @@
   <div class="cart-drawer-overlay" id="cartOverlay">
     <div class="cart-drawer">
       <div class="cart-drawer-header">
-        <h3 class="cart-drawer-title">YOUR SHOPPING BAG</h3>
-        <button class="cart-drawer-close" id="cartCloseBtn" aria-label="Close Cart">
+        <h3 class="cart-drawer-title">ВАША КОРЗИНА</h3>
+        <button class="cart-drawer-close" id="cartCloseBtn" aria-label="Закрыть корзину">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"/>
             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -378,63 +381,63 @@
       <div class="cart-items-list" id="cartItemsList">
         <!-- Rendered by JS -->
         <div class="cart-empty-state" id="cartEmptyState">
-          <p>Your shopping bag is currently empty.</p>
-          <a href="#best-of-gazu" class="btn-shop-now" id="continueShoppingBtn">EXPLORE COLLECTION</a>
+          <p>Ваша корзина пока пуста.</p>
+          <a href="#best-of-gazu" class="btn-shop-now" id="continueShoppingBtn">СМОТРЕТЬ КАТАЛОГ</a>
         </div>
       </div>
 
       <div class="cart-drawer-footer" id="cartFooter">
         <div class="cart-subtotal-row">
-          <span>SUBTOTAL:</span>
+          <span>ИТОГО К ОПЛАТЕ:</span>
           <strong id="cartSubtotal">0 ₽</strong>
         </div>
-        <p class="cart-shipping-note">Free standard shipping applied on all orders.</p>
-        <button class="btn-checkout" id="checkoutBtn">PROCEED TO CHECKOUT</button>
+        <p class="cart-shipping-note">Бесплатная стандартная доставка включена в заказ.</p>
+        <button class="btn-checkout" id="checkoutBtn">ОФОРМИТЬ ЗАКАЗ</button>
       </div>
     </div>
   </div>
 
   <!-- Toast Notification Box -->
-  <div class="toast-notification" id="toastNotice">Item added to bag</div>
+  <div class="toast-notification" id="toastNotice">Товар добавлен в корзину</div>
 
   <!-- Minimalist Brand Footer -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand-row">
         <span class="footer-logo">GAZU</span>
-        <p class="footer-statement">Fashion that moves with you. Crafted for modern movement and everyday expression.</p>
+        <p class="footer-statement">Мода, которая движется вместе с тобой. Создано для современного движения и повседневного самовыражения.</p>
       </div>
 
       <div class="footer-links-row">
         <div class="footer-col">
-          <strong>SHOP</strong>
-          <a href="#men">Men's Wardrobe</a>
-          <a href="#women">Women's Collection</a>
-          <a href="#kids">Kids Essentials</a>
-          <a href="#best-of-gazu">New In 2024</a>
+          <strong>КАТАЛОГ</strong>
+          <a href="#men">Мужская коллекция</a>
+          <a href="#women">Женская коллекция</a>
+          <a href="#kids">Детские базовые вещи</a>
+          <a href="#best-of-gazu">Новинки 2024</a>
         </div>
         <div class="footer-col">
-          <strong>CUSTOMER SERVICE</strong>
-          <a href="#help">Delivery & Shipping</a>
-          <a href="#help">Returns & Exchanges</a>
-          <a href="#help">Size Guide</a>
-          <a href="#help">Contact Us</a>
+          <strong>СЕРВИС</strong>
+          <a href="#help">Доставка и оплата</a>
+          <a href="#help">Обмен и возврат</a>
+          <a href="#help">Таблица размеров</a>
+          <a href="#help">Контакты поддержки</a>
         </div>
         <div class="footer-col">
-          <strong>DEVELOPER & PORTFOLIO</strong>
-          <p class="footer-credit">Interactive eCommerce design by <strong>Vyacheslav</strong></p>
-          <a href="../../index.html" class="footer-portfolio-link">Back to Portfolio &rarr;</a>
+          <strong>РАЗРАБОТКА & ПОРТФОЛИО</strong>
+          <p class="footer-credit">Веб-дизайн и анимации: <strong>Вячеслав</strong></p>
+          <a href="../../index.html" class="footer-portfolio-link">Вернуться в портфолио &rarr;</a>
           <a href="https://t.me/SLAVASDF" target="_blank" rel="noopener noreferrer" class="footer-portfolio-link">Telegram @SLAVASDF</a>
         </div>
       </div>
 
       <div class="footer-bottom-bar">
-        <span>&copy; 2026 GAZU CLOTHING CO. ALL RIGHTS RESERVED.</span>
-        <span>DESIGNED TO MATCH REFERENCE 100%</span>
+        <span>&copy; 2026 GAZU CLOTHING CO. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span>
+        <span>100% ТОЧНОЕ ВОССОЗДАНИЕ ПО РЕФЕРЕНСУ</span>
       </div>
     </div>
   </footer>
 
-  <script src="app.js?v=1.0"></script>
+  <script src="app.js?v=2.0"></script>
 </body>
 </html>

@@ -156,14 +156,18 @@ function initCoverflowCarousel() {
     const rustoreUrl = activeSlide.getAttribute('data-rustore') || '';
     const rustoreBtn = document.getElementById('rustoreProjectBtn');
 
-    if (pillEl) pillEl.textContent = `0${currentIndex + 1} / 02 • ${tag}`;
+    if (pillEl) pillEl.textContent = `0${currentIndex + 1} / 0${total} • ${tag}`;
     if (nameEl) nameEl.textContent = title;
     if (descEl) descEl.textContent = desc;
     if (viewBtn) {
       viewBtn.setAttribute('href', url);
       const span = viewBtn.querySelector('span');
       if (span) {
-        span.textContent = currentIndex === 0 ? 'СМОТРЕТЬ ЛЕНДИНГ ПРОЕКТА' : 'ОБСУДИТЬ В TELEGRAM';
+        if (url.startsWith('projects/')) {
+          span.textContent = 'СМОТРЕТЬ САЙТ ПРОЕКТА';
+        } else {
+          span.textContent = 'ОБСУДИТЬ В TELEGRAM';
+        }
       }
     }
 

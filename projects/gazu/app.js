@@ -218,7 +218,7 @@ function initUtilityNotice() {
  */
 function initScrollAnimations() {
   const elements = document.querySelectorAll(
-    '.reveal-category, .reveal-vibes-left, .reveal-vibes-right, .reveal-trust, .reveal-product-header, .reveal-product-card'
+    '.reveal-category, .reveal-vibes-left, .reveal-vibes-right, .reveal-trust, .reveal-product-header, .reveal-product-card, .reveal-footer'
   );
 
   if (!elements.length) return;
